@@ -1,0 +1,6 @@
+
+// Likely to be host-dependent
+var STUDIO_DIR = '/studio';
+var DATA_DIR = '/data';
+var SERVICES_PATH = '/glassfish/BIOFAB_Web_Service';
+
