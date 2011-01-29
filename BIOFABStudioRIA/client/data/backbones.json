@@ -1,0 +1,5 @@
+{backbones:[
+	{id:"pFAB1001", description:"Test I", sequence:"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},
+	{id:"pFAB1002", description:"Test II", sequence:"TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"},
+	{id:"pFAB1003", description:"Test III", sequence:"CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC"}
+]}

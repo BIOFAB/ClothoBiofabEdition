@@ -1,0 +1,19 @@
+The following is how Nathan Hillson originally described the hack: 
+"The current way to hack this would be to write a script that parses
+the j5 CSV output file and converts the short direct synthesis pieces
+into two oligos to be annealed."
+
+At the moment, J5 does not produce oligos for Golden Gate assemblies, but it is a problem that can be easily remedied.  When one assembles parts using J5, one has the option of assembling the part by direct synthesis; that is, the part is constructed directly by some company.  The direct synthesis product includes the bsa1 recognition site as well as the spacer.
+
+And so, to produce the desired oligo sequence, one would merely have to remove the recognition site and the spacer from either end of the direct synthesis sequence.  And then remove 4 bases from the 3' end of the forward oligo.  The reverse oligo can be produced by reverse complementing the direct synthesis sequence, removing the spacer and recognition site, and then removing 4 base pairs from the 5' end.
+
+An example is given below.
+
+Direct Synthesis Sequence:
+GGTCTCATTTT------------------------TTTTAGAGACC
+
+Forward Oligo:
+TTTT------------------------
+
+Reverse Oligo
+------------------------AAAA
