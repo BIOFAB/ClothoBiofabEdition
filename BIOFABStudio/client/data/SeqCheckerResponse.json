@@ -1,4 +1,0 @@
-[
-	{'status':"good", "construct":"pFAB1", "clones":[1,2,3]},
-	{'status':"bad", "construct":"pFAB1", "clones":[{id:1, errorType:""},{id:2, errorType:""}]},
-]
