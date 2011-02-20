@@ -2,3 +2,26 @@ In the CAD repository, we have:
 
 Clotho BIOFAB Edition which is the main CAD project at the BIOFAB
 BIOFAB Studio which is an exploration in developing a CAD tool as a rich Internet application (RIA) based on Javascript/HTML5/CSS3
+
+Instructions for building and running Clotho BIOFAB Edition:
+
+- Prerequisites:
+
+Java 6 SE has to be installed
+    http://www.oracle.com/technetwork/java/index.html
+
+Netbeans v. 6.9.* has to be installed
+    http://netbeans.org/index.html
+
+- Clone this repository
+
+- *Do not* change the name of any of the files or folders
+
+- Open NetBeans and click on the "File" tab. Select the "Open Project" option.  Navigate to the "ClothoProject" folder and select the icon (picture is two puzzles pieces) labeled "ClothoProject". After selecting ClothoProject, it will appear on the left hand side of the main NetBeans screen as one of your open projects.
+
+- Right-click on ClothoProject and build it. This will take about a minute. 
+
+- Once it is built, run it. You can do this by right-clicking on the ClothoProject icon in the project navigation panel and select "run".  Clotho should now launch as the Fab edition.  To confirm, you
+should see the following line in your message stream:
+
+################################ FabDash Initiating
