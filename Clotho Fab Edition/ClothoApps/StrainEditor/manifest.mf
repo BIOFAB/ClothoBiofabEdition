@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocad.tool.straineditor
+OpenIDE-Module-Layer: org/clothocad/tool/straineditor/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocad/tool/straineditor/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

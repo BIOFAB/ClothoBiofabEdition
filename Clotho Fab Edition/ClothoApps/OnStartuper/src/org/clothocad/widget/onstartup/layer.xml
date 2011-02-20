@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="plugins">
+        <folder name="widgets">
+            <file name="org-clothocad-widget-onstartup-connect.instance">
+                <attr name="instanceOf" stringvalue="org.clothocore.api.plugin.ClothoWidget"/>
+            </file>
+        </folder>
+        <folder name="xml">
+            <file name="onstartup.xml" url="onstartup.xml"></file>
+        </folder>
+    </folder>
+</filesystem>

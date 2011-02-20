@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="plugins">
+        <folder name="tools">
+            <file name="org-clothocad-tool-startupwizard-connect.instance">
+                <attr name="instanceOf" stringvalue="org.clothocore.api.plugin.ClothoTool"/>
+            </file>
+        </folder>
+        <folder name="xml">
+            <file name="startupwizard.xml" url="startupwizard.xml"></file>
+        </folder>
+    </folder>
+    <folder name="org">
+        <folder name="clothocad">
+            <folder name="tool">
+                <folder name="startupwizard">
+                        <file name="maindb.lck" url="maindb.lck"></file>
+                        <file name="maindb.log" url="maindb.log"></file>
+                        <file name="maindb.properties" url="maindb.properties"></file>
+                        <file name="maindb.script" url="maindb.script"></file>
+                </folder>
+            </folder>
+        </folder>
+    </folder>
+</filesystem>

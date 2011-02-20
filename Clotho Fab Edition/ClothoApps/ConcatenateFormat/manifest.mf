@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocad.format.concatenateformat
+OpenIDE-Module-Layer: org/clothocad/format/concatenateformat/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocad/format/concatenateformat/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

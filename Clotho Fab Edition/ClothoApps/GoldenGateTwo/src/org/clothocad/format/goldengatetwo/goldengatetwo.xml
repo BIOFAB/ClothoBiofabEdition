@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+<type>ClothoFormat</type>
+<version>1.0</version>
+<classname>org-clothocad-format-goldengatetwo-connect</classname>
+<description>Golden Gate cloning with 2bp sticky ends</description>
+<help>http://wiki.bu.edu/ece-clotho/index.php/Format:_Golden_Gate_-_2bp</help>
+<displayname>Golden Gate - 2bp</displayname>
+<uuid>org-clothocad-format-goldengatetwo-connect</uuid>
+<screenshot>org/clothocad/format/goldengatetwo/screenshot.png</screenshot>
+<author>J. Christopher Anderson</author>
+<iconpath>org/clothocad/format/goldengatetwo/logo.png</iconpath>
+</plugin>-->
+<plugin>
+<type>ClothoFormat</type>
+<version>1.0</version>
+<classname>org-clothocad-format-goldengatetwo-connect</classname>
+<description>Golden Gate cloning with 2bp sticky ends</description>
+<displayname>Golden Gate - 2bp</displayname>
+<uuid>org-clothocad-format-goldengatetwo-connect</uuid>
+<screenshotpath>org/clothocad/format/goldengatetwo/screenshot.png</screenshotpath>
+<author>J. Christopher Anderson</author>
+<!--<dependency>org.clothocad.tool.helloworld</dependency>-->
+<iconpath>org/clothocad/format/goldengatetwo/logo.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Format:_Golden_Gate_-_2bp</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

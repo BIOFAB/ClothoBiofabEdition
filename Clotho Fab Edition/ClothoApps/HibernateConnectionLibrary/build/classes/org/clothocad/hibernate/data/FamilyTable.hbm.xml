@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 12, 2010 7:14:53 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="org.clothocad.hibernate.data.FamilyTable" table="FamilyTable">
+        <id name="idFamily" type="string">
+            <column name="idFamily" length="63" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="familyTable" class="org.clothocad.hibernate.data.FamilyTable" fetch="select">
+            <column name="superFamilyId" length="63" />
+        </many-to-one>
+        <many-to-one name="personTable" class="org.clothocad.hibernate.data.PersonTable" fetch="select">
+            <column name="authorId" length="63" />
+        </many-to-one>
+        <property name="soterm" type="string">
+            <column name="SOterm" length="20" />
+        </property>
+        <property name="level" type="java.lang.Integer">
+            <column name="level" />
+        </property>
+        <property name="isExtendable" type="java.lang.Byte">
+            <column name="isExtendable" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" />
+        </property>
+        <property name="riskGroup" type="java.lang.Short">
+            <column name="riskGroup" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="dateCreated" length="19" />
+        </property>
+        <property name="lastModified" type="timestamp">
+            <column name="lastModified" length="19" />
+        </property>
+        <property name="familyData" type="string">
+            <column name="familyData" length="65535" />
+        </property>
+        <set name="traitFamilyXrefs" inverse="true">
+            <key>
+                <column name="familyId" length="63" not-null="true" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.TraitFamilyXref" />
+        </set>
+        <set name="traitTables" inverse="true">
+            <key>
+                <column name="familyId" length="63" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.TraitTable" />
+        </set>
+        <set name="familyTables" inverse="true">
+            <key>
+                <column name="superFamilyId" length="63" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.FamilyTable" />
+        </set>
+        <set name="featureFamilyXrefs" inverse="true">
+            <key>
+                <column name="familyId" length="63" not-null="true" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.FeatureFamilyXref" />
+        </set>
+        <set name="familyNoteXrefs" inverse="true">
+            <key>
+                <column name="familyId" length="63" not-null="true" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.FamilyNoteXref" />
+        </set>
+    </class>
+</hibernate-mapping>

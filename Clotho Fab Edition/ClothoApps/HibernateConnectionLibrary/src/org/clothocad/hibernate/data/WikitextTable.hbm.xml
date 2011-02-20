@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 1, 2010 8:47:56 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class name="org.clothocad.hibernate.data.WikitextTable" table="WikitextTable">
+    <id name="idWikitext" type="string">
+      <column length="63" name="idWikitext"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="name" type="string">
+      <column name="name"/>
+    </property>
+    <property name="text" type="string">
+      <column length="65535" name="text"/>
+    </property>
+    <property name="dateCreated" type="timestamp">
+      <column length="19" name="dateCreated"/>
+    </property>
+    <property name="lastModified" type="timestamp">
+      <column length="19" name="lastModified"/>
+    </property>
+    <set inverse="true" name="sampleDataTables">
+      <key>
+        <column length="63" name="wikiTextId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.SampleDataTable"/>
+    </set>
+    <set inverse="true" name="attachmentTables">
+      <key>
+        <column length="63" name="wikiTextId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.AttachmentTable"/>
+    </set>
+    <set inverse="true" name="noteTables">
+      <key>
+        <column length="63" name="blurbId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.NoteTable"/>
+    </set>
+    <set inverse="true" name="factoidTables">
+      <key>
+        <column length="63" name="wikiTextId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.FactoidTable"/>
+    </set>
+  </class>
+</hibernate-mapping>

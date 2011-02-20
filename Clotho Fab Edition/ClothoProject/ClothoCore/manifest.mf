@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocore/1
+OpenIDE-Module-Implementation-Version: 1
+OpenIDE-Module-Install: org/clothocore/boot/Installer.class
+OpenIDE-Module-Layer: org/clothocore/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocore/Bundle.properties
+

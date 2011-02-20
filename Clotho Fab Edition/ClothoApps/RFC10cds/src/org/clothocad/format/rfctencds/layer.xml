@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="plugins">
+        <folder name="formats">
+            <file name="org-clothocad-format-rfctencds-connect.instance">
+                <attr name="instanceOf" stringvalue="org.clothocore.api.plugin.ClothoFormat"/>
+            </file>
+        </folder>
+        <folder name="xml">
+            <file name="rfctencds.xml" url="rfctencds.xml"></file>
+        </folder>
+    </folder>
+</filesystem>

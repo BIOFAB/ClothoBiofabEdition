@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+<type>ClothoViewer</type>
+<version>1.0</version>
+<classname>org-clothocad-viewer-knuckleboom-connect</classname>
+<description>A simple Wiki editor</description>
+<help>http://andersonlab.qb3.berkeley.edu/Clotho/help1.0.1/help_v1.0.1.html</help>
+<displayname>Knuckleboom</displayname>
+<uuid>org.clothocad.viewer.knuckleboom</uuid>
+<screenshot>org/clothocad/viewer/knuckleboom/screenshot.png</screenshot>
+<author>J. Christopher Anderson</author>
+<viewer>WIKITEXT</viewer>
+<iconpath>org/clothocad/viewer/knuckleboom/logo.png</iconpath>
+</plugin>-->
+<plugin>
+<type>ClothoViewer</type>
+<version>1.0</version>
+<classname>org-clothocad-viewer-knuckleboom-connect</classname>
+<description>A simple Wiki editor</description>
+<displayname>Knuckleboom</displayname>
+<uuid>org.clothocad.viewer.knuckleboom</uuid>
+<screenshotpath>org/clothocad/viewer/knuckleboom/screenshot.png</screenshotpath>
+<author>J. Christopher Anderson</author>
+<dependency>org.clothocad.wikieditorpanel</dependency>
+<viewer>WIKITEXT</viewer>
+<iconpath>org/clothocad/viewer/knuckleboom/logo.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Knuckleboom</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

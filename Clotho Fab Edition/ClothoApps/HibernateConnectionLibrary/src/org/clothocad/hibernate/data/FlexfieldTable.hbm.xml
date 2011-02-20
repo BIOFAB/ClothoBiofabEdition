@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 1, 2010 8:47:56 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class name="org.clothocad.hibernate.data.FlexfieldTable" table="FlexfieldTable">
+    <id name="idFlexfield" type="string">
+      <column length="63" name="idFlexfield"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="pluginId" type="string">
+      <column length="63" name="pluginId"/>
+    </property>
+    <property name="name" type="string">
+      <column length="63" name="name"/>
+    </property>
+    <property name="dateCreated" type="timestamp">
+      <column length="19" name="dateCreated"/>
+    </property>
+    <property name="lastModified" type="timestamp">
+      <column length="19" name="lastModified"/>
+    </property>
+    <set inverse="true" name="flexfieldDataXrefs">
+      <key>
+        <column length="63" name="flexfieldId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.FlexfieldDataXref"/>
+    </set>
+  </class>
+</hibernate-mapping>

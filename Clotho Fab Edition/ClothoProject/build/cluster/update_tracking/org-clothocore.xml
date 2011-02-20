@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module codename="org.clothocore/1">
+    <module_version install_time="1298173764882" last="true" origin="installer" specification_version="1.1">
+        <file crc="2935014749" name="config/Modules/org-clothocore.xml"/>
+        <file crc="4170277476" name="modules/ext/filedrop.jar"/>
+        <file crc="1246590972" name="modules/ext/jgrapht-jdk1.6.jar"/>
+        <file crc="1277957156" name="modules/ext/ncbiblast.jar"/>
+        <file crc="2197965321" name="modules/ext/net.java.textilej_2.2.864.jar"/>
+        <file crc="1551508491" name="modules/org-clothocore.jar"/>
+    </module_version>
+</module>

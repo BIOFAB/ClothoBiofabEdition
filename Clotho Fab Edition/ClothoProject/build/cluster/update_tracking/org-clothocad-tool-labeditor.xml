@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module codename="org.clothocad.tool.labeditor">
+    <module_version install_time="1298173771914" last="true" origin="installer" specification_version="1.0">
+        <file crc="1724298039" name="config/Modules/org-clothocad-tool-labeditor.xml"/>
+        <file crc="3978350" name="modules/org-clothocad-tool-labeditor.jar"/>
+    </module_version>
+</module>

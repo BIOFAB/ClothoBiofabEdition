@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-OpenIDE-Module: org.biofab.checker
-OpenIDE-Module-Localizing-Bundle: org/biofab/checker/Bundle.properties
-OpenIDE-Module-Specification-Version: 1.0
-

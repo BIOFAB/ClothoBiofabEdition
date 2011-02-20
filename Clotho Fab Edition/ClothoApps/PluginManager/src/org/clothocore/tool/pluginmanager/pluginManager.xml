@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+<type>ClothoPluginManager</type>
+<version>1.0</version>
+<classname>org-clothocore-tool-pluginmanager-io-connectPMToClotho</classname>
+<description>PluginManager allows you to associate plugins with Clotho object types, uninstall plugins, and turn on and off widgets</description>
+<displayname>Plugin Manager</displayname>
+<uuid>org.clothocore.tool.pluginmanager</uuid>
+<screenshotpath>org/clothocore/tool/pluginmanager/screenshot.png</screenshotpath>
+<author>J. Christopher Anderson</author>
+<iconpath>org/clothocore/tool/pluginmanager/logo.png</iconpath>
+<!--<dependency>none1</dependency>-->
+<!--<dependency>none2</dependency>-->
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Plugin_Manager</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

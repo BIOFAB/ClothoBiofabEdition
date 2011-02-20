@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 4, 2010 6:21:40 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="org.clothocad.hibernate.data.NucseqTable" table="NucseqTable">
+        <id name="idNucseq" type="string">
+            <column name="idNucseq" length="63" />
+            <generator class="assigned" />
+        </id>
+        <property name="sequence" type="string">
+            <column name="sequence" length="65535" />
+        </property>
+        <property name="isLocked" type="java.lang.Boolean">
+            <column name="isLocked" />
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="dateCreated" length="19" />
+        </property>
+        <property name="lastmodified" type="timestamp">
+            <column name="lastmodified" length="19" />
+        </property>
+        <set name="vectorTables" inverse="true">
+            <key>
+                <column name="nucseqId" length="63" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.VectorTable" />
+        </set>
+        <set name="nucseqAnnotations" inverse="true">
+            <key>
+                <column name="nucseqId" length="63" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.NucseqAnnotation" />
+        </set>
+        <set name="partTables" inverse="true">
+            <key>
+                <column name="nucseqId" length="63" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.PartTable" />
+        </set>
+        <set name="featureTables" inverse="true">
+            <key>
+                <column name="nucseqId" length="63" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.FeatureTable" />
+        </set>
+        <set name="oligoTables" inverse="true">
+            <key>
+                <column name="nucseqId" length="63" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.OligoTable" />
+        </set>
+    </class>
+</hibernate-mapping>

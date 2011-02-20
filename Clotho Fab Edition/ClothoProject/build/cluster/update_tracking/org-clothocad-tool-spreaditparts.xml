@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module codename="org.clothocad.tool.spreaditparts">
+    <module_version install_time="1298173768980" last="true" origin="installer" specification_version="1.0">
+        <file crc="3207490984" name="config/Modules/org-clothocad-tool-spreaditparts.xml"/>
+        <file crc="381134059" name="modules/org-clothocad-tool-spreaditparts.jar"/>
+    </module_version>
+</module>

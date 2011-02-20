@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module codename="org.clothocad.tool.tutorialwizard">
+    <module_version install_time="1298173776190" last="true" origin="installer" specification_version="1.0">
+        <file crc="4203668983" name="config/Modules/org-clothocad-tool-tutorialwizard.xml"/>
+        <file crc="355747942" name="modules/org-clothocad-tool-tutorialwizard.jar"/>
+    </module_version>
+</module>

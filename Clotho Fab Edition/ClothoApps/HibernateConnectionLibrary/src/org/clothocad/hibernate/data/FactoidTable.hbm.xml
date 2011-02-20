@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 1, 2010 8:47:56 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class name="org.clothocad.hibernate.data.FactoidTable" table="FactoidTable">
+    <id name="idFactoid" type="string">
+      <column length="63" name="idFactoid"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="org.clothocad.hibernate.data.PersonTable" fetch="select" name="personTable">
+      <column length="63" name="authorId"/>
+    </many-to-one>
+    <many-to-one class="org.clothocad.hibernate.data.WikitextTable" fetch="select" name="wikitextTable">
+      <column length="63" name="wikiTextId"/>
+    </many-to-one>
+    <property name="name" type="string">
+      <column name="name"/>
+    </property>
+    <property name="reference" type="string">
+      <column length="63" name="reference"/>
+    </property>
+    <property name="dateCreated" type="timestamp">
+      <column length="19" name="dateCreated"/>
+    </property>
+    <property name="lastModified" type="timestamp">
+      <column length="19" name="lastModified"/>
+    </property>
+    <set inverse="true" name="noteFactoidXrefs">
+      <key>
+        <column length="63" name="factoidId" not-null="true"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.NoteFactoidXref"/>
+    </set>
+  </class>
+</hibernate-mapping>

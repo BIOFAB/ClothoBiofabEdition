@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+<type>ClothoWidget</type>
+<version>1.0</version>
+<classname>org-clothocad-widget-onstartup-connect</classname>
+<description>Lauches the configuration tool on startup for first time</description>
+<help>http://wiki.bu.edu/ece-clotho/index.php/Startup_Wizard</help>
+<displayname>On Startup</displayname>
+<uuid>org.clothocad.widget.onstartup</uuid>
+<screenshot>org/clothocad/widget/onstartup/screenshot.png</screenshot>
+<author>J. Christopher Anderson</author>
+<iconpath>org/clothocad/widget/onstartup/logo.png</iconpath>
+</plugin>-->
+<plugin>
+<type>ClothoWidget</type>
+<version>1.0</version>
+<classname>org-clothocad-widget-onstartup-connect</classname>
+<description>Lauches the configuration tool on startup for first time</description>
+<displayname>On Startup</displayname>
+<uuid>org.clothocad.widget.onstartup</uuid>
+<screenshotpath>org/clothocad/widget/onstartup/screenshot.png</screenshotpath>
+<author>J. Christopher Anderson</author>
+<!--<dependency>org.clothocad.tool.helloworld</dependency>-->
+<iconpath>org/clothocad/widget/onstartup/logo.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Startup_Wizard</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

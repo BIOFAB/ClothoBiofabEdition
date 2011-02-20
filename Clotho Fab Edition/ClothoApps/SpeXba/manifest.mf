@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocad.format.spexba
+OpenIDE-Module-Layer: org/clothocad/format/spexba/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocad/format/spexba/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

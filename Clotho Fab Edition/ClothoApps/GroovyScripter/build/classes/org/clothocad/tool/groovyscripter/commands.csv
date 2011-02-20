@@ -1,0 +1,10 @@
+***KeyBindings,,,
+Key Press,control s,Save script,Save the current script to desktop file
+Key Press,control o,Open script,Open a script from desktop file
+Key press,control w,Close window,Closes the window
+Key Press,control h,Command help,Opens this command help window
+Key Press,control r,Run,Run the script currently in the window
+***JComponents,,,
+***MouseEvents,,,
+***DragEvents,,,
+***OtherEvents,,,

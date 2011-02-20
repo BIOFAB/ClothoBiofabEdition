@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocad.library.menutasks
+OpenIDE-Module-Layer: org/clothocad/library/menutasks/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocad/library/menutasks/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

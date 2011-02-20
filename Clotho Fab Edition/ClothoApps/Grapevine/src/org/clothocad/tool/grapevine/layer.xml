@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="plugins">
+        <folder name="tools">
+            <file name="org-clothocad-tool-grapevine-connect.instance">
+                <attr name="instanceOf" stringvalue="org.clothocore.api.plugin.ClothoTool"/>
+            </file>
+        </folder>
+        <folder name="xml">
+            <file name="grapevine.xml" url="grapevine.xml"></file>
+        </folder>
+    </folder>
+    <folder name="org">
+        <folder name="clothocad">
+            <folder name="tool">
+                <folder name="grapevine">
+                    <file name="commands.csv" url="commands.csv"></file>
+                </folder>
+            </folder>
+        </folder>
+    </folder>
+</filesystem>

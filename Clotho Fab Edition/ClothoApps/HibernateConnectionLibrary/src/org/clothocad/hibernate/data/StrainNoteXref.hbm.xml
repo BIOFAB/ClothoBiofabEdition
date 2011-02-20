@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 26, 2010 11:53:29 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="org.clothocad.hibernate.data.StrainNoteXref" table="StrainNoteXref" >
+        <composite-id name="id" class="org.clothocad.hibernate.data.StrainNoteXrefId">
+            <key-property name="strainId" type="string">
+                <column name="strainId" length="63" />
+            </key-property>
+            <key-property name="noteId" type="string">
+                <column name="noteId" length="63" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="noteTable" class="org.clothocad.hibernate.data.NoteTable" update="false" insert="false" fetch="select">
+            <column name="noteId" length="63" not-null="true" />
+        </many-to-one>
+        <many-to-one name="strainTable" class="org.clothocad.hibernate.data.StrainTable" update="false" insert="false" fetch="select">
+            <column name="strainId" length="63" not-null="true" />
+        </many-to-one>
+        <property name="dateCreated" type="timestamp">
+            <column name="dateCreated" length="19" />
+        </property>
+        <property name="lastModified" type="timestamp">
+            <column name="lastModified" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

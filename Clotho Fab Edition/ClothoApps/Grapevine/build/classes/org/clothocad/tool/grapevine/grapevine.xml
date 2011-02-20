@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-grapevine-connect</classname>
+<description>A factoid and note authoring/editing tool</description>
+<help>http://wiki.bu.edu/ece-clotho/index.php/Grapevine</help>
+<displayname>Grapevine</displayname>
+<uuid>org.clothocad.tool.grapevine</uuid>
+<screenshot>org/clothocad/tool/grapevine/screenshot.png</screenshot>
+<author>J. Christopher Anderson</author>
+<viewer>FACTOID</viewer>
+<viewer>NOTE</viewer>
+<iconpath>org/clothocad/tool/grapevine/logo.png</iconpath>
+</plugin>-->
+<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-grapevine-connect</classname>
+<description>A factoid and note authoring/editing tool</description>
+<displayname>Grapevine</displayname>
+<uuid>org.clothocad.tool.grapevine</uuid>
+<screenshotpath>org/clothocad/tool/grapevine/screenshot.png</screenshotpath>
+<author>J. Christopher Anderson</author>
+<dependency>org.clothocad.wikieditorpanel</dependency>
+<viewer>FACTOID</viewer>
+<viewer>NOTE</viewer>
+<iconpath>org/clothocad/tool/grapevine/logo.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Grapevine</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <helpcommand>Key Press,control s,Save everything,Will save all WikiTexts; Factoids; and the note associated with a Note.  Ctrl S will save only individual wikitext if you have a WikiTextEditor in focus.</helpcommand>
+        <helpcommand>Key Press,control n,New note,Creates a new Note in a new window</helpcommand>
+        <helpcommand>Key press,control w,Close window,Closes the window</helpcommand>
+        <helpcommand>Key Press,control h,Command help,Opens this command help window</helpcommand>
+        <helpcommand>Title area,Click and type,Change title,When clicked; the title area will turn white.  You can then edit the text.  When you leave the title area; it turns blue and stores your information.</helpcommand>
+        <helpcommand>Wiki areas,double click,Switch to edit,Double clicking on wikitext areas will switch to edit mode.  There you can access the wikitext editor help</helpcommand>
+        <helpcommand>Wiki area,Get help,control h,From edit mode of a wikitext area; will launch help for wikitext editors</helpcommand>
+        <helpcommand>New Factoid button,left click,Create new factoid,Create a new factoid at the top of the list</helpcommand>
+        <helpcommand>New Factoid button,right click,Popup Menu,Get a Clotho right click popup menu for the Note</helpcommand>
+        <helpcommand>database icons,left click,Save factoid,Save the factoid to the database</helpcommand>
+        <helpcommand>trashcan icons,left click,Remove factoid,Remove the factoid from the note.  This doesn't delete the factoid; just removes it.  This operation is undoable from the right click menu of the Note.</helpcommand>
+        <helpcommand>popout icons,left click,Launch editor,Launch a more detailed editor for the factoid.</helpcommand>
+        <helpcommand>factoid headers,double click,Launch editor,Launch a more detailed editor for the factoid.</helpcommand>
+        <helpcommand>factoid headers,right click,Popup Menu,Get a Clotho right click popup menu for the Factoid</helpcommand>
+    </help>
+</plugin>

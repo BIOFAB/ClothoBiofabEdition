@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocad.wikieditorpanel
+OpenIDE-Module-Layer: org/clothocad/wikieditorpanel/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocad/wikieditorpanel/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

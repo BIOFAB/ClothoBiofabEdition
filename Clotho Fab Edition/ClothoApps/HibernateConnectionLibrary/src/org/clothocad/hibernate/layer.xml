@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="data">
+        <folder name="private">
+            <folder name="org.clothocad.hibernate">
+                <file name="OligoTable.hbm.xml" url="data/OligoTable.hbm.xml"/>
+                <file name="FactoidTable.hbm.xml" url="data/FactoidTable.hbm.xml"/>
+                <file name="CompositeXref.hbm.xml" url="data/CompositeXref.hbm.xml"/>
+                <file name="SampleDataXref.hbm.xml" url="data/SampleDataXref.hbm.xml"/>
+                <file name="NoteFactoidXref.hbm.xml" url="data/NoteFactoidXref.hbm.xml"/>
+                <file name="PlateTypeTable.hbm.xml" url="data/PlateTypeTable.hbm.xml"/>
+                <file name="FeatureFamilyXref.hbm.xml" url="data/FeatureFamilyXref.hbm.xml"/>
+                <file name="FeatureTraitXref.hbm.xml" url="data/FeatureTraitXref.hbm.xml"/>
+                <file name="TraitFamilyXref.hbm.xml" url="data/TraitFamilyXref.hbm.xml"/>
+                <file name="TraitTable.hbm.xml" url="data/TraitTable.hbm.xml"/>
+                <file name="NoteNoteXref.hbm.xml" url="data/NoteNoteXref.hbm.xml"/>
+                <file name="PlateTable.hbm.xml" url="data/PlateTable.hbm.xml"/>
+                <file name="InstitutionTable.hbm.xml" url="data/InstitutionTable.hbm.xml"/>
+                <file name="FamilyTable.hbm.xml" url="data/FamilyTable.hbm.xml"/>
+                <file name="FlexfieldDataXref.hbm.xml" url="data/FlexfieldDataXref.hbm.xml"/>
+                <file name="PartTable.hbm.xml" url="data/PartTable.hbm.xml"/>
+                <file name="NucseqAnnotation.hbm.xml" url="data/NucseqAnnotation.hbm.xml"/>
+                <file name="CollectionTable.hbm.xml" url="data/CollectionTable.hbm.xml"/>
+                <file name="NucseqTable.hbm.xml" url="data/NucseqTable.hbm.xml"/>
+                <file name="VectorTable.hbm.xml" url="data/VectorTable.hbm.xml"/>
+                <file name="FlexfieldTable.hbm.xml" url="data/FlexfieldTable.hbm.xml"/>
+                <file name="NoteTable.hbm.xml" url="data/NoteTable.hbm.xml"/>
+                <file name="SearchtagTable.hbm.xml" url="data/SearchtagTable.hbm.xml"/>
+                <file name="PlasmidTable.hbm.xml" url="data/PlasmidTable.hbm.xml"/>
+                <file name="FormatTable.hbm.xml" url="data/FormatTable.hbm.xml"/>
+                <file name="WikitextTable.hbm.xml" url="data/WikitextTable.hbm.xml"/>
+                <file name="PartGrammarXref.hbm.xml" url="data/PartGrammarXref.hbm.xml"/>
+                <file name="LabTable.hbm.xml" url="data/LabTable.hbm.xml"/>
+                <file name="AttachmentTable.hbm.xml" url="data/AttachmentTable.hbm.xml"/>
+                <file name="PersonTable.hbm.xml" url="data/PersonTable.hbm.xml"/>
+                <file name="Collectionxref.hbm.xml" url="data/Collectionxref.hbm.xml"/>
+                <file name="GrammarTable.hbm.xml" url="data/GrammarTable.hbm.xml"/>
+                <file name="StrainTable.hbm.xml" url="data/StrainTable.hbm.xml"/>
+                <file name="ContainerTable.hbm.xml" url="data/ContainerTable.hbm.xml"/>
+                <file name="SampleTable.hbm.xml" url="data/SampleTable.hbm.xml"/>
+                <file name="SampleDataTable.hbm.xml" url="data/SampleDataTable.hbm.xml"/>
+                <file name="FeatureTable.hbm.xml" url="data/FeatureTable.hbm.xml"/>
+                <file name="FeatureNoteXref.hbm.xml" url="data/FeatureNoteXref.hbm.xml"/>
+                <file name="FamilyNoteXref.hbm.xml" url="data/FamilyNoteXref.hbm.xml"/>
+                <file name="StrainNoteXref.hbm.xml" url="data/StrainNoteXref.hbm.xml"/>
+                <file name="StrainPlasmidXref.hbm.xml" url="data/StrainPlasmidXref.hbm.xml"/>
+            </folder>
+        </folder>
+    </folder>
+</filesystem>

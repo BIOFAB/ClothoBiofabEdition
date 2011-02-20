@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 23, 2010 5:56:03 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class name="org.clothocad.hibernate.data.ContainerTable" table="ContainerTable">
+    <id name="idContainer" type="string">
+      <column length="63" name="idContainer"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="org.clothocad.hibernate.data.PlateTable" fetch="select" name="plateTable">
+      <column length="63" name="plateId"/>
+    </many-to-one>
+    <property name="name" type="string">
+      <column name="name"/>
+    </property>
+    <property name="row" type="java.lang.Short">
+      <column name="row"/>
+    </property>
+    <property name="column" type="java.lang.Short">
+      <column name="col"/>
+    </property>
+    <property name="barcode" type="string">
+      <column name="barcode"/>
+    </property>
+    <property name="isFixed" type="java.lang.Boolean">
+      <column name="isFixed"/>
+    </property>
+    <property name="dateCreated" type="timestamp">
+      <column length="19" name="dateCreated"/>
+    </property>
+    <property name="lastModified" type="timestamp">
+      <column length="19" name="lastModified"/>
+    </property>
+    <set inverse="true" name="sampleTables">
+      <key>
+        <column length="63" name="containerId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.SampleTable"/>
+    </set>
+  </class>
+</hibernate-mapping>

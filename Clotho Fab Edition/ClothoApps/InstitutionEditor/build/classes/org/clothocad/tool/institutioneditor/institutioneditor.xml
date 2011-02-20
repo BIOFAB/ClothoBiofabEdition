@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-institutioneditor-connect</classname>
+<description>Create or edit a institution</description>
+<help>http://andersonlab.qb3.berkeley.edu/Clotho/help1.0.1/help_v1.0.1.html</help>
+<displayname>Institution Editor</displayname>
+<uuid>org.clothocad.tool.institutioneditor</uuid>
+<screenshot>org/clothocad/tool/institutioneditor/screenshot.png</screenshot>
+<author>J. Christopher Anderson</author>
+<viewer>INSTITUTION</viewer>
+<iconpath>org/clothocad/tool/institutioneditor/logo.png</iconpath>
+</plugin>-->
+<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-institutioneditor-connect</classname>
+<description>Create or edit a institution</description>
+<displayname>Institution Editor</displayname>
+<uuid>org.clothocad.tool.institutioneditor</uuid>
+<screenshotpath>org/clothocad/tool/institutioneditor/screenshot.png</screenshotpath>
+<author>J. Christopher Anderson</author>
+<!--<dependency>org.clothocad.tool.helloworld</dependency>-->
+<viewer>INSTITUTION</viewer>
+<iconpath>org/clothocad/tool/institutioneditor/logo.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Institution_Editor</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

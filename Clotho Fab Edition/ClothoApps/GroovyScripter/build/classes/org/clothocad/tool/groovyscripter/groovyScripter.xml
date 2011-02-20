@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-groovyscripter-groovyFrame</classname>
+<description>Script the API methods using Groovy language</description>
+<help>http://andersonlab.qb3.berkeley.edu/Clotho/help1.0.1/help_v1.0.1.html</help>
+<displayname>Groovy Scripter</displayname>
+<uuid>org.clothocad.tool.groovyscripter</uuid>
+<screenshot>org/clothocad/tool/groovyscripter/screenshot.png</screenshot>
+<author>J. Christopher Anderson</author>
+<iconpath>org/clothocad/tool/groovyscripter/logo.png</iconpath>
+</plugin>-->
+<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-groovyscripter-groovyFrame</classname>
+<description>Script the API methods using Groovy language</description>
+<displayname>Groovy Scripter</displayname>
+<uuid>org.clothocad.tool.groovyscripter</uuid>
+<screenshotpath>org/clothocad/tool/groovyscripter/screenshot.png</screenshotpath>
+<author>J. Christopher Anderson</author>
+<dependency>org.clothocad.library.groovytranslator</dependency>
+<dependency>org.clothocad.library.jsyntaxpane</dependency>
+<iconpath>org/clothocad/tool/groovyscripter/logo.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Groovy_Scripter</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <helpcommand>Key Press,control s,Save script,Save the current script to desktop file</helpcommand>
+        <helpcommand>Key Press,control o,Open script,Open a script from desktop file</helpcommand>
+        <helpcommand>Key press,control w,Close window,Closes the window</helpcommand>
+        <helpcommand>Key Press,control h,Command help,Opens this command help window</helpcommand>
+        <helpcommand>Key Press,control r,Run,Run the script currently in the window</helpcommand>
+    </help>
+</plugin>

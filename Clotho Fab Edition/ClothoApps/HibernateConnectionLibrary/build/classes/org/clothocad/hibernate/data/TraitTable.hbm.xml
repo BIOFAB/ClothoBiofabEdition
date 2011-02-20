@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 12, 2010 8:31:03 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="org.clothocad.hibernate.data.TraitTable" table="TraitTable">
+        <id name="idTrait" type="string">
+            <column name="idTrait" length="63" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="familyTable" class="org.clothocad.hibernate.data.FamilyTable" fetch="select">
+            <column name="familyId" length="63" />
+        </many-to-one>
+        <property name="position" type="java.lang.Integer">
+            <column name="position" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" />
+        </property>
+        <property name="kind" type="string">
+            <column name="kind" length="63" />
+        </property>
+        <property name="type" type="string">
+            <column name="type" />
+        </property>
+        <property name="value" type="string">
+            <column name="value" />
+        </property>
+        <property name="constraint" type="string">
+            <column name="constraint" length="65535" />
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="dateCreated" length="19" />
+        </property>
+        <property name="lastModified" type="timestamp">
+            <column name="lastModified" length="19" />
+        </property>
+        <set name="traitFamilyXrefs" inverse="true">
+            <key>
+                <column name="traitId" length="63" not-null="true" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.TraitFamilyXref" />
+        </set>
+        <set name="featureTraitXrefs" inverse="true">
+            <key>
+                <column name="traitId" length="63" not-null="true" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.FeatureTraitXref" />
+        </set>
+    </class>
+</hibernate-mapping>

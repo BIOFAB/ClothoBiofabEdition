@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 1, 2010 8:47:56 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class name="org.clothocad.hibernate.data.PersonTable" table="PersonTable">
+    <id name="idPerson" type="string">
+      <column length="63" name="idPerson"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="org.clothocad.hibernate.data.CollectionTable" fetch="select" name="collectionTable">
+      <column length="63" name="personalCollectionId"/>
+    </many-to-one>
+    <many-to-one class="org.clothocad.hibernate.data.LabTable" fetch="select" name="labTable">
+      <column length="63" name="labId"/>
+    </many-to-one>
+    <many-to-one class="org.clothocad.hibernate.data.WikitextTable" fetch="select" name="biography">
+      <column length="63" name="biographID"/>
+    </many-to-one>
+    <property name="displayName" type="string">
+      <column name="displayName"/>
+    </property>
+    <property name="givenName" type="string">
+      <column name="givenName"/>
+    </property>
+    <property name="surName" type="string">
+      <column name="surName"/>
+    </property>
+    <property name="nickName" type="string">
+      <column name="nickName"/>
+    </property>
+    <property name="emailAddress" type="string">
+      <column name="emailAddress"/>
+    </property>
+    <property name="snailMailAddress" type="string">
+      <column name="snailMailAddress"/>
+    </property>
+    <property name="registryName" type="string">
+      <column name="registryName"/>
+    </property>
+    <property name="dateCreated" type="timestamp">
+      <column length="19" name="dateCreated"/>
+    </property>
+    <property name="lastModified" type="timestamp">
+      <column length="19" name="lastModified"/>
+    </property>
+    <property name="password" type="string">
+      <column length="63" name="password"/>
+    </property>
+    <property name="isAdministrator" type="java.lang.Boolean">
+      <column name="isAdministrator"/>
+    </property>
+    <set inverse="true" name="collectionXrefs">
+      <key>
+        <column length="63" name="authorId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.Collectionxref"/>
+    </set>
+    <set inverse="true" name="nucseqAnnotations">
+      <key>
+        <column length="63" name="authorId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.NucseqAnnotation"/>
+    </set>
+    <set inverse="true" name="oligoTables">
+      <key>
+        <column length="63" name="authorId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.OligoTable"/>
+    </set>
+    <set inverse="true" name="featureTables">
+      <key>
+        <column length="63" name="authorId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.FeatureTable"/>
+    </set>
+    <set inverse="true" name="flexfieldDataXrefs">
+      <key>
+        <column length="63" name="authorId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.FlexfieldDataXref"/>
+    </set>
+    <set inverse="true" name="noteTables">
+      <key>
+        <column length="63" name="authorId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.NoteTable"/>
+    </set>
+    <set inverse="true" name="noteFactoidXrefs">
+      <key>
+        <column length="63" name="authorId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.NoteFactoidXref"/>
+    </set>
+    <set inverse="true" name="partTables">
+      <key>
+        <column length="63" name="authorId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.PartTable"/>
+    </set>
+    <set inverse="true" name="collectionTables">
+      <key>
+        <column length="63" name="authorId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.CollectionTable"/>
+    </set>
+    <set inverse="true" name="plasmidTables">
+      <key>
+        <column length="63" name="authorId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.PlasmidTable"/>
+    </set>
+    <set inverse="true" name="searchtagTables">
+      <key>
+        <column length="63" name="authorId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.SearchtagTable"/>
+    </set>
+    <set inverse="true" name="plateTables">
+      <key>
+        <column length="63" name="authorId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.PlateTable"/>
+    </set>
+    <set inverse="true" name="familyTables">
+      <key>
+        <column length="63" name="personId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.FamilyTable"/>
+    </set>
+    <set inverse="true" name="strainTables">
+      <key>
+        <column length="63" name="personId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.StrainTable"/>
+    </set>
+    <set inverse="true" name="noteNoteXrefs">
+      <key>
+        <column length="63" name="authorId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.NoteNoteXref"/>
+    </set>
+    <set inverse="true" name="sampleTables">
+      <key>
+        <column length="63" name="authorId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.SampleTable"/>
+    </set>
+    <set inverse="true" name="labTables">
+      <key>
+        <column length="63" name="principalInvestigatorId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.LabTable"/>
+    </set>
+    <set inverse="true" name="partGrammarXrefs">
+      <key>
+        <column length="63" name="authorId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.PartGrammarXref"/>
+    </set>
+    <set inverse="true" name="sampleDataTables">
+      <key>
+        <column length="63" name="authorId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.SampleDataTable"/>
+    </set>
+    <set inverse="true" name="factoidTables">
+      <key>
+        <column length="63" name="authorId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.FactoidTable"/>
+    </set>
+    <set inverse="true" name="vectorTables">
+      <key>
+        <column length="63" name="authorId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.VectorTable"/>
+    </set>
+  </class>
+</hibernate-mapping>

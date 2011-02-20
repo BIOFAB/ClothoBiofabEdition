@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <type>ClothoDashboard</type>
+    <version>1.0</version>
+    <classname>org-clothocore-widget-dashboard2-DashBoardWidgetConnection</classname>
+    <description>Launch tools, update Clotho, access plugin manager, and install plugins.</description>
+    <displayname>DashBoard</displayname>
+    <uuid>org.clothocore.widget.dashboard2</uuid>
+    <screenshotpath>org/clothocore/widget/dashboard2/dashscreen.png</screenshotpath>
+    <author>J.Christopher Anderson</author>
+    <iconpath>org/clothocore/widget/dashboard2/logo.png</iconpath>
+    <dependency>org.clothocad.algorithm.searchalgorithm</dependency>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Dashboard</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

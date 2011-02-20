@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocore.widget.dashboard2/1
+OpenIDE-Module-Implementation-Version: 1
+OpenIDE-Module-Layer: org/clothocore/widget/dashboard2/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocore/widget/dashboard2/Bundle.properties
+

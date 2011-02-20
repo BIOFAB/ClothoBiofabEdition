@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 1, 2010 8:47:56 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class name="org.clothocad.hibernate.data.SampleDataTable" table="SampleDataTable">
+    <id name="idSampleData" type="string">
+      <column length="63" name="idSampleData"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="org.clothocad.hibernate.data.AttachmentTable" fetch="select" name="attachmentTable">
+      <column length="63" name="attachmentId"/>
+    </many-to-one>
+    <many-to-one class="org.clothocad.hibernate.data.PersonTable" fetch="select" name="personTable">
+      <column length="63" name="authorId"/>
+    </many-to-one>
+    <many-to-one class="org.clothocad.hibernate.data.WikitextTable" fetch="select" name="wikitextTable">
+      <column length="63" name="wikiTextId"/>
+    </many-to-one>
+    <property name="name" type="string">
+      <column name="name"/>
+    </property>
+    <property name="dataType" type="string">
+      <column length="63" name="dataType"/>
+    </property>
+    <property name="dateCreated" type="timestamp">
+      <column length="19" name="dateCreated"/>
+    </property>
+    <property name="lastModified" type="timestamp">
+      <column length="19" name="lastModified"/>
+    </property>
+    <property name="freeString1" type="string">
+      <column length="65535" name="freeString1"/>
+    </property>
+    <property name="freeString2" type="string">
+      <column length="65535" name="freeString2"/>
+    </property>
+    <property name="freeString3" type="string">
+      <column length="65535" name="freeString3"/>
+    </property>
+    <property name="freeString4" type="string">
+      <column length="65535" name="freeString4"/>
+    </property>
+    <set inverse="true" name="sampleDataXrefs">
+      <key>
+        <column length="63" name="sampleDataId" not-null="true"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.SampleDataXref"/>
+    </set>
+  </class>
+</hibernate-mapping>

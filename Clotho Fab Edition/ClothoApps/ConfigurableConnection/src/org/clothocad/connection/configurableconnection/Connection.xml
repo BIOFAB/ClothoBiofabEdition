@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+    <type>ClothoConnection</type>
+    <classname>org-clothocad-connection-configurableconnection-ConfigurableConnection</classname>
+    <description>Connection that can be adjusted for different databases</description>
+    <help>http://andersonlab.qb3.berkeley.edu/Clotho/help1.0.1/help_v1.0.1.html</help>
+    <displayname>Configurable Connection</displayname>
+    <uuid>org.clothocad.connection.configurableconnection-ClothoConnection</uuid>
+    <author>Chris Anderson</author>
+    <screenshot>org/clothocad/connection/configurableconnection</screenshot>
+    <iconpath>org/clothocad/connection/configurableconnection</iconpath>
+</plugin>-->
+<plugin>
+    <type>ClothoConnection</type>
+    <version>1.0</version>
+    <classname>org-clothocad-connection-configurableconnection-ConfigurableConnection</classname>
+    <description>Connection that can be adjusted for different databases</description>
+    <displayname>Configurable Connection</displayname>
+    <uuid>org.clothocad.connection.configurableconnection-ClothoConnection</uuid>
+    <screenshotpath>org/clothocad/connection/configurableconnection</screenshotpath>
+    <author>J.Christopher Anderson</author>
+    <iconpath>org/clothocad/connection/configurableconnection</iconpath>
+    <dependency>org.clothocad.hibernate</dependency>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/App_Information</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

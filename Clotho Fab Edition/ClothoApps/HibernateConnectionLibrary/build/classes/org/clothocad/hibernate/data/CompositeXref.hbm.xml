@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 18, 2010 6:49:48 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class name="org.clothocad.hibernate.data.CompositeXref" table="CompositeXref">
+    <id name="idComposite" type="string">
+      <column length="63" name="idComposite"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="org.clothocad.hibernate.data.PartTable" fetch="select" name="partTableByParentPart">
+      <column length="63" name="parentPart"/>
+    </many-to-one>
+    <many-to-one class="org.clothocad.hibernate.data.PartTable" fetch="select" name="partTableByChildPart">
+      <column length="63" name="childPart"/>
+    </many-to-one>
+    <property name="position" type="java.lang.Integer">
+      <column name="position"/>
+    </property>
+  </class>
+</hibernate-mapping>

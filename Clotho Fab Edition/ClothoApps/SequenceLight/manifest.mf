@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocad.library.sequencelight/1
+OpenIDE-Module-Layer: org/clothocad/library/sequencelight/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocad/library/sequencelight/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

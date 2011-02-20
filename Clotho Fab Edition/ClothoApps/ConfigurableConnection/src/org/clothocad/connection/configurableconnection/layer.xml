@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="plugins">
+        <folder name="xml">
+            <file name="Connection.xml" url="Connection.xml"/>
+        </folder>
+        <folder name="connections">
+            <file name="org-clothocad-connection-configurableconnection-ConfigurableConnection.instance">
+                <attr name="instanceOf" stringvalue="org.clothocore.api.plugin.ClothoConnection,org.clothocad.connection.configurableconnection.ConfigurableConnection"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="data">
+        <folder name="private">
+            <folder name="org.clothocad.connection.configurableconnection">
+                <file name="hibernate.cfg.xml" url="hibernate.cfg.xml"/>
+            </folder>
+        </folder>
+    </folder>
+</filesystem>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-tutorialwizard-connect</classname>
+<description>Tutorial on how to use Clotho and various Apps</description>
+<help>http://wiki.bu.edu/ece-clotho/index.php/Tutorial_Wizard</help>
+<displayname>Tutorial Wizard</displayname>
+<uuid>org.clothocad.tool.tutorialwizard</uuid>
+<screenshot>org/clothocad/tool/tutorialwizard/screenshot.png</screenshot>
+<author>J. Christopher Anderson</author>
+<iconpath>org/clothocad/tool/tutorialwizard/logo.png</iconpath>
+</plugin>-->
+<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-tutorialwizard-connect</classname>
+<description>Tutorial on how to use Clotho and various Apps</description>
+<displayname>Tutorial Wizard</displayname>
+<uuid>org.clothocad.tool.tutorialwizard</uuid>
+<screenshotpath>org/clothocad/tool/tutorialwizard/screenshot.png</screenshotpath>
+<author>J. Christopher Anderson</author>
+<!--<dependency>org.clothocad.tool.helloworld</dependency>-->
+<iconpath>org/clothocad/tool/tutorialwizard/logo.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Tutorial_Wizard</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

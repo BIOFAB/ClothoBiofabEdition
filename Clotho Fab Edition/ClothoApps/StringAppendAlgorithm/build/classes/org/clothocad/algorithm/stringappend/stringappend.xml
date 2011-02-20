@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+    <type>ClothoAlgorithm</type>
+    <version>1.0</version>
+    <classname>org-clothocad-algorithm-stringappend-StringAppendAlgorithmFactory</classname>
+    <description>Test algorithm</description>
+    <help>http://andersonlab.qb3.berkeley.edu/Clotho/help1.0.1/help_v1.0.1.html</help>
+    <displayname>StringAppender</displayname>
+    <uuid>org.clothocad.algorithm.stringappend</uuid>
+    <screenshot>org/clothocad/widget/dashboard/images/screen.png</screenshot>
+    <author>Bing Xia</author>
+    <iconpath>org/clothocad/widget/dashboard/images/ClothoIcon.png</iconpath>
+</plugin>-->
+<plugin>
+<type>ClothoAlgorithm</type>
+<version>1.0</version>
+<classname>org-clothocad-algorithm-stringappend-StringAppendAlgorithmFactory</classname>
+<description>Test algorithm</description>
+<displayname>StringAppender</displayname>
+<uuid>org.clothocad.algorithm.stringappend</uuid>
+<screenshotpath>org/clothocad/widget/dashboard/images/screen.png</screenshotpath>
+<author>Bing Xia</author>
+<!--<dependency>org.clothocad.tool.helloworld</dependency>-->
+<iconpath>org/clothocad/widget/dashboard/images/ClothoIcon.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/App_Information</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

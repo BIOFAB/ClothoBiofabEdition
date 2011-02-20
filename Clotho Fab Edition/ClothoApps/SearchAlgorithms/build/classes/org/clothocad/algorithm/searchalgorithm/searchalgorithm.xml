@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+    <type>ClothoAlgorithm</type>
+    <version>1.0</version>
+    <classname>org-clothocad-algorithm-searchalgorithm-connect</classname>
+    <description>Takes a google-esque query and returns a collection of objects</description>
+    <help>http://andersonlab.qb3.berkeley.edu/Clotho/help1.0.1/help_v1.0.1.html</help>
+    <displayname>Search Algorithm</displayname>
+    <uuid>org.clothocad.algorithm.searchalgorithm</uuid>
+    <screenshot>org/clothocad/algorithm/searchalgorithm/screen.png</screenshot>
+    <author>Chris Anderson</author>
+    <iconpath>org/clothocad/algorithm/searchalgorithm/logo.png</iconpath>
+</plugin>-->
+<plugin>
+<type>ClothoAlgorithm</type>
+<version>1.0</version>
+<classname>org-clothocad-algorithm-searchalgorithm-connect</classname>
+<description>Takes a google-esque query and returns a collection of objects</description>
+<displayname>Search Algorithm</displayname>
+<uuid>org.clothocad.algorithm.searchalgorithm</uuid>
+<screenshotpath>org/clothocad/algorithm/searchalgorithm/screen.png</screenshotpath>
+<author>J. Christopher Anderson</author>
+<!--<dependency>org.clothocad.tool.helloworld</dependency>-->
+<iconpath>org/clothocad/algorithm/searchalgorithm/logo.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/App_Information</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

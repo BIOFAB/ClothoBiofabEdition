@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocad.format.freeform
+OpenIDE-Module-Layer: org/clothocad/format/freeform/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocad/format/freeform/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

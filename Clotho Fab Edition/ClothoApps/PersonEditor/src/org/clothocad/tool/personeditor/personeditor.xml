@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-personeditor-connect</classname>
+<description>Create or edit a person</description>
+<help>http://andersonlab.qb3.berkeley.edu/Clotho/help1.0.1/help_v1.0.1.html</help>
+<displayname>Person Editor</displayname>
+<uuid>org.clothocad.tool.personeditor</uuid>
+<screenshot>org/clothocad/tool/personeditor/screenshot.png</screenshot>
+<author>J. Christopher Anderson</author>
+<viewer>PERSON</viewer>
+<iconpath>org/clothocad/tool/personeditor/logo.png</iconpath>
+</plugin>-->
+<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-personeditor-connect</classname>
+<description>Create or edit a person</description>
+<displayname>Person Editor</displayname>
+<uuid>org.clothocad.tool.personeditor</uuid>
+<screenshotpath>org/clothocad/tool/personeditor/screenshot.png</screenshotpath>
+<author>J. Christopher Anderson</author>
+<dependency>org.clothocad.wikieditorpanel</dependency>
+<viewer>PERSON</viewer>
+<iconpath>org/clothocad/tool/personeditor/logo.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Person_Editor</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

@@ -55,6 +55,6 @@ Thumbs.db
 *.war
 *.pyc
 
-# Files & Folders #
-##################
-web/clients/
+# SVN Folders #
+#######
+.svn/

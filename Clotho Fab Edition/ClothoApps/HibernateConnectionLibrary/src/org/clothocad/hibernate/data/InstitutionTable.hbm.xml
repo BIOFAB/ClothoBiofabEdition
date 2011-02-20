@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 1, 2010 8:47:56 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class name="org.clothocad.hibernate.data.InstitutionTable" table="InstitutionTable">
+    <id name="idInstitution" type="string">
+      <column length="63" name="idInstitution"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="name" type="string">
+      <column name="name"/>
+    </property>
+    <property name="city" type="string">
+      <column name="city"/>
+    </property>
+    <property name="stateProvince" type="string">
+      <column name="stateProvince"/>
+    </property>
+    <property name="country" type="string">
+      <column name="country"/>
+    </property>
+    <property name="dateCreated" type="timestamp">
+      <column length="19" name="dateCreated"/>
+    </property>
+    <property name="lastModified" type="timestamp">
+      <column length="19" name="lastModified"/>
+    </property>
+    <set inverse="true" name="labTables">
+      <key>
+        <column length="63" name="institutionId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.LabTable"/>
+    </set>
+  </class>
+</hibernate-mapping>

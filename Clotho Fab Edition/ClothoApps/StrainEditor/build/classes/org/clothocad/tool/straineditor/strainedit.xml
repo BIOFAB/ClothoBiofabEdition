@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-straineditor-connect</classname>
+<description>Create or edit a strain</description>
+<help>http://andersonstrain.qb3.berkeley.edu/Clotho/help1.0.1/help_v1.0.1.html</help>
+<displayname>Strain Editor</displayname>
+<uuid>org.clothocad.tool.straineditor</uuid>
+<screenshot>org/clothocad/tool/straineditor/screenshot.png</screenshot>
+<author>J. Christopher Anderson</author>
+<viewer>STRAIN</viewer>
+<iconpath>org/clothocad/tool/straineditor/logo.png</iconpath>
+</plugin>-->
+<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-straineditor-connect</classname>
+<description>Create or edit a strain</description>
+<displayname>Strain Editor</displayname>
+<uuid>org.clothocad.tool.straineditor</uuid>
+<screenshotpath>org/clothocad/tool/straineditor/screenshot.png</screenshotpath>
+<author>J. Christopher Anderson</author>
+<!--<dependency>org.clothocad.tool.helloworld</dependency>-->
+<viewer>STRAIN</viewer>
+<iconpath>org/clothocad/tool/straineditor/logo.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Strain_Editor</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

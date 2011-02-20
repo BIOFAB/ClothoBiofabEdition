@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="plugins">
+        <folder name="formats">
+            <file name="org-clothocad-format-goldengatefour-connect.instance">
+                <attr name="instanceOf" stringvalue="org.clothocore.api.plugin.ClothoFormat"/>
+            </file>
+        </folder>
+        <folder name="xml">
+            <file name="goldengatefour.xml" url="goldengatefour.xml"></file>
+        </folder>
+    </folder>
+</filesystem>

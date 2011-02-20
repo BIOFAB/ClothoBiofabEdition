@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocore.tool.pluginmanager/1
+OpenIDE-Module-Implementation-Version: 1
+OpenIDE-Module-Layer: org/clothocore/tool/pluginmanager/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocore/tool/pluginmanager/Bundle.properties
+

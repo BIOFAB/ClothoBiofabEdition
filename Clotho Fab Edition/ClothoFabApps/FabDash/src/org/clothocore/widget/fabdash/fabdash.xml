@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <type>ClothoDashboard</type>
+    <version>1.0</version>
+    <classname>org-clothocore-widget-fabdash-Connect</classname>
+    <description>Launch tools, update Clotho, access plugin manager, and install plugins.</description>
+    <displayname>DashBoard</displayname>
+    <uuid>org.clothocore.widget.fabdash</uuid>
+    <screenshotpath>org/clothocore/widget/fabdash/dashscreen.png</screenshotpath>
+    <author>J.Christopher Anderson</author>
+    <iconpath>org/clothocore/widget/fabdash/logo.png</iconpath>
+</plugin>

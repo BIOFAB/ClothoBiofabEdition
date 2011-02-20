@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+<type>ClothoFormat</type>
+<version>1.0</version>
+<classname>org-clothocad-format-bglbricks-connect</classname>
+<description>The BamHI/BglII standard</description>
+<displayname>BglBricks</displayname>
+<uuid>org-clothocad-format-bglbricks-connect</uuid>
+<screenshotpath>org/clothocad/format/bglbricks/screenshot.png</screenshotpath>
+<author>J. Christopher Anderson</author>
+<!--<dependency>org.clothocad.tool.helloworld</dependency>-->
+<iconpath>org/clothocad/format/bglbricks/logo.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Format:_BglBricks</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

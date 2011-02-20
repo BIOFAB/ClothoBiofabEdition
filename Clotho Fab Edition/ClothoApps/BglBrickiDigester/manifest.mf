@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocad.tool.bglbrickdigester/1
+OpenIDE-Module-Implementation-Version: 1
+OpenIDE-Module-Layer: org/clothocad/tool/bglbrickdigester/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocad/tool/bglbrickdigester/Bundle.properties
+

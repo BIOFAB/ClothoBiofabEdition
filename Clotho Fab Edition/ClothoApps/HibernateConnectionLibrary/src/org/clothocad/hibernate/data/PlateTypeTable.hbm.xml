@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 1, 2010 8:47:56 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class name="org.clothocad.hibernate.data.PlateTypeTable" table="PlateTypeTable">
+    <id name="idPlateType" type="string">
+      <column length="63" name="idPlateType"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="org.clothocad.hibernate.data.AttachmentTable" fetch="select" name="attachmentTable">
+      <column length="63" name="AttachmentTable_idAttachment"/>
+    </many-to-one>
+    <property name="name" type="string">
+      <column name="name"/>
+    </property>
+    <property name="numRows" type="java.lang.Short">
+      <column name="numRows"/>
+    </property>
+    <property name="numColumns" type="java.lang.Short">
+      <column name="numColumns"/>
+    </property>
+    <property name="isContainerFixed" type="java.lang.Boolean">
+      <column name="isContainerFixed"/>
+    </property>
+    <property name="dateCreated" type="timestamp">
+      <column length="19" name="dateCreated"/>
+    </property>
+    <property name="wellPosX" type="java.lang.String">
+      <column length="1" name="wellPosX"/>
+    </property>
+    <property name="lastModified" type="timestamp">
+      <column length="19" name="lastModified"/>
+    </property>
+    <property name="wellPosY" type="java.lang.String">
+      <column length="1" name="wellPosY"/>
+    </property>
+    <property name="wellDiameter" type="java.lang.Integer">
+      <column name="wellDiameter"/>
+    </property>
+    <property name="squareWells" type="java.lang.Boolean">
+      <column name="squareWells"/>
+    </property>
+    <property name="squareWellHeight" type="java.lang.Integer">
+      <column name="squareWellHeight"/>
+    </property>
+    <property name="squareWellWidth" type="java.lang.Integer">
+      <column name="squareWellWidth"/>
+    </property>
+    <property name="mmWidth" type="java.lang.Double">
+      <column name="mmWidth" precision="22" scale="0"/>
+    </property>
+    <property name="mmHeight" type="java.lang.Double">
+      <column name="mmHeight" precision="22" scale="0"/>
+    </property>
+    <property name="mmXoffset" type="java.lang.Double">
+      <column name="mmXOffset" precision="22" scale="0"/>
+    </property>
+    <property name="mmYoffset" type="java.lang.Double">
+      <column name="mmYOffset" precision="22" scale="0"/>
+    </property>
+    <property name="mmXwellSpacing" type="java.lang.Double">
+      <column name="mmXWellSpacing" precision="22" scale="0"/>
+    </property>
+    <property name="mmYwellSpacing" type="java.lang.Double">
+      <column name="mmYWellSpacing" precision="22" scale="0"/>
+    </property>
+    <property name="mmWellWidth" type="java.lang.Double">
+      <column name="mmWellWidth" precision="22" scale="0"/>
+    </property>
+    <property name="mmWellHeight" type="java.lang.Double">
+      <column name="mmWellHeight" precision="22" scale="0"/>
+    </property>
+    <property name="mmWellDiameter" type="java.lang.Double">
+      <column name="mmWellDiameter" precision="22" scale="0"/>
+    </property>
+    <set inverse="true" name="plateTables">
+      <key>
+        <column length="63" name="plateTypeId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.PlateTable"/>
+    </set>
+  </class>
+</hibernate-mapping>

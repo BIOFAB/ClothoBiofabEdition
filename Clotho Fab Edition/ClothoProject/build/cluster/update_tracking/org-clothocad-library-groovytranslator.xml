@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module codename="org.clothocad.library.groovytranslator/1">
+    <module_version install_time="1298173766505" last="true" origin="installer" specification_version="1.0">
+        <file crc="669569213" name="config/Modules/org-clothocad-library-groovytranslator.xml"/>
+        <file crc="2741553793" name="modules/ext/groovy-all-1.7.2.jar"/>
+        <file crc="811987129" name="modules/ext/groovy-all.jar"/>
+        <file crc="879763016" name="modules/org-clothocad-library-groovytranslator.jar"/>
+    </module_version>
+</module>

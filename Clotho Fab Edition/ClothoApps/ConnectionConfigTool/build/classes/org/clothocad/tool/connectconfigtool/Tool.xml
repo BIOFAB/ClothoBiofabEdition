@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-connectconfigtool-tool</classname>
+<description>Tool to set the configurable connection</description>
+<help>http://andersonlab.qb3.berkeley.edu/Clotho/help1.0.1/help_v1.0.1.html</help>
+<displayname>Configure Connection</displayname>
+<uuid>org.clothocad.tool.connectconfigtool-tool</uuid>
+<screenshot>org/clothocad/tool/connectconfigtool/screenshot.png</screenshot>
+<author>J. Christopher Anderson</author>
+<iconpath>org/clothocad/tool/connectconfigtool/logo.png</iconpath>
+</plugin>-->
+<plugin>
+    <type>ClothoTool</type>
+    <version>1.0</version>
+    <classname>org-clothocad-tool-connectconfigtool-tool</classname>
+    <description>Tool to set the configurable connection</description>
+    <displayname>Configure Connection</displayname>
+    <uuid>org.clothocad.tool.connectconfigtool-tool</uuid>
+    <screenshotpath>org/clothocad/tool/connectconfigtool/screenshot.png</screenshotpath>
+    <author>J.Christopher Anderson</author>
+    <iconpath>org/clothocad/tool/connectconfigtool/logo.png</iconpath>
+    <dependency>org.clothocad.connection.configurableconnection-ClothoConnection</dependency>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/App_Information</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>
