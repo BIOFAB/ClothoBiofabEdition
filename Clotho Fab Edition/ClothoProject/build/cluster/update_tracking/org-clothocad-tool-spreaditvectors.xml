@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.clothocad.tool.spreaditvectors">
-    <module_version install_time="1298173769739" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1298424421539" last="true" origin="installer" specification_version="1.0">
         <file crc="3239999756" name="config/Modules/org-clothocad-tool-spreaditvectors.xml"/>
         <file crc="1920465981" name="modules/org-clothocad-tool-spreaditvectors.jar"/>
     </module_version>

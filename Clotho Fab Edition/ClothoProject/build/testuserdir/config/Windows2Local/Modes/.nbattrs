@@ -5,7 +5,7 @@
         <attr name="WinSys-TCRef-Order" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000178"/>
     </fileobject>
     <fileobject name="editor">
-        <attr name="WinSys-TCRef-Order" stringvalue="output"/>
+        <attr name="WinSys-TCRef-Order" serialvalue="aced0005737200316f72672e6f70656e6964652e66696c6573797374656d732e4d756c746946696c654f626a65637424566f696456616c7565d9ec9c94d5fd3ca40c0000787077040000000178"/>
     </fileobject>
     <fileobject name="explorer">
         <attr name="WinSys-TCRef-Order" stringvalue="TreeBrowseTopComponent/favorites"/>

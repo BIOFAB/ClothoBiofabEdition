@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.clothocad.library.swingx">
-    <module_version install_time="1298173764474" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1298424414189" last="true" origin="installer" specification_version="1.0">
         <file crc="3406731183" name="config/Modules/org-clothocad-library-swingx.xml"/>
         <file crc="2542928304" name="modules/ext/swingx-1.6.jar"/>
         <file crc="738546219" name="modules/org-clothocad-library-swingx.jar"/>

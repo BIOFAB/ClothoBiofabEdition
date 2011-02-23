@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.clothocad.wikieditorpanel">
-    <module_version install_time="1298173774887" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1298424429185" last="true" origin="installer" specification_version="1.0">
         <file crc="2871234926" name="config/Modules/org-clothocad-wikieditorpanel.xml"/>
         <file crc="566576121" name="modules/org-clothocad-wikieditorpanel.jar"/>
     </module_version>

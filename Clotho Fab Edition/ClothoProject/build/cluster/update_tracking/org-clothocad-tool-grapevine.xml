@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.clothocad.tool.grapevine/1">
-    <module_version install_time="1298173775666" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1298424430094" last="true" origin="installer" specification_version="1.0">
         <file crc="1229408152" name="config/Modules/org-clothocad-tool-grapevine.xml"/>
         <file crc="2130512195" name="modules/org-clothocad-tool-grapevine.jar"/>
     </module_version>

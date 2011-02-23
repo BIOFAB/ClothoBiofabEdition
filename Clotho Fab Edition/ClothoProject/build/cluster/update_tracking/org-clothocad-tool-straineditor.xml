@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.clothocad.tool.straineditor">
-    <module_version install_time="1298173769960" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1298424422044" last="true" origin="installer" specification_version="1.0">
         <file crc="1700688465" name="config/Modules/org-clothocad-tool-straineditor.xml"/>
         <file crc="3854064180" name="modules/org-clothocad-tool-straineditor.jar"/>
     </module_version>

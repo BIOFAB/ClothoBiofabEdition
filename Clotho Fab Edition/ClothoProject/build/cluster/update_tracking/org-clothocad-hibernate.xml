@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.clothocad.hibernate">
-    <module_version install_time="1298173771017" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1298424423524" last="true" origin="installer" specification_version="1.0">
         <file crc="2933022186" name="config/Modules/org-clothocad-hibernate.xml"/>
         <file crc="3507015122" name="modules/ext/antlr-2.7.6.jar"/>
         <file crc="3507394090" name="modules/ext/commons-collections-3.1.jar"/>

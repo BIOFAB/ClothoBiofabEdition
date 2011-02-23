@@ -3,5 +3,5 @@
 <tc-ref version="2.2">
     <module name="org.netbeans.core.io.ui" />
     <tc-id id="output" />
-    <state opened="false" />
+    <state opened="true" />
 </tc-ref>

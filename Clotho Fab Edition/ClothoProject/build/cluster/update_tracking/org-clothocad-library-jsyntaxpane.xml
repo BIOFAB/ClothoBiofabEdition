@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.clothocad.library.jsyntaxpane">
-    <module_version install_time="1298173764062" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1298424413385" last="true" origin="installer" specification_version="1.0">
         <file crc="933603150" name="config/Modules/org-clothocad-library-jsyntaxpane.xml"/>
         <file crc="1444124686" name="modules/ext/jsyntaxpane-0.9.5-b29.jar"/>
         <file crc="2377494960" name="modules/org-clothocad-library-jsyntaxpane.jar"/>
