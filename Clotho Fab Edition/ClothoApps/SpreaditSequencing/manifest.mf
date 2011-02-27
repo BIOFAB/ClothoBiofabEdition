@@ -1,6 +1,0 @@
-Manifest-Version: 1.0
-OpenIDE-Module: org.clothocad.tool.spreaditsequencing/1
-OpenIDE-Module-Implementation-Version: 1
-OpenIDE-Module-Layer: org/clothocad/tool/spreaditsequencing/layer.xml
-OpenIDE-Module-Localizing-Bundle: org/clothocad/tool/spreaditsequencing/Bundle.properties
-

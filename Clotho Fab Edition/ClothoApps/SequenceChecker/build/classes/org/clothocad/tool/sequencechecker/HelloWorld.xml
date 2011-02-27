@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-helloworld-HWTool</classname>
+<description>Test app so that users can see how to make a very simple app.</description>
+<displayname>Hello World</displayname>
+<uuid>org.clothocad.tool.helloworld</uuid>
+<!--<screenshotpath>none</screenshotpath>-->
+<author>Douglas Densmore</author>
+<iconpath>org/clothocad/tool/helloworld/logo.png</iconpath>
+<!--<dependency>none1</dependency>-->
+<!--<dependency>none2</dependency>-->
+    <help>
+        <helpurl>none</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

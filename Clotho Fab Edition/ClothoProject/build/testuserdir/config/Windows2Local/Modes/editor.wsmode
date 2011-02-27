@@ -4,7 +4,11 @@
     <name unique="editor" />
   <kind type="editor" />
   <state type="joined" />
+  <constraints>
+    <path orientation="vertical" number="0" weight="0.5"/>
+  </constraints>
   <bounds x="0" y="0" width="0" height="0" />
   <frame state="0"/>
+    <active-tc  prev-id="output" />
     <empty-behavior permanent="true"/>
 </mode>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.clothocore.tool.pluginmanager/1">
-    <module_version install_time="1298424431678" last="true" origin="installer" specification_version="1.0.1">
+    <module_version install_time="1298680865532" last="true" origin="installer" specification_version="1.0.1">
         <file crc="1464374614" name="config/Modules/org-clothocore-tool-pluginmanager.xml"/>
-        <file crc="3929301325" name="modules/org-clothocore-tool-pluginmanager.jar"/>
+        <file crc="1984916177" name="modules/org-clothocore-tool-pluginmanager.jar"/>
     </module_version>
 </module>

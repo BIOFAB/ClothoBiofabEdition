@@ -6,11 +6,11 @@
   <kind type="view" />
   <state type="joined" />
   <constraints>
-    <path orientation="horizontal" number="20" weight="0.26256983240223464"/>
+    <path orientation="horizontal" number="20" weight="0.25837988826815644"/>
     <path orientation="vertical" number="20" weight="0.5"/>
   </constraints>
   <bounds x="144" y="180" width="460" height="410" />
   <frame state="0"/>
-    <active-tc  id="TreeBrowseTopComponent" />
+    <active-tc  id="TreeBrowseTopComponent"  prev-id="TreeBrowseTopComponent" />
     <empty-behavior permanent="true"/>
 </mode>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.clothocad.tool.registryimporter">
-    <module_version install_time="1298424422417" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1298680837558" last="true" origin="installer" specification_version="1.0">
         <file crc="3577871934" name="config/Modules/org-clothocad-tool-registryimporter.xml"/>
-        <file crc="988098610" name="modules/org-clothocad-tool-registryimporter.jar"/>
+        <file crc="3905132719" name="modules/org-clothocad-tool-registryimporter.jar"/>
     </module_version>
 </module>
