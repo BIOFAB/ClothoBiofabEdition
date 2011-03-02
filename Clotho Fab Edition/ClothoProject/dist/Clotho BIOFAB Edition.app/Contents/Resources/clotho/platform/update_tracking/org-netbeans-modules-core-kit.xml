@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<module codename="org.netbeans.modules.core.kit">
+    <module_version install_time="1276184720515" last="false" origin="installer" specification_version="1.8.1">
+        <file crc="1818208259" name="VERSION.txt"/>
+        <file crc="2391224559" name="config/Modules/org-netbeans-modules-core-kit.xml"/>
+        <file crc="519874093" name="modules/org-netbeans-modules-core-kit.jar"/>
+    </module_version>
+    <module_version install_time="1283013740216" last="true" origin="NetBeans" specification_version="1.8.2">
+        <file crc="2223156626" name="modules/locale/org-netbeans-modules-core-kit_ja.jar"/>
+        <file crc="3291976177" name="modules/locale/org-netbeans-modules-core-kit_pt_BR.jar"/>
+        <file crc="765835498" name="modules/locale/org-netbeans-modules-core-kit_zh_CN.jar"/>
+        <file crc="1198717888" name="VERSION.txt"/>
+        <file crc="2391224559" name="config/Modules/org-netbeans-modules-core-kit.xml"/>
+        <file crc="3645215946" name="modules/org-netbeans-modules-core-kit.jar"/>
+    </module_version>
+</module>

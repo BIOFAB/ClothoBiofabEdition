@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<module codename="org.netbeans.core/2">
+    <module_version install_time="1276184279705" last="false" origin="installer" specification_version="3.20.1">
+        <file crc="1234898518" name="config/ModuleAutoDeps/org-netbeans-core.xml"/>
+        <file crc="2943625018" name="config/Modules/org-netbeans-core.xml"/>
+        <file crc="920953809" name="modules/org-netbeans-core.jar"/>
+    </module_version>
+    <module_version install_time="1283013740518" last="false" origin="NetBeans" specification_version="3.20.2">
+        <file crc="3035721260" name="modules/locale/org-netbeans-core_ja.jar"/>
+        <file crc="997539729" name="modules/locale/org-netbeans-core_pt_BR.jar"/>
+        <file crc="3007143721" name="modules/locale/org-netbeans-core_zh_CN.jar"/>
+        <file crc="1234898518" name="config/ModuleAutoDeps/org-netbeans-core.xml"/>
+        <file crc="2943625018" name="config/Modules/org-netbeans-core.xml"/>
+        <file crc="3057404424" name="modules/org-netbeans-core.jar"/>
+    </module_version>
+    <module_version install_time="1292364104752" last="true" origin="NetBeans" specification_version="3.20.3">
+        <file crc="1060396052" name="modules/locale/org-netbeans-core_ja.jar"/>
+        <file crc="3661188261" name="modules/locale/org-netbeans-core_pt_BR.jar"/>
+        <file crc="1349363639" name="modules/locale/org-netbeans-core_zh_CN.jar"/>
+        <file crc="1234898518" name="config/ModuleAutoDeps/org-netbeans-core.xml"/>
+        <file crc="2943625018" name="config/Modules/org-netbeans-core.xml"/>
+        <file crc="3590811950" name="modules/org-netbeans-core.jar"/>
+    </module_version>
+</module>

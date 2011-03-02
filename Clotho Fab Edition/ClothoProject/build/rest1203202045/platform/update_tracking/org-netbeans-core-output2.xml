@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<module codename="org.netbeans.core.output2/1">
+    <module_version install_time="1276183921390" last="false" origin="installer" specification_version="1.18.1">
+        <file crc="1198063063" name="config/Modules/org-netbeans-core-output2.xml"/>
+        <file crc="3356352485" name="modules/org-netbeans-core-output2.jar"/>
+    </module_version>
+    <module_version install_time="1283013742403" last="true" origin="NetBeans" specification_version="1.18.2">
+        <file crc="991064904" name="modules/locale/org-netbeans-core-output2_ja.jar"/>
+        <file crc="196971774" name="modules/locale/org-netbeans-core-output2_pt_BR.jar"/>
+        <file crc="2425481774" name="modules/locale/org-netbeans-core-output2_zh_CN.jar"/>
+        <file crc="1198063063" name="config/Modules/org-netbeans-core-output2.xml"/>
+        <file crc="3745664424" name="modules/org-netbeans-core-output2.jar"/>
+    </module_version>
+</module>

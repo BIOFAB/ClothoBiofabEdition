@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<module codename="org.netbeans.bootstrap/1">
+    <module_version install_time="1276183734292" last="false" origin="installer" specification_version="2.33.1">
+        <file crc="4062319038" name="lib/boot.jar"/>
+        <file crc="4185135430" name="lib/nbexec"/>
+        <file crc="2748362954" name="lib/nbexec.dll"/>
+        <file crc="2275537860" name="lib/nbexec.exe"/>
+    </module_version>
+    <module_version install_time="1290027087357" last="false" origin="NetBeans" specification_version="2.33.3">
+        <file crc="1834772889" name="lib/locale/boot_ja.jar"/>
+        <file crc="2571602524" name="lib/locale/boot_pt_BR.jar"/>
+        <file crc="2195039133" name="lib/locale/boot_zh_CN.jar"/>
+        <file crc="275885020" name="lib/boot.jar"/>
+        <file crc="4185135430" name="lib/nbexec"/>
+        <file crc="2748362954" name="lib/nbexec.dll"/>
+        <file crc="2275537860" name="lib/nbexec.exe"/>
+    </module_version>
+    <module_version install_time="1292364105148" last="true" origin="NetBeans" specification_version="2.33.4">
+        <file crc="1274311680" name="lib/locale/boot_ja.jar"/>
+        <file crc="954894465" name="lib/locale/boot_pt_BR.jar"/>
+        <file crc="2266960421" name="lib/locale/boot_zh_CN.jar"/>
+        <file crc="2607324685" name="lib/boot.jar"/>
+        <file crc="4185135430" name="lib/nbexec"/>
+        <file crc="2748362954" name="lib/nbexec.dll"/>
+        <file crc="2275537860" name="lib/nbexec.exe"/>
+    </module_version>
+</module>
