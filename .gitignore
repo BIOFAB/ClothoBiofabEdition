@@ -56,5 +56,9 @@ Thumbs.db
 *.pyc
 
 # SVN Folders #
-#######
+###############
 .svn/
+
+# Build Folders #
+#################
+build/
