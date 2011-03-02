@@ -1,0 +1,13 @@
+||:org.clothocad.tool.sequencechecker.SeqCheckerTopComponent
+org.clothocad.tool.sequencechecker.SeqCheckerTopComponent
+org.openide.util.ImageUtilities
+org.openide.util.NbBundle
+javax.swing.GroupLayout
+javax.swing.GroupLayout$ParallelGroup
+java.lang.Class
+javax.swing.GroupLayout$Alignment
+org.openide.windows.WindowManager
+java.util.logging.Logger
+org.openide.windows.TopComponent
+java.util.Properties
+javax.swing.GroupLayout$Group

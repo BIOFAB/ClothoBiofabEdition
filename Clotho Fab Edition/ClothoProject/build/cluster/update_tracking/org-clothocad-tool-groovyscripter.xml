@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.clothocad.tool.groovyscripter/1">
-    <module_version install_time="1298680842289" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1299030487030" last="true" origin="installer" specification_version="1.0">
         <file crc="3373005198" name="config/Modules/org-clothocad-tool-groovyscripter.xml"/>
         <file crc="2741553793" name="modules/ext/groovy-all-1.7.2.jar"/>
         <file crc="811987129" name="modules/ext/groovy-all.jar"/>
-        <file crc="3537459041" name="modules/org-clothocad-tool-groovyscripter.jar"/>
+        <file crc="540691393" name="modules/org-clothocad-tool-groovyscripter.jar"/>
     </module_version>
 </module>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.clothocad.format.goldengatetwo">
-    <module_version install_time="1298680864958" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1299030495090" last="true" origin="installer" specification_version="1.0">
         <file crc="3522538399" name="config/Modules/org-clothocad-format-goldengatetwo.xml"/>
-        <file crc="76044174" name="modules/org-clothocad-format-goldengatetwo.jar"/>
+        <file crc="1028949945" name="modules/org-clothocad-format-goldengatetwo.jar"/>
     </module_version>
 </module>

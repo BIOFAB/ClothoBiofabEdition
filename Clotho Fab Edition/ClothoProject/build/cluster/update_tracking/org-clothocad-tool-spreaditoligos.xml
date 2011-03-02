@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.clothocad.tool.spreaditoligos">
-    <module_version install_time="1298680858691" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1299030490378" last="true" origin="installer" specification_version="1.0">
         <file crc="2638165671" name="config/Modules/org-clothocad-tool-spreaditoligos.xml"/>
-        <file crc="2389262112" name="modules/org-clothocad-tool-spreaditoligos.jar"/>
+        <file crc="332209171" name="modules/org-clothocad-tool-spreaditoligos.jar"/>
     </module_version>
 </module>

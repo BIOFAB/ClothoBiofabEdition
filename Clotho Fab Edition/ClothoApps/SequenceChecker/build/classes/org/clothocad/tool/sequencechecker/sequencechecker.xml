@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <type>ClothoTool</type>
+    <version>1.0</version>
+    <classname>org-clothocad-tool-sequencechecker-connect</classname>
+    <description>BIOFAB Sequence Checker</description>
+    <displayname>Sequence Checker</displayname>
+    <uuid>org.clothocad.tool.sequencechecker</uuid>
+    <screenshotpath>org/clothocad/tool/sequencechecker/screenshot.png</screenshotpath>
+    <author>Cesar A. Rodriguez</author>
+    <dependency>org.clothocad.library.swingx</dependency>
+    <viewer>COLLECTION</viewer>
+    <iconpath>org/clothocad/tool/sequencechecker/logo.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/SpreadIt_Features</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+    <!--<helpcommand>Command1</helpcommand>-->
+    <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

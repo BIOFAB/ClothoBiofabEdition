@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.clothocad.tool.sledrunner/1">
-    <module_version install_time="1298680862678" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1299030493505" last="true" origin="installer" specification_version="1.0">
         <file crc="3123365467" name="config/Modules/org-clothocad-tool-sledrunner.xml"/>
-        <file crc="976531404" name="modules/org-clothocad-tool-sledrunner.jar"/>
+        <file crc="4102835123" name="modules/org-clothocad-tool-sledrunner.jar"/>
     </module_version>
 </module>

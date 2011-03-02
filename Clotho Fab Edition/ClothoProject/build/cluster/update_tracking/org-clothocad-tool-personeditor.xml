@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.clothocad.tool.personeditor">
-    <module_version install_time="1298680860996" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1299030492055" last="true" origin="installer" specification_version="1.0">
         <file crc="363385800" name="config/Modules/org-clothocad-tool-personeditor.xml"/>
-        <file crc="1519265712" name="modules/org-clothocad-tool-personeditor.jar"/>
+        <file crc="3104902367" name="modules/org-clothocad-tool-personeditor.jar"/>
     </module_version>
 </module>

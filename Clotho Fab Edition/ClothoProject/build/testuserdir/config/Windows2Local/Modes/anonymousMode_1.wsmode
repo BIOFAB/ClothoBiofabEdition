@@ -2,13 +2,16 @@
 
 <mode version="2.3">
     <name unique="anonymousMode_1" />
-  <kind type="editor" />
+  <kind type="view" />
   <state type="joined" />
   <constraints>
-    <path orientation="vertical" number="1" weight="0.25"/>
+    <path orientation="horizontal" number="60" weight="0.7967877094972067"/>
+    <path orientation="vertical" number="40" weight="0.7"/>
+    <path orientation="horizontal" number="40" weight="0.7"/>
+    <path orientation="vertical" number="0" weight="0.713276836158192"/>
   </constraints>
   <bounds x="0" y="0" width="0" height="0" />
   <frame state="0"/>
-    <active-tc  id="output" />
+    <active-tc  id="SeqCheckerTopComponent" />
     <empty-behavior permanent="false"/>
 </mode>

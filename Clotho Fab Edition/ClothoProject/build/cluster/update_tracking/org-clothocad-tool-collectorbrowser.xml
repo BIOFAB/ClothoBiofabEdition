@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.clothocad.tool.collectorbrowser">
-    <module_version install_time="1298680822246" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1299030473707" last="true" origin="installer" specification_version="1.0">
         <file crc="2730644635" name="config/Modules/org-clothocad-tool-collectorbrowser.xml"/>
-        <file crc="2295137553" name="modules/org-clothocad-tool-collectorbrowser.jar"/>
+        <file crc="2792622307" name="modules/org-clothocad-tool-collectorbrowser.jar"/>
     </module_version>
 </module>

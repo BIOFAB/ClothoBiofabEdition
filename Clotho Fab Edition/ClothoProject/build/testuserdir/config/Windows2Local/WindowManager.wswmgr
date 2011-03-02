@@ -3,10 +3,10 @@
 <windowmanager version="2.1">
     <main-window>
   <joined-properties
-   x="104"
-   y="22"
-   width="1280"
-   height="823"
+   x="72"
+   y="81"
+   width="1296"
+   height="738"
    relative-x="0.0"
    relative-y="0.0"
    relative-width="0.0"
@@ -15,7 +15,7 @@
    centered-vertically="false"
    maximize-if-width-below="0"
    maximize-if-height-below="0"
-   frame-state="0"
+   frame-state="6"
 />
   <separated-properties
    x="144"
@@ -33,16 +33,18 @@
   </main-window>
     <editor-area state="joined" frame-state="0">
   <constraints>
-  <path orientation="horizontal" number="60" weight="0.7395251396648045" />
+  <path orientation="horizontal" number="60" weight="0.7967877094972067" />
   <path orientation="vertical" number="40" weight="0.7" />
   <path orientation="horizontal" number="40" weight="0.7" />
+  <path orientation="vertical" number="1" weight="0.2824858757062147" />
   </constraints>
   <bounds x="475" y="197" width="604" height="361" />
     </editor-area>
     <screen width="1440" height="900"/>
-    <active-mode name="explorer"/>
+    <active-mode name="anonymousMode_1"/>
     <toolbar configuration="Standard" preferred-icon-size="24"/>
     <tc-list>
+  <tc-id id="SeqCheckerTopComponent"/>
   <tc-id id="TreeBrowseTopComponent"/>
   <tc-id id="output"/>
     </tc-list>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.clothocad.format.rfc10">
-    <module_version install_time="1298680830071" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1299030478108" last="true" origin="installer" specification_version="1.0">
         <file crc="2203491389" name="config/Modules/org-clothocad-format-rfc10.xml"/>
-        <file crc="2668516212" name="modules/org-clothocad-format-rfc10.jar"/>
+        <file crc="126642026" name="modules/org-clothocad-format-rfc10.jar"/>
     </module_version>
 </module>
