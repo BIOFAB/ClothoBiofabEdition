@@ -59,6 +59,8 @@ Thumbs.db
 ###############
 .svn/
 
-# Build Folders #
+# Folders to Ignore #
 #################
+.svn/
 build/
+dist/
