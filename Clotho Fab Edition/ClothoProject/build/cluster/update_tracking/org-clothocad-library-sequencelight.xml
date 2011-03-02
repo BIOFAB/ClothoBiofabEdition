@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.clothocad.library.sequencelight/1">
-    <module_version install_time="1299030479727" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1299053751732" last="true" origin="installer" specification_version="1.0">
         <file crc="4094290490" name="config/Modules/org-clothocad-library-sequencelight.xml"/>
         <file crc="2348250755" name="modules/ext/colorchooser.jar"/>
         <file crc="2085752076" name="modules/org-clothocad-library-sequencelight.jar"/>

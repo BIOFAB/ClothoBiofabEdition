@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.clothocad.tool.pcrpredict">
-    <module_version install_time="1299030480104" last="true" origin="installer" specification_version="1.0">
+    <module_version install_time="1299053752224" last="true" origin="installer" specification_version="1.0">
         <file crc="424604487" name="config/Modules/org-clothocad-tool-pcrpredict.xml"/>
         <file crc="3207099569" name="modules/org-clothocad-tool-pcrpredict.jar"/>
     </module_version>

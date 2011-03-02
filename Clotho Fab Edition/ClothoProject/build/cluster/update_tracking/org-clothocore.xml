@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module codename="org.clothocore/1">
-    <module_version install_time="1299030473240" last="true" origin="installer" specification_version="1.1">
+    <module_version install_time="1299053746308" last="true" origin="installer" specification_version="1.1">
         <file crc="2935014749" name="config/Modules/org-clothocore.xml"/>
         <file crc="4170277476" name="modules/ext/filedrop.jar"/>
         <file crc="1246590972" name="modules/ext/jgrapht-jdk1.6.jar"/>

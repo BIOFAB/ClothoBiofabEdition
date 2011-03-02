@@ -1,6 +1,9 @@
 ||:org.clothocad.tool.sequencechecker.SeqCheckerTopComponent
+javax.swing.JTabbedPane
 org.clothocad.tool.sequencechecker.SeqCheckerTopComponent
+javax.swing.JPanel
 org.openide.util.ImageUtilities
+javax.swing.GroupLayout$SequentialGroup
 org.openide.util.NbBundle
 javax.swing.GroupLayout
 javax.swing.GroupLayout$ParallelGroup
