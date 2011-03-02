@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module codename="org.clothocad.connection.localconnection">
-    <module_version install_time="1299056978332" last="true" origin="installer" specification_version="1.0">
-        <file crc="629303136" name="config/Modules/org-clothocad-connection-localconnection.xml"/>
-        <file crc="1515928247" name="modules/org-clothocad-connection-localconnection.jar"/>
-    </module_version>
-</module>

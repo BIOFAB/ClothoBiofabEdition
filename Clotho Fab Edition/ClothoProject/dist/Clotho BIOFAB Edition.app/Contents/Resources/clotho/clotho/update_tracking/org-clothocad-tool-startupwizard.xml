@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module codename="org.clothocad.tool.startupwizard">
-    <module_version install_time="1299056980708" last="true" origin="installer" specification_version="1.0">
-        <file crc="555586899" name="config/Modules/org-clothocad-tool-startupwizard.xml"/>
-        <file crc="2697126923" name="modules/org-clothocad-tool-startupwizard.jar"/>
-    </module_version>
-</module>

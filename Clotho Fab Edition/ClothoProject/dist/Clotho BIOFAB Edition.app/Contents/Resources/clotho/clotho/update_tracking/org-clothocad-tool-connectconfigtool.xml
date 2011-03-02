@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module codename="org.clothocad.tool.connectconfigtool">
-    <module_version install_time="1299056978053" last="true" origin="installer" specification_version="1.0">
-        <file crc="52241926" name="config/Modules/org-clothocad-tool-connectconfigtool.xml"/>
-        <file crc="49755364" name="modules/org-clothocad-tool-connectconfigtool.jar"/>
-    </module_version>
-</module>

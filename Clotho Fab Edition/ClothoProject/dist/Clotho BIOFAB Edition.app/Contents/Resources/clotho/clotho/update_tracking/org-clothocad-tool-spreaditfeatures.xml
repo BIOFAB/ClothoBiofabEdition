@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module codename="org.clothocad.tool.spreaditfeatures">
-    <module_version install_time="1299056980265" last="true" origin="installer" specification_version="1.0">
-        <file crc="1507727011" name="config/Modules/org-clothocad-tool-spreaditfeatures.xml"/>
-        <file crc="3264877243" name="modules/org-clothocad-tool-spreaditfeatures.jar"/>
-    </module_version>
-</module>

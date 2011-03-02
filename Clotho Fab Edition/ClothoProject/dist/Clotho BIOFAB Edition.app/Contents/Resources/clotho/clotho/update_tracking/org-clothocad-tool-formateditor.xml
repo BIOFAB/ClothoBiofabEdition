@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module codename="org.clothocad.tool.formateditor">
-    <module_version install_time="1299056977779" last="true" origin="installer" specification_version="1.0">
-        <file crc="2623735090" name="config/Modules/org-clothocad-tool-formateditor.xml"/>
-        <file crc="2548871036" name="modules/org-clothocad-tool-formateditor.jar"/>
-    </module_version>
-</module>
