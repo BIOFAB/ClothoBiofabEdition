@@ -84,17 +84,17 @@ public final class SeqCheckerTopComponent extends TopComponent {
 
         inputTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Construct", "Clone", "Well", "Trace", "Start", "Stop"
+                "Trace", "Construct", "Clone", "Well"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, true
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -102,6 +102,10 @@ public final class SeqCheckerTopComponent extends TopComponent {
             }
         });
         jScrollPane1.setViewportView(inputTable);
+        inputTable.getColumnModel().getColumn(0).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title0")); // NOI18N
+        inputTable.getColumnModel().getColumn(1).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title1")); // NOI18N
+        inputTable.getColumnModel().getColumn(2).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title2")); // NOI18N
+        inputTable.getColumnModel().getColumn(3).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title3")); // NOI18N
 
         javax.swing.GroupLayout inputPanelLayout = new javax.swing.GroupLayout(inputPanel);
         inputPanel.setLayout(inputPanelLayout);
@@ -255,7 +259,22 @@ public final class SeqCheckerTopComponent extends TopComponent {
                 //folder names that don't have a '.' character well cause an exception to be thrown
             }
         }
-        tableContents=new SeqCheckInput(filteredFolderContents);
+        SeqCheckInput tableContents = new SeqCheckInput(filteredFolderContents); //holds the contents of the input table
+
+        inputTable.setModel(new javax.swing.table.DefaultTableModel(
+                tableContents.toTable(),
+                new String[]{
+                    "Trace", "Construct", "Clone", "Well"
+                }));
+        /*
+        [][] {
+        {"hello", null, null, null, null, null},
+        {null, null, null, null, null, null},
+        {null, null, null, null, null, null},
+        {null, null, null, null, null, null}
+        }
+         */
+
     }//GEN-LAST:event_jButton2ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel inputPanel;
@@ -277,7 +296,7 @@ public final class SeqCheckerTopComponent extends TopComponent {
     private javax.swing.JTabbedPane mainTabbedPanel;
     private javax.swing.JPanel outputPanel;
     // End of variables declaration//GEN-END:variables
-private SeqCheckInput tableContents; //holds the contents of the input table
+
     /**
      * Gets default instance. Do not use directly: reserved for *.settings files only,
      * i.e. deserialization routines; otherwise you could get a non-deserialized instance.

@@ -31,13 +31,46 @@ public class SeqCheckInput {
         }
     }
     //Iterates through contents of object, printing a 1 line summary for each trace file
+
     public void print() {
         for (int i = 0; i < trace.length; i++) {
             System.out.println("trace: " + trace[i] + " construct: " + constructName[i] + " cloneNumber: " + cloneNumber[i] + " wellNumber: " + wellNumber[i]);
         }
     }
     //returns the number of files in the selected directory
-    public int numberOfElements() {
+
+    public int getNumberOfElements() {
         return trace.length;
+    }
+    //returns the trace array
+
+    public String[] getTraces() {
+        return trace;
+    }
+    //returns the constructName array
+
+    public String[] getConstructNames() {
+        return constructName;
+    }
+    //returns the cloneNumber array
+
+    public String[] getCloneNumbers() {
+        return cloneNumber;
+    }
+    //returns the wellNumber array
+
+    public String[] getWellNumbers() {
+        return wellNumber;
+    }
+
+    public Object[][] toTable() {
+        Object toReturn[][] = new Object[this.getNumberOfElements()][4];
+        for (int i = 0; i < this.getNumberOfElements(); i++) {
+            toReturn[i][0] = trace[i];
+            toReturn[i][1] = constructName[i];
+            toReturn[i][2] = cloneNumber[i];
+            toReturn[i][3] = wellNumber[i];
+        }
+        return toReturn;
     }
 }
