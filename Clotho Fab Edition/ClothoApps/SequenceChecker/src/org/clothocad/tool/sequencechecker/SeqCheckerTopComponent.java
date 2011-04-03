@@ -4,7 +4,10 @@
  */
 package org.clothocad.tool.sequencechecker;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import org.openide.util.NbBundle;
 import org.openide.windows.TopComponent;
 import org.openide.windows.WindowManager;
@@ -15,16 +18,14 @@ import org.netbeans.api.settings.ConvertAsProperties;
  * Top component which displays something.
  */
 @ConvertAsProperties(dtd = "-//org.clothocad.tool.sequencechecker//SeqChecker//EN", autostore = false)
-public final class SeqCheckerTopComponent extends TopComponent
-{
-    private static SeqCheckerTopComponent instance;
+public final class SeqCheckerTopComponent extends TopComponent {
 
+    private static SeqCheckerTopComponent instance;
     /** path to the icon used by the component and its open action */
     static final String ICON_PATH = "org/clothocad/tool/sequencechecker/SeqChecker.png";
     private static final String PREFERRED_ID = "SeqCheckerTopComponent";
 
-    public SeqCheckerTopComponent()
-    {
+    public SeqCheckerTopComponent() {
         initComponents();
         setName(NbBundle.getMessage(SeqCheckerTopComponent.class, "CTL_SeqCheckerTopComponent"));
         setToolTipText(NbBundle.getMessage(SeqCheckerTopComponent.class, "HINT_SeqCheckerTopComponent"));
@@ -44,6 +45,7 @@ public final class SeqCheckerTopComponent extends TopComponent
         inputPanel = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         inputTable = new javax.swing.JTable();
         outputPanel = new javax.swing.JPanel();
@@ -68,6 +70,17 @@ public final class SeqCheckerTopComponent extends TopComponent
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton1);
+
+        org.openide.awt.Mnemonics.setLocalizedText(jButton2, org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.jButton2.text")); // NOI18N
+        jButton2.setFocusable(false);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton2);
 
         inputTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -94,10 +107,10 @@ public final class SeqCheckerTopComponent extends TopComponent
         inputPanel.setLayout(inputPanelLayout);
         inputPanelLayout.setHorizontalGroup(
             inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE)
             .addGroup(inputPanelLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
         );
         inputPanelLayout.setVerticalGroup(
@@ -105,7 +118,7 @@ public final class SeqCheckerTopComponent extends TopComponent
             .addGroup(inputPanelLayout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -116,8 +129,6 @@ public final class SeqCheckerTopComponent extends TopComponent
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         jSplitPane2.setDividerLocation(210);
-        jSplitPane2.setDividerSize(5);
-        jSplitPane2.setSize(new java.awt.Dimension(244, 200));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -143,7 +154,6 @@ public final class SeqCheckerTopComponent extends TopComponent
         jSplitPane2.setLeftComponent(jScrollPane2);
 
         jSplitPane3.setDividerLocation(180);
-        jSplitPane3.setDividerSize(5);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -195,15 +205,15 @@ public final class SeqCheckerTopComponent extends TopComponent
         outputPanel.setLayout(outputPanelLayout);
         outputPanelLayout.setHorizontalGroup(
             outputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
+            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE)
         );
         outputPanelLayout.setVerticalGroup(
             outputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(outputPanelLayout.createSequentialGroup()
                 .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE))
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE))
         );
 
         mainTabbedPanel.addTab(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.outputPanel.TabConstraints.tabTitle"), outputPanel); // NOI18N
@@ -226,10 +236,32 @@ public final class SeqCheckerTopComponent extends TopComponent
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        chooser.showOpenDialog(null);
+        File selectedDirectory = chooser.getSelectedFile();
+        //System.out.println(selectedDirectory.getName()+ " is Directory?: "+selectedDirectory.isDirectory());
+        File[] folderContents = selectedDirectory.listFiles();
+        ArrayList<File> filteredFolderContents = new ArrayList<File>();
+
+        for (File file : folderContents) {
+            //System.out.println(file.getName());
+            try {
+                if (file.getName().substring(file.getName().lastIndexOf(".")).equals(".ab1")) {
+                    filteredFolderContents.add(file);
+                }
+            } catch (StringIndexOutOfBoundsException e) {
+                //folder names that don't have a '.' character well cause an exception to be thrown
+            }
+        }
+        tableContents=new SeqCheckInput(filteredFolderContents);
+    }//GEN-LAST:event_jButton2ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel inputPanel;
     private javax.swing.JTable inputTable;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -245,13 +277,13 @@ public final class SeqCheckerTopComponent extends TopComponent
     private javax.swing.JTabbedPane mainTabbedPanel;
     private javax.swing.JPanel outputPanel;
     // End of variables declaration//GEN-END:variables
+private SeqCheckInput tableContents; //holds the contents of the input table
     /**
      * Gets default instance. Do not use directly: reserved for *.settings files only,
      * i.e. deserialization routines; otherwise you could get a non-deserialized instance.
      * To obtain the singleton instance, use {@link #findInstance}.
      */
-    public static synchronized SeqCheckerTopComponent getDefault()
-    {
+    public static synchronized SeqCheckerTopComponent getDefault() {
         if (instance == null) {
             instance = new SeqCheckerTopComponent();
         }
@@ -261,8 +293,7 @@ public final class SeqCheckerTopComponent extends TopComponent
     /**
      * Obtain the SeqCheckerTopComponent instance. Never call {@link #getDefault} directly!
      */
-    public static synchronized SeqCheckerTopComponent findInstance()
-    {
+    public static synchronized SeqCheckerTopComponent findInstance() {
         TopComponent win = WindowManager.getDefault().findTopComponent(PREFERRED_ID);
         if (win == null) {
             Logger.getLogger(SeqCheckerTopComponent.class.getName()).warning(
@@ -279,33 +310,28 @@ public final class SeqCheckerTopComponent extends TopComponent
     }
 
     @Override
-    public int getPersistenceType()
-    {
+    public int getPersistenceType() {
         return TopComponent.PERSISTENCE_ALWAYS;
     }
 
     @Override
-    public void componentOpened()
-    {
+    public void componentOpened() {
         // TODO add custom code on component opening
     }
 
     @Override
-    public void componentClosed()
-    {
+    public void componentClosed() {
         // TODO add custom code on component closing
     }
 
-    void writeProperties(java.util.Properties p)
-    {
+    void writeProperties(java.util.Properties p) {
         // better to version settings since initial version as advocated at
         // http://wiki.apidesign.org/wiki/PropertyFiles
         p.setProperty("version", "1.0");
         // TODO store your settings
     }
 
-    Object readProperties(java.util.Properties p)
-    {
+    Object readProperties(java.util.Properties p) {
         if (instance == null) {
             instance = this;
         }
@@ -313,15 +339,13 @@ public final class SeqCheckerTopComponent extends TopComponent
         return instance;
     }
 
-    private void readPropertiesImpl(java.util.Properties p)
-    {
+    private void readPropertiesImpl(java.util.Properties p) {
         String version = p.getProperty("version");
         // TODO read your settings according to their version
     }
 
     @Override
-    protected String preferredID()
-    {
+    protected String preferredID() {
         return PREFERRED_ID;
     }
 }

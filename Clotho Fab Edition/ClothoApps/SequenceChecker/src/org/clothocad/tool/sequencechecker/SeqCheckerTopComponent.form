@@ -52,10 +52,10 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jToolBar1" alignment="0" pref="591" max="32767" attributes="0"/>
+                  <Component id="jToolBar1" alignment="0" pref="607" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="20" pref="20" max="20" attributes="0"/>
-                      <Component id="jScrollPane1" pref="551" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="567" max="32767" attributes="0"/>
                       <EmptySpace min="20" pref="20" max="20" attributes="0"/>
                   </Group>
               </Group>
@@ -65,7 +65,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jToolBar1" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="400" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="429" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -97,6 +97,19 @@
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="jButton2">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                      <ResourceString bundle="org/clothocad/tool/sequencechecker/Bundle.properties" key="SeqCheckerTopComponent.jButton2.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
+                    </Property>
+                    <Property name="focusable" type="boolean" value="false"/>
+                    <Property name="horizontalTextPosition" type="int" value="0"/>
+                    <Property name="verticalTextPosition" type="int" value="3"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -139,8 +152,8 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jToolBar2" alignment="0" pref="591" max="32767" attributes="0"/>
-                  <Component id="jSplitPane1" alignment="1" pref="591" max="32767" attributes="0"/>
+                  <Component id="jToolBar2" alignment="0" pref="607" max="32767" attributes="0"/>
+                  <Component id="jSplitPane1" alignment="1" pref="607" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -148,7 +161,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jToolBar2" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jSplitPane1" pref="428" max="32767" attributes="0"/>
+                      <Component id="jSplitPane1" pref="440" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -166,10 +179,6 @@
                 <Container class="javax.swing.JSplitPane" name="jSplitPane2">
                   <Properties>
                     <Property name="dividerLocation" type="int" value="210"/>
-                    <Property name="dividerSize" type="int" value="5"/>
-                    <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[244, 200]"/>
-                    </Property>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
@@ -206,7 +215,6 @@
                     <Container class="javax.swing.JSplitPane" name="jSplitPane3">
                       <Properties>
                         <Property name="dividerLocation" type="int" value="180"/>
-                        <Property name="dividerSize" type="int" value="5"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
