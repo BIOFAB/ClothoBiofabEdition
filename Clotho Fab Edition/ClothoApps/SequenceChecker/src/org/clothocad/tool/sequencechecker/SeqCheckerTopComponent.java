@@ -262,7 +262,7 @@ public final class SeqCheckerTopComponent extends TopComponent {
         SeqCheckInput tableContents = new SeqCheckInput(filteredFolderContents); //holds the contents of the input table
 
         inputTable.setModel(new javax.swing.table.DefaultTableModel(
-                tableContents.toTable(),
+                tableContents.getTable(),
                 new String[]{
                     "Trace", "Construct", "Clone", "Well"
                 }));

@@ -9,6 +9,7 @@ public class SeqCheckInput {
     private String[] constructName;
     private String[] cloneNumber;
     private String[] wellNumber;
+    private Object[][] table; //table form of the data
 
     public SeqCheckInput(ArrayList<File> fileList) {
         trace = new String[fileList.size()];
@@ -27,6 +28,12 @@ public class SeqCheckInput {
             } catch (NumberFormatException e) {
                 cloneNumber[i] = null;
             }
+            //Maintains the table contents
+            table[i][0] = trace[i];
+            table[i][1] = constructName[i];
+            table[i][2] = cloneNumber[i];
+            table[i][3] = wellNumber[i];
+
             i++;
         }
     }
@@ -63,14 +70,15 @@ public class SeqCheckInput {
         return wellNumber;
     }
 
-    public Object[][] toTable() {
-        Object toReturn[][] = new Object[this.getNumberOfElements()][4];
+    public Object[][] getTable() {
+        /*Object toReturn[][] = new Object[this.getNumberOfElements()][4];
         for (int i = 0; i < this.getNumberOfElements(); i++) {
             toReturn[i][0] = trace[i];
             toReturn[i][1] = constructName[i];
             toReturn[i][2] = cloneNumber[i];
             toReturn[i][3] = wellNumber[i];
         }
-        return toReturn;
+        return toReturn;*/
+        return table;
     }
 }
