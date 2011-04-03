@@ -16,6 +16,7 @@ public class SeqCheckInput {
         constructName = new String[fileList.size()];
         cloneNumber = new String[fileList.size()];
         wellNumber = new String[fileList.size()];
+        table = new Object[fileList.size()][4];
         int i = 0;
         for (File file : fileList) {
             trace[i] = file.getName();
