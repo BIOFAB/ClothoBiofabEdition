@@ -17,7 +17,13 @@ public class SeqCheckInput {
         for (File file : fileList) {
             table[i][0] = file.getName();
             String[] tokens = file.getName().split("[\\p{Punct}]");
-            table[i][1] = tokens[0]; //construct name should appear before first underscore or period
+            //Iterate through each token, looking for 'pfab' (case is ignored) if found, return token as construct name
+            for (String token : tokens) {
+                //if (token.toLowerCase().matches("[a-z]*f{1}a{1}b{1}\\d*") && table[i][1]==null) { use this if statement to accept 'sofab' as a prefix to construct name if 'pfab' is not found
+                if (token.toLowerCase().matches("p{1}f{1}a{1}b{1}\\d*")) {
+                    table[i][1] = token;
+                }
+            }
             table[i][3] = tokens[tokens.length - 2];
             try {
                 Integer.parseInt(tokens[1]);
@@ -81,6 +87,7 @@ public class SeqCheckInput {
         return toReturn;
     }
     //Returns the file paths of each trace file in table
+
     public String[] getfilePaths() {
         String[] toReturn = new String[numberOfElements];
         int i = 0;
