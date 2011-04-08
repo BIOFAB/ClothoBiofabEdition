@@ -16,20 +16,17 @@ public class SeqCheckInput {
         int i = 0;
         for (File file : fileList) {
             table[i][0] = file.getName();
-            String[] tokens = file.getName().split("[\\p{Punct}]");
-            //Iterate through each token, looking for 'pfab' (case is ignored) if found, return token as construct name
+            String[] tokens = file.getName().split("[_.]");
             for (String token : tokens) {
-                //if (token.toLowerCase().matches("[a-z]*f{1}a{1}b{1}\\d*") && table[i][1]==null) { use this if statement to accept 'sofab' as a prefix to construct name if 'pfab' is not found
-                if (token.toLowerCase().matches("p{1}f{1}a{1}b{1}\\d*")) {
+                if (token.toLowerCase().matches("[a-zA-Z]{1}\\d{1,}")) {
+                    table[i][3] = token;
+                }
+                if (token.toLowerCase().matches("[a-zA-Z]*?\\d{2,}?") && table[i][1] == null && token != table[i][3]) {
                     table[i][1] = token;
                 }
-            }
-            table[i][3] = tokens[tokens.length - 2];
-            try {
-                Integer.parseInt(tokens[1]);
-                table[i][2] = tokens[1]; //second token should contain the clone number
-            } catch (NumberFormatException e) {
-                table[i][2] = null;
+                if (token.toLowerCase().matches("\\d+")) {
+                    table[i][2] = token;
+                }
             }
             i++;
         }
