@@ -2,12 +2,19 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package org.clothocad.tool.sequencechecker;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.logging.Logger;
+
+import sequencing.ABITrace;
+import sequencing.Analyzer;
+import sequencing.TraceExtract.ResultType;
+
 import javax.swing.JFileChooser;
+
 import org.openide.util.NbBundle;
 import org.openide.windows.TopComponent;
 import org.openide.windows.WindowManager;
@@ -18,14 +25,16 @@ import org.netbeans.api.settings.ConvertAsProperties;
  * Top component which displays something.
  */
 @ConvertAsProperties(dtd = "-//org.clothocad.tool.sequencechecker//SeqChecker//EN", autostore = false)
-public final class SeqCheckerTopComponent extends TopComponent {
+public final class SeqCheckerTopComponent extends TopComponent
+{
 
-    private static SeqCheckerTopComponent instance;
     /** path to the icon used by the component and its open action */
-    static final String ICON_PATH = "org/clothocad/tool/sequencechecker/SeqChecker.png";
-    private static final String PREFERRED_ID = "SeqCheckerTopComponent";
+    protected static final String ICON_PATH = "org/clothocad/tool/sequencechecker/SeqChecker.png";
+    protected static final String PREFERRED_ID = "SeqCheckerTopComponent";
+    protected static SeqCheckerTopComponent instance;
 
-    public SeqCheckerTopComponent() {
+    public SeqCheckerTopComponent()
+    {
         initComponents();
         setName(NbBundle.getMessage(SeqCheckerTopComponent.class, "CTL_SeqCheckerTopComponent"));
         setToolTipText(NbBundle.getMessage(SeqCheckerTopComponent.class, "HINT_SeqCheckerTopComponent"));
@@ -44,8 +53,9 @@ public final class SeqCheckerTopComponent extends TopComponent {
         mainTabbedPanel = new javax.swing.JTabbedPane();
         inputPanel = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        selectButton = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
+        checkButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         inputTable = new javax.swing.JTable();
         outputPanel = new javax.swing.JPanel();
@@ -64,23 +74,30 @@ public final class SeqCheckerTopComponent extends TopComponent {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        org.openide.awt.Mnemonics.setLocalizedText(jButton1, org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.jButton1.text")); // NOI18N
-        jButton1.setToolTipText(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.jButton1.toolTipText")); // NOI18N
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton1);
-
-        org.openide.awt.Mnemonics.setLocalizedText(jButton2, org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.jButton2.text")); // NOI18N
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        org.openide.awt.Mnemonics.setLocalizedText(selectButton, org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.selectButton.text")); // NOI18N
+        selectButton.setToolTipText(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.selectButton.toolTipText")); // NOI18N
+        selectButton.setFocusable(false);
+        selectButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        selectButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        selectButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                selectButtonActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton2);
+        jToolBar1.add(selectButton);
+        jToolBar1.add(jSeparator1);
+
+        org.openide.awt.Mnemonics.setLocalizedText(checkButton, org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.checkButton.text")); // NOI18N
+        checkButton.setToolTipText(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.checkButton.toolTipText")); // NOI18N
+        checkButton.setFocusable(false);
+        checkButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        checkButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        checkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkButtonActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(checkButton);
 
         inputTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,18 +128,18 @@ public final class SeqCheckerTopComponent extends TopComponent {
         inputPanel.setLayout(inputPanelLayout);
         inputPanelLayout.setHorizontalGroup(
             inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE)
             .addGroup(inputPanelLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
         );
         inputPanelLayout.setVerticalGroup(
             inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inputPanelLayout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -209,15 +226,15 @@ public final class SeqCheckerTopComponent extends TopComponent {
         outputPanel.setLayout(outputPanelLayout);
         outputPanelLayout.setHorizontalGroup(
             outputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE)
+            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
         );
         outputPanelLayout.setVerticalGroup(
             outputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(outputPanelLayout.createSequentialGroup()
                 .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE))
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE))
         );
 
         mainTabbedPanel.addTab(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.outputPanel.TabConstraints.tabTitle"), outputPanel); // NOI18N
@@ -240,7 +257,7 @@ public final class SeqCheckerTopComponent extends TopComponent {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void selectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButtonActionPerformed
         JFileChooser chooser = new JFileChooser();
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         chooser.showOpenDialog(null);
@@ -249,16 +266,22 @@ public final class SeqCheckerTopComponent extends TopComponent {
         File[] folderContents = selectedDirectory.listFiles();
         ArrayList<File> filteredFolderContents = new ArrayList<File>();
 
-        for (File file : folderContents) {
+        for (File file : folderContents)
+        {
             //System.out.println(file.getName());
-            try {
-                if (file.getName().substring(file.getName().lastIndexOf(".")).equals(".ab1")) {
+            try
+            {
+                if (file.getName().substring(file.getName().lastIndexOf(".")).equals(".ab1"))
+                {
                     filteredFolderContents.add(file);
                 }
-            } catch (StringIndexOutOfBoundsException e) {
+            } 
+            catch (StringIndexOutOfBoundsException e)
+            {
                 //folder names that don't have a '.' character well cause an exception to be thrown
             }
         }
+
         SeqCheckInput tableContents = new SeqCheckInput(filteredFolderContents); //holds the contents of the input table
 
         inputTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -275,16 +298,39 @@ public final class SeqCheckerTopComponent extends TopComponent {
         }
          */
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_selectButtonActionPerformed
+
+    private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
+//        String target = seqArea.getText();
+//        ArrayList<ABITrace> listy = new ArrayList<ABITrace>();
+//        for(File afile : _abiFiles) {
+//            try {
+//                ABITrace atrace = new ABITrace(afile);
+//                listy.add(atrace);
+//            } catch (IOException ex) {
+//            }
+//        }
+//        //Create the analyzer
+//        Analyzer analysis=new Analyzer(listy, target);
+//
+//        //Run the analysis
+//        ResultType rep = analysis.go();
+//
+//        //Instantiate the GUI (or redirect it to an image)
+//        analysis.launchReport();
+
+        
+    }//GEN-LAST:event_checkButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    protected javax.swing.JButton checkButton;
     private javax.swing.JPanel inputPanel;
     private javax.swing.JTable inputTable;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JSplitPane jSplitPane3;
@@ -295,13 +341,16 @@ public final class SeqCheckerTopComponent extends TopComponent {
     private javax.swing.JToolBar jToolBar2;
     private javax.swing.JTabbedPane mainTabbedPanel;
     private javax.swing.JPanel outputPanel;
+    protected javax.swing.JButton selectButton;
     // End of variables declaration//GEN-END:variables
+
 
     /**
      * Gets default instance. Do not use directly: reserved for *.settings files only,
      * i.e. deserialization routines; otherwise you could get a non-deserialized instance.
      * To obtain the singleton instance, use {@link #findInstance}.
      */
+
     public static synchronized SeqCheckerTopComponent getDefault() {
         if (instance == null) {
             instance = new SeqCheckerTopComponent();
