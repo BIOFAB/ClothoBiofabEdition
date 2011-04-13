@@ -19,17 +19,17 @@ public class SeqCheckInput {
         for (File file : fileList)
         {
             table[i][0] = file.getName();
-            String[] tokens = file.getName().split("[\\p{Punct}]");
-            table[i][1] = tokens[0]; //construct name should appear before first underscore or period
-            table[i][3] = tokens[tokens.length - 2];
-            try
-            {
-                Integer.parseInt(tokens[1]);
-                table[i][2] = tokens[1]; //second token should contain the clone number
-            } 
-            catch (NumberFormatException e)
-            {
-                table[i][2] = null;
+            String[] tokens = file.getName().split("[_.]");
+            for (String token : tokens) {
+                if (token.toLowerCase().matches("[a-zA-Z]{1}\\d{1,}")) {
+                    table[i][3] = token;
+                }
+                if (token.toLowerCase().matches("[a-zA-Z]*?\\d{2,}?") && table[i][1] == null && token != table[i][3]) {
+                    table[i][1] = token;
+                }
+                if (token.toLowerCase().matches("\\d+")) {
+                    table[i][2] = token;
+                }
             }
             
             i++;
@@ -95,6 +95,7 @@ public class SeqCheckInput {
         return toReturn;
     }
     //Returns the file paths of each trace file in table
+
     public String[] getfilePaths() {
         String[] toReturn = new String[numberOfElements];
         int i = 0;
