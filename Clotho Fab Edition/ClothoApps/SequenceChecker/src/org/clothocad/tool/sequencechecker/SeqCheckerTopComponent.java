@@ -54,8 +54,8 @@ public final class SeqCheckerTopComponent extends TopComponent
         inputPanel = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         selectButton = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JToolBar.Separator();
-        checkButton = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        clothoCheckButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         inputTable = new javax.swing.JTable();
         outputPanel = new javax.swing.JPanel();
@@ -75,7 +75,7 @@ public final class SeqCheckerTopComponent extends TopComponent
         jToolBar1.setRollover(true);
 
         org.openide.awt.Mnemonics.setLocalizedText(selectButton, org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.selectButton.text")); // NOI18N
-        selectButton.setToolTipText(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.selectButton.toolTipText")); // NOI18N
+        selectButton.setToolTipText(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.selectButton.toolTipText_1")); // NOI18N
         selectButton.setFocusable(false);
         selectButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         selectButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -85,19 +85,30 @@ public final class SeqCheckerTopComponent extends TopComponent
             }
         });
         jToolBar1.add(selectButton);
-        jToolBar1.add(jSeparator1);
 
-        org.openide.awt.Mnemonics.setLocalizedText(checkButton, org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.checkButton.text")); // NOI18N
-        checkButton.setToolTipText(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.checkButton.toolTipText")); // NOI18N
-        checkButton.setFocusable(false);
-        checkButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        checkButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        checkButton.addActionListener(new java.awt.event.ActionListener() {
+        org.openide.awt.Mnemonics.setLocalizedText(jButton2, org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.checkButton.text")); // NOI18N
+        jButton2.setToolTipText(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.checkButton.toolTipText")); // NOI18N
+        jButton2.setFocusable(false);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkButtonActionPerformed(evt);
             }
         });
-        jToolBar1.add(checkButton);
+        jToolBar1.add(jButton2);
+
+        org.openide.awt.Mnemonics.setLocalizedText(clothoCheckButton, org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.clothoCheckButton.text")); // NOI18N
+        clothoCheckButton.setToolTipText(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.clothoCheckButton.toolTipText")); // NOI18N
+        clothoCheckButton.setFocusable(false);
+        clothoCheckButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        clothoCheckButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        clothoCheckButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clothoCheckActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(clothoCheckButton);
 
         inputTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -322,15 +333,19 @@ public final class SeqCheckerTopComponent extends TopComponent
         
     }//GEN-LAST:event_checkButtonActionPerformed
 
+    private void clothoCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clothoCheckActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_clothoCheckActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    protected javax.swing.JButton checkButton;
+    protected javax.swing.JButton clothoCheckButton;
     private javax.swing.JPanel inputPanel;
     private javax.swing.JTable inputTable;
+    protected javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JToolBar.Separator jSeparator1;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JSplitPane jSplitPane3;
