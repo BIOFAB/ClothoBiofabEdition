@@ -6,6 +6,7 @@
 package org.clothocad.tool.sequencechecker;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
@@ -293,48 +294,28 @@ public final class SeqCheckerTopComponent extends TopComponent
             }
         }
 
-        SeqCheckInput tableContents = new SeqCheckInput(filteredFolderContents); //holds the contents of the input table
+        inputTableContents = new SeqCheckInput(filteredFolderContents); //holds the contents of the input table
 
         inputTable.setModel(new javax.swing.table.DefaultTableModel(
-                tableContents.getTable(),
+                inputTableContents.getTable(),
                 new String[]{
                     "Trace", "Construct", "Clone", "Well"
                 }));
-        /*
-        [][] {
-        {"hello", null, null, null, null, null},
-        {null, null, null, null, null, null},
-        {null, null, null, null, null, null},
-        {null, null, null, null, null, null}
-        }
-         */
-
     }//GEN-LAST:event_selectButtonActionPerformed
 
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
-//        String target = seqArea.getText();
-//        ArrayList<ABITrace> listy = new ArrayList<ABITrace>();
-//        for(File afile : _abiFiles) {
-//            try {
-//                ABITrace atrace = new ABITrace(afile);
-//                listy.add(atrace);
-//            } catch (IOException ex) {
-//            }
-//        }
-//        //Create the analyzer
-//        Analyzer analysis=new Analyzer(listy, target);
-//
-//        //Run the analysis
-//        ResultType rep = analysis.go();
-//
-//        //Instantiate the GUI (or redirect it to an image)
-//        analysis.launchReport();
 
         
     }//GEN-LAST:event_checkButtonActionPerformed
 
     private void clothoCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clothoCheckActionPerformed
-        // TODO add your handling code here:
+        //trace holds ab1 file that corresponds to the row currently highlighted
+        File trace = inputTableContents.getFiles().get(inputTable.getSelectedRow()); //gets the trace file at the selected row
+        //the String object target is represents the target sequence, and will be pulled from the construct sequence
+        String target = "CATTTAGTGGGGGCCTGACTCTCGCTCTTCCTTTTAAGAAAAAATTGCTCTGAAAACTAAAAAAATTTTATTAGATTAAAAAAAGATCTTCTTGAGTCTTAGTTGTCGCGCGTAACTCCTCTCCGGAAAAAAAAAAACGCCCTGGGCGCGGTTTTTTAGGGGTCTCTCAACTCCCACCTCTTTCGCGGAGGACCTGGTGGGAGGGGGCCATCCCAAAATTTTTCCTTTTTTTTTCTCACGGGCCCTTGTTCCAAAAATCCCCCCAATATTTCCCTTGGTCGGCCGGGGGGTTTGGCTGTCTTCTTGGGGGAGGCACCATCAGATACCCAAGATTAAGGCCCCGTGCAAACAGCGGGTACTTCCTTCCGTACACCCTCCCTGGAACCGCCTGGCCCCCCCGCTACCGTCGTGCAGTGAGTTAACACAATGCGCCCAATCACCAAA";
+        ClothoCheckController ccc = new ClothoCheckController(trace, target);
+        ccc.performCheck(); //calls ClothoCheckController to utilize sequencing package classes to do analysis
+
     }//GEN-LAST:event_clothoCheckActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -358,7 +339,7 @@ public final class SeqCheckerTopComponent extends TopComponent
     private javax.swing.JPanel outputPanel;
     protected javax.swing.JButton selectButton;
     // End of variables declaration//GEN-END:variables
-
+private SeqCheckInput inputTableContents;
 
     /**
      * Gets default instance. Do not use directly: reserved for *.settings files only,

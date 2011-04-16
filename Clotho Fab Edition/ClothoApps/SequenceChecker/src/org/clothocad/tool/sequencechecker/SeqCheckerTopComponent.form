@@ -54,10 +54,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="20" pref="20" max="20" attributes="0"/>
-                      <Component id="jScrollPane1" pref="551" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="567" max="32767" attributes="0"/>
                       <EmptySpace min="20" pref="20" max="20" attributes="0"/>
                   </Group>
-                  <Component id="jToolBar1" alignment="0" pref="591" max="32767" attributes="0"/>
+                  <Component id="jToolBar1" alignment="0" pref="607" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -65,7 +65,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jToolBar1" min="-2" pref="34" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="385" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="415" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -216,8 +216,8 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jToolBar2" alignment="0" pref="591" max="32767" attributes="0"/>
-                  <Component id="jSplitPane1" alignment="1" pref="591" max="32767" attributes="0"/>
+                  <Component id="jToolBar2" alignment="0" pref="607" max="32767" attributes="0"/>
+                  <Component id="jSplitPane1" alignment="1" pref="607" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -225,7 +225,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jToolBar2" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jSplitPane1" pref="428" max="32767" attributes="0"/>
+                      <Component id="jSplitPane1" pref="440" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
