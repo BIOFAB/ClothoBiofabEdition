@@ -186,6 +186,8 @@ public final class TreeBrowseTopComponent extends TopComponent {
     }
 
     @Override
+
+    //Called to populate the tree
     public void componentOpened() {
         grabTreeDataForCurrentUser();
     }
