@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.clothocad.tool.sequencechecker;
 
 import java.io.File;
@@ -26,16 +25,14 @@ import org.netbeans.api.settings.ConvertAsProperties;
  * Top component which displays something.
  */
 @ConvertAsProperties(dtd = "-//org.clothocad.tool.sequencechecker//SeqChecker//EN", autostore = false)
-public final class SeqCheckerTopComponent extends TopComponent
-{
+public final class SeqCheckerTopComponent extends TopComponent {
 
     /** path to the icon used by the component and its open action */
     protected static final String ICON_PATH = "org/clothocad/tool/sequencechecker/SeqChecker.png";
     protected static final String PREFERRED_ID = "SeqCheckerTopComponent";
     protected static SeqCheckerTopComponent instance;
 
-    public SeqCheckerTopComponent()
-    {
+    public SeqCheckerTopComponent() {
         initComponents();
         setName(NbBundle.getMessage(SeqCheckerTopComponent.class, "CTL_SeqCheckerTopComponent"));
         setToolTipText(NbBundle.getMessage(SeqCheckerTopComponent.class, "HINT_SeqCheckerTopComponent"));
@@ -270,54 +267,61 @@ public final class SeqCheckerTopComponent extends TopComponent
     }// </editor-fold>//GEN-END:initComponents
 
     private void selectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButtonActionPerformed
+       System.out.println("evt: "+evt);
+       System.out.println("ACTION: "+evt.getActionCommand() );
         JFileChooser chooser = new JFileChooser();
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         chooser.showOpenDialog(null);
         File selectedDirectory = chooser.getSelectedFile();
         //System.out.println(selectedDirectory.getName()+ " is Directory?: "+selectedDirectory.isDirectory());
-        File[] folderContents = selectedDirectory.listFiles();
-        ArrayList<File> filteredFolderContents = new ArrayList<File>();
+        if (selectedDirectory != null) {
+            File[] folderContents = selectedDirectory.listFiles();
 
-        for (File file : folderContents)
-        {
-            //System.out.println(file.getName());
-            try
-            {
-                if (file.getName().substring(file.getName().lastIndexOf(".")).equals(".ab1"))
-                {
-                    filteredFolderContents.add(file);
+
+            ArrayList<File> filteredFolderContents = new ArrayList<File>();
+
+            for (File file : folderContents) {
+                //System.out.println(file.getName());
+                try {
+                    if (file.getName().substring(file.getName().lastIndexOf(".")).equals(".ab1")) {
+                        filteredFolderContents.add(file);
+                    }
+                } catch (StringIndexOutOfBoundsException e) {
+                    //folder names that don't have a '.' character well cause an exception to be thrown
                 }
-            } 
-            catch (StringIndexOutOfBoundsException e)
-            {
-                //folder names that don't have a '.' character well cause an exception to be thrown
             }
+
+            inputTableContents = new SeqCheckInput(filteredFolderContents); //holds the contents of the input table
+
+            inputTable.setModel(new javax.swing.table.DefaultTableModel(
+                    inputTableContents.getTable(),
+                    new String[]{
+                        "Trace", "Construct", "Clone", "Well"
+                    }));
         }
-
-        inputTableContents = new SeqCheckInput(filteredFolderContents); //holds the contents of the input table
-
-        inputTable.setModel(new javax.swing.table.DefaultTableModel(
-                inputTableContents.getTable(),
-                new String[]{
-                    "Trace", "Construct", "Clone", "Well"
-                }));
     }//GEN-LAST:event_selectButtonActionPerformed
 
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
-
-        
     }//GEN-LAST:event_checkButtonActionPerformed
 
     private void clothoCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clothoCheckActionPerformed
         //trace holds ab1 file that corresponds to the row currently highlighted
-        File trace = inputTableContents.getFiles().get(inputTable.getSelectedRow()); //gets the trace file at the selected row
-        //the String object target is represents the target sequence, and will be pulled from the construct sequence
-        String target = "CATTTAGTGGGGGCCTGACTCTCGCTCTTCCTTTTAAGAAAAAATTGCTCTGAAAACTAAAAAAATTTTATTAGATTAAAAAAAGATCTTCTTGAGTCTTAGTTGTCGCGCGTAACTCCTCTCCGGAAAAAAAAAAACGCCCTGGGCGCGGTTTTTTAGGGGTCTCTCAACTCCCACCTCTTTCGCGGAGGACCTGGTGGGAGGGGGCCATCCCAAAATTTTTCCTTTTTTTTTCTCACGGGCCCTTGTTCCAAAAATCCCCCCAATATTTCCCTTGGTCGGCCGGGGGGTTTGGCTGTCTTCTTGGGGGAGGCACCATCAGATACCCAAGATTAAGGCCCCGTGCAAACAGCGGGTACTTCCTTCCGTACACCCTCCCTGGAACCGCCTGGCCCCCCCGCTACCGTCGTGCAGTGAGTTAACACAATGCGCCCAATCACCAAA";
-        ClothoCheckController ccc = new ClothoCheckController(trace, target);
-        ccc.performCheck(); //calls ClothoCheckController to utilize sequencing package classes to do analysis
-
+        File trace = null;
+        if (inputTable.getSelectedRow() > -1) {//selected row is negative when no row is selected
+            try {
+                trace = inputTableContents.getFiles().get(inputTable.getSelectedRow());//gets the trace file at the selected row
+            } catch (NullPointerException e) {
+                return; //exits the method, Exception thrown because no files are in the table
+            }
+        }
+        //trace is null when directory has not been selected
+        if (trace != null) {
+            //the String object target is represents the target sequence, and will be pulled from the construct sequence
+            String target = "CATTTAGTGGGGGCCTGACTCTCGCTCTTCCTTTTAAGAAAAAATTGCTCTGAAAACTAAAAAAATTTTATTAGATTAAAAAAAGATCTTCTTGAGTCTTAGTTGTCGCGCGTAACTCCTCTCCGGAAAAAAAAAAACGCCCTGGGCGCGGTTTTTTAGGGGTCTCTCAACTCCCACCTCTTTCGCGGAGGACCTGGTGGGAGGGGGCCATCCCAAAATTTTTCCTTTTTTTTTCTCACGGGCCCTTGTTCCAAAAATCCCCCCAATATTTCCCTTGGTCGGCCGGGGGGTTTGGCTGTCTTCTTGGGGGAGGCACCATCAGATACCCAAGATTAAGGCCCCGTGCAAACAGCGGGTACTTCCTTCCGTACACCCTCCCTGGAACCGCCTGGCCCCCCCGCTACCGTCGTGCAGTGAGTTAACACAATGCGCCCAATCACCAAA";
+            ClothoCheckController ccc = new ClothoCheckController(trace, target);
+            ccc.performCheck(); //calls ClothoCheckController to utilize sequencing package classes to do analysis
+        }
     }//GEN-LAST:event_clothoCheckActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JButton clothoCheckButton;
     private javax.swing.JPanel inputPanel;
@@ -339,14 +343,13 @@ public final class SeqCheckerTopComponent extends TopComponent
     private javax.swing.JPanel outputPanel;
     protected javax.swing.JButton selectButton;
     // End of variables declaration//GEN-END:variables
-private SeqCheckInput inputTableContents;
+    private SeqCheckInput inputTableContents;
 
     /**
      * Gets default instance. Do not use directly: reserved for *.settings files only,
      * i.e. deserialization routines; otherwise you could get a non-deserialized instance.
      * To obtain the singleton instance, use {@link #findInstance}.
      */
-
     public static synchronized SeqCheckerTopComponent getDefault() {
         if (instance == null) {
             instance = new SeqCheckerTopComponent();
