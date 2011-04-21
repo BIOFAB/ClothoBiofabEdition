@@ -8,26 +8,33 @@ import sequencing.ABITrace;
 import sequencing.Analyzer;
 import sequencing.TraceExtract.ResultType;
 
-public class ClothoCheckController {
+public class LocalCheckController
+{
 
-    String target;
-    File trace;
+    String  _target;
+    File    _trace;
 
-    public ClothoCheckController(File f, String s) {
-        target = s;
-        trace = f;
+    public LocalCheckController()
+    {
+        
     }
 
-    public void performCheck() {
+    public void performCheck(File traceFile, String refSequence)
+    {
         ABITrace traceABI = null;
-        try {
-            traceABI = new ABITrace(trace);
-        } catch (IOException e) {
+        
+        try
+        {
+            traceABI = new ABITrace(traceFile);
+        } 
+        catch (IOException e)
+        {
             e.printStackTrace();
         }
+        
         ArrayList<ABITrace> abis = new ArrayList<ABITrace>(); //The analyzer seems to be able to handle multiple traces, i'm not sure what this does
         abis.add(traceABI);
-        Analyzer analysis = new Analyzer(abis, target);
+        Analyzer analysis = new Analyzer(abis, refSequence);
         ResultType rep = analysis.go(); //runs the analysis and stores the result, i'm not sure wat ResultType is used for
         analysis.launchReport(); //Opens a graphical result window
 

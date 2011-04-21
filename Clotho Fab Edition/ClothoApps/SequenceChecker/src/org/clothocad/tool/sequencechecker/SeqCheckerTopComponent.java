@@ -34,12 +34,17 @@ public final class SeqCheckerTopComponent extends TopComponent
     protected static final String PREFERRED_ID = "SeqCheckerTopComponent";
     protected static SeqCheckerTopComponent instance;
 
+    protected SeqCheckInput         inputTableContents;
+    protected LocalCheckController  _localChecker;
+
     public SeqCheckerTopComponent()
     {
         initComponents();
         setName(NbBundle.getMessage(SeqCheckerTopComponent.class, "CTL_SeqCheckerTopComponent"));
         setToolTipText(NbBundle.getMessage(SeqCheckerTopComponent.class, "HINT_SeqCheckerTopComponent"));
         setIcon(ImageUtilities.loadImage(ICON_PATH, true));
+
+        _localChecker = new LocalCheckController();
 
     }
 
@@ -52,13 +57,6 @@ public final class SeqCheckerTopComponent extends TopComponent
     private void initComponents() {
 
         mainTabbedPanel = new javax.swing.JTabbedPane();
-        inputPanel = new javax.swing.JPanel();
-        jToolBar1 = new javax.swing.JToolBar();
-        selectButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        clothoCheckButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        inputTable = new javax.swing.JTable();
         outputPanel = new javax.swing.JPanel();
         jSplitPane1 = new javax.swing.JSplitPane();
         jSplitPane2 = new javax.swing.JSplitPane();
@@ -70,92 +68,13 @@ public final class SeqCheckerTopComponent extends TopComponent
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jToolBar2 = new javax.swing.JToolBar();
-
-        jToolBar1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jToolBar1.setFloatable(false);
-        jToolBar1.setRollover(true);
-
-        org.openide.awt.Mnemonics.setLocalizedText(selectButton, org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.selectButton.text")); // NOI18N
-        selectButton.setToolTipText(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.selectButton.toolTipText_1")); // NOI18N
-        selectButton.setFocusable(false);
-        selectButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        selectButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        selectButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectButtonActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(selectButton);
-
-        org.openide.awt.Mnemonics.setLocalizedText(jButton2, org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.checkButton.text")); // NOI18N
-        jButton2.setToolTipText(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.checkButton.toolTipText")); // NOI18N
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkButtonActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton2);
-
-        org.openide.awt.Mnemonics.setLocalizedText(clothoCheckButton, org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.clothoCheckButton.text")); // NOI18N
-        clothoCheckButton.setToolTipText(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.clothoCheckButton.toolTipText")); // NOI18N
-        clothoCheckButton.setFocusable(false);
-        clothoCheckButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        clothoCheckButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        clothoCheckButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clothoCheckActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(clothoCheckButton);
-
-        inputTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Trace", "Construct", "Clone", "Well"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(inputTable);
-        inputTable.getColumnModel().getColumn(0).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title0")); // NOI18N
-        inputTable.getColumnModel().getColumn(1).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title1")); // NOI18N
-        inputTable.getColumnModel().getColumn(2).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title2")); // NOI18N
-        inputTable.getColumnModel().getColumn(3).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title3")); // NOI18N
-
-        javax.swing.GroupLayout inputPanelLayout = new javax.swing.GroupLayout(inputPanel);
-        inputPanel.setLayout(inputPanelLayout);
-        inputPanelLayout.setHorizontalGroup(
-            inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(inputPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
-                .addGap(20, 20, 20))
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
-        );
-        inputPanelLayout.setVerticalGroup(
-            inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(inputPanelLayout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        mainTabbedPanel.addTab(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputPanel.TabConstraints.tabTitle"), inputPanel); // NOI18N
+        inputPanel = new javax.swing.JPanel();
+        jToolBar1 = new javax.swing.JToolBar();
+        selectButton = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        mainSplitPane = new javax.swing.JSplitPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        inputTable = new javax.swing.JTable();
 
         jSplitPane1.setDividerLocation(250);
         jSplitPane1.setDividerSize(4);
@@ -230,26 +149,114 @@ public final class SeqCheckerTopComponent extends TopComponent
 
         jSplitPane1.setTopComponent(jSplitPane2);
 
-        jToolBar2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jToolBar2.setFloatable(false);
-        jToolBar2.setRollover(true);
-
         javax.swing.GroupLayout outputPanelLayout = new javax.swing.GroupLayout(outputPanel);
         outputPanel.setLayout(outputPanelLayout);
         outputPanelLayout.setHorizontalGroup(
             outputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 591, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
         );
         outputPanelLayout.setVerticalGroup(
             outputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(outputPanelLayout.createSequentialGroup()
-                .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE))
         );
 
         mainTabbedPanel.addTab(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.outputPanel.TabConstraints.tabTitle"), outputPanel); // NOI18N
+
+        jToolBar2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jToolBar2.setFloatable(false);
+        jToolBar2.setRollover(true);
+        mainTabbedPanel.addTab("tab3", jToolBar2);
+
+        jToolBar1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jToolBar1.setFloatable(false);
+        jToolBar1.setRollover(true);
+
+        org.openide.awt.Mnemonics.setLocalizedText(selectButton, org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.selectButton.text")); // NOI18N
+        selectButton.setToolTipText(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.selectButton.toolTipText_1")); // NOI18N
+        selectButton.setFocusable(false);
+        selectButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        selectButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        selectButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectButtonActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(selectButton);
+
+        org.openide.awt.Mnemonics.setLocalizedText(jButton2, org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.checkButton.text")); // NOI18N
+        jButton2.setToolTipText(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.checkButton.toolTipText")); // NOI18N
+        jButton2.setFocusable(false);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkButtonActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton2);
+
+        mainSplitPane.setDividerLocation(250);
+        mainSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+
+        inputTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Status", "Construct", "Clone", "Primer", "Trace File"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        inputTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                inputTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(inputTable);
+        inputTable.getColumnModel().getColumn(0).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title0")); // NOI18N
+        inputTable.getColumnModel().getColumn(1).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title1")); // NOI18N
+        inputTable.getColumnModel().getColumn(2).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title2")); // NOI18N
+        inputTable.getColumnModel().getColumn(3).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title3")); // NOI18N
+
+        mainSplitPane.setLeftComponent(jScrollPane1);
+
+        javax.swing.GroupLayout inputPanelLayout = new javax.swing.GroupLayout(inputPanel);
+        inputPanel.setLayout(inputPanelLayout);
+        inputPanelLayout.setHorizontalGroup(
+            inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(inputPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(mainSplitPane, javax.swing.GroupLayout.PREFERRED_SIZE, 587, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
+            .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
+        );
+        inputPanelLayout.setVerticalGroup(
+            inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(inputPanelLayout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mainSplitPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(24, 24, 24))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -257,15 +264,15 @@ public final class SeqCheckerTopComponent extends TopComponent
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(mainTabbedPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(inputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(mainTabbedPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(inputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -295,12 +302,7 @@ public final class SeqCheckerTopComponent extends TopComponent
         }
 
         inputTableContents = new SeqCheckInput(filteredFolderContents); //holds the contents of the input table
-
-        inputTable.setModel(new javax.swing.table.DefaultTableModel(
-                inputTableContents.getTable(),
-                new String[]{
-                    "Trace", "Construct", "Clone", "Well"
-                }));
+        inputTable.setModel(new javax.swing.table.DefaultTableModel(inputTableContents.getTable(),new String[]{"Trace", "Construct", "Clone", "Well"}));
     }//GEN-LAST:event_selectButtonActionPerformed
 
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
@@ -308,18 +310,17 @@ public final class SeqCheckerTopComponent extends TopComponent
         
     }//GEN-LAST:event_checkButtonActionPerformed
 
-    private void clothoCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clothoCheckActionPerformed
-        //trace holds ab1 file that corresponds to the row currently highlighted
-        File trace = inputTableContents.getFiles().get(inputTable.getSelectedRow()); //gets the trace file at the selected row
-        //the String object target is represents the target sequence, and will be pulled from the construct sequence
-        String target = "CATTTAGTGGGGGCCTGACTCTCGCTCTTCCTTTTAAGAAAAAATTGCTCTGAAAACTAAAAAAATTTTATTAGATTAAAAAAAGATCTTCTTGAGTCTTAGTTGTCGCGCGTAACTCCTCTCCGGAAAAAAAAAAACGCCCTGGGCGCGGTTTTTTAGGGGTCTCTCAACTCCCACCTCTTTCGCGGAGGACCTGGTGGGAGGGGGCCATCCCAAAATTTTTCCTTTTTTTTTCTCACGGGCCCTTGTTCCAAAAATCCCCCCAATATTTCCCTTGGTCGGCCGGGGGGTTTGGCTGTCTTCTTGGGGGAGGCACCATCAGATACCCAAGATTAAGGCCCCGTGCAAACAGCGGGTACTTCCTTCCGTACACCCTCCCTGGAACCGCCTGGCCCCCCCGCTACCGTCGTGCAGTGAGTTAACACAATGCGCCCAATCACCAAA";
-        ClothoCheckController ccc = new ClothoCheckController(trace, target);
-        ccc.performCheck(); //calls ClothoCheckController to utilize sequencing package classes to do analysis
+    private void inputTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputTableMouseClicked
 
-    }//GEN-LAST:event_clothoCheckActionPerformed
+        File trace = inputTableContents.getFiles().get(inputTable.getSelectedRow()); //gets the trace file at the selected row
+
+        //the String object target is represents the target sequence, and will be pulled from the construct sequence
+        String target = "ttagtcttgaagtcatgcgccggttaaggctaaactgaaaggacaagttttggtgactgcgctcctccaagccagttacctcggttcaaagagttggtagctcagagaaccttcgaaaaaccgccctgcaaggcggttttttcgttttcagagcaagagattacgcgcagaccaaaacgatctcaagaagatcatcttattaatcagataaaatatttctagatttcagtgcaatttatctcttcaaatgtagcacctgaagtcagccccatacgatataagttgttactagtgcttggattctcaccaataaaaaacgcccggcggcaaccgagcgttctgaacaaatccagatggagttctgaggtcattactggatctatcaacaggagtccaagcgagctctcgaaccccagagtcccgctcagaagaactcgtcaagaaggcgatagaaggcgatgcgctgcgaatcgggagcggcgataccgtaaagcacgaggaagcggtcagcccattcgccgccaagctcttcagcaatatcacgggtagccaacgctatgtcctgatagcggtccgccacacccagccggccacagtcgatgaatccagaaaagcggccattttccaccatgatattcggcaagcaggcatcgccatgggtcacgacgagatcctcgccgtcgggcatgcgcgccttgagcctggcgaacagttcggctggcgcgagcccctgatgctcttcgtccagatcatcctgatcgacaagaccggcttccatccgagtacgtgctcgctcgatgcgatgtttcgcttggtggtcgaatgggcaggtagccggatcaagcgtatgcagccgccgcattgcatcagccatgatggatactttctcggcaggagcaaggtgagatgacaggagatcctgccccggcacttcgcccaatagcagccagtcccttcccgcttcagtgacaacgtcgagcacagctgcgcaaggaacgcccgtcgtggccagccacgatagccgcgctgcctcgtcctgcagttcattcagggcaccggacaggtcggtcttgacaaaaagaaccgggcgcccctgcgctgacagccggaacacggcggcatcagagcagccgattgtctgttgtgcccagtcatagccgaatagcctctccacccaagcggccggagaacctgcgtgcaatccatcttgttcaatcatgcgaaacgatcctcatcctgtctcttgatcagatcatgatcccctgcgccatcagatccttggcggcaagaaagccatccagtttactttgcagggcttcccaaccttaccagagggcgccccagctggcaattccgacgtcTAGGGATAACAGGGTAATTACGGCCCCAGAATTCAAAAGATCTTAAGTAAGTAAGAGTATACGTATATCGGCTAAAACGTATTAAGGCGCTTCGGCGCCTTTTTTTATGGGGGTATTTTCATCCCAATCCACACGTCCAACGCACAGCAAACACCACGTCGACCCTATCAGCTGCGTGCTTTCTATGAGTCGTTGCTGCATAACTTGACAATTAATCATCCGGCTCGTATAATGTGTGGAATTTGTAAGGAGGTGACAATATGAGCAAAGGAGAAGAACTTTTCACTGGAGTTGTCCCAATTCTTGTTGAATTAGATGGTGATGTTAATGGGCACAAATTTTCTGTCCGTGGAGAGGGTGAAGGTGATGCTACAAACGGAAAACTCACCCTTAAATTTATTTGCACTACTGGAAAACTACCTGTTCCGTGGCCAACACTTGTCACTACTCTGACCTATGGTGTTCAATGCTTTTCCCGTTATCCGGATCACATGAAACGGCATGACTTTTTCAAGAGTGCCATGCCCGAAGGTTATGTACAGGAACGCACTATATCTTTCAAAGATGACGGGACCTACAAGACGCGTGCTGAAGTCAAGTTTGAAGGTGATACCCTTGTTAATCGTATCGAGTTAAAGGGTATTGATTTTAAAGAAGATGGAAACATTCTTGGACACAAACTCGAGTACAACTTTAACTCACACAATGTATACATCACGGCAGACAAACAAAAGAATGGAATCAAAGCTAACTTCAAAATTCGCCACAACGTTGAAGATGGTTCCGTTCAACTAGCAGACCATTATCAACAAAATACTCCAATTGGCGATGGCCCTGTCCTTTTACCAGACAACCATTACCTGTCGACACAATCTGTCCTTTCGAAAGATCCCAACGAAAAGCGTGACCACATGGTCCTTCTTGAGTTTGTAACTGCTGCTGGGATTACACATGGCATGGATGAGCTCTACAAATAAGGATCGGTTGTCGAGTAAGGATCTCCAGGCATCAAATAAAACGAAAGGCTCAGTCGAAAGACTGGGCCTTTCGTTTTATCTGTTGTTTGTCGGTGAACGCTCTCTACTAGAGTCACACTGGCTCACCTTCGGGTGGGCCTTTCTGCGTTTATAGGATCCTAACTCGAGCTGAAGCCAATAGGGATAACAGGGTAATGGATCCTAACTCGAGCTGAAGCCAATAGGGATAACAGGGTAATcctagggatatattccgcttcctcgctcactgactcgctacgctcggtcgttcgactgcggcgagcggaaatggcttacgaacggggcggagatttcctggaagatgccaggaagatacttaacagggaagtgagagggccgcggcaaagccgtttttccataggctccgcccccctgacaagcatcacgaaatctgacgctcaaatcagtggtggcgaaacccgacaggactataaagataccaggcgtttccccctggcggctccctcgtgcgctctcctgttcctgcctttcggtttaccggtgtcattccgctgttatggccgcgtttgtctcattccacgcctgacactcagttccgggtaggcagttcgctccaagctggactgtatgcacgaaccccccgttcagtccgaccgctgcgccttatccggtaactatcgtcttgagtccaacccggaaagacatgcaaaagcaccactggcagcagccactggtaattgatttagaggag";
+
+        _localChecker.performCheck(trace, target);
+    }//GEN-LAST:event_inputTableMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    protected javax.swing.JButton clothoCheckButton;
     private javax.swing.JPanel inputPanel;
     private javax.swing.JTable inputTable;
     protected javax.swing.JButton jButton2;
@@ -335,11 +336,12 @@ public final class SeqCheckerTopComponent extends TopComponent
     private javax.swing.JTable jTable3;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar2;
+    private javax.swing.JSplitPane mainSplitPane;
     private javax.swing.JTabbedPane mainTabbedPanel;
     private javax.swing.JPanel outputPanel;
     protected javax.swing.JButton selectButton;
     // End of variables declaration//GEN-END:variables
-private SeqCheckInput inputTableContents;
+
 
     /**
      * Gets default instance. Do not use directly: reserved for *.settings files only,
