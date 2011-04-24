@@ -29,6 +29,7 @@ import jaligner.Sequence;
 import jaligner.SmithWatermanGotoh;
 import jaligner.matrix.MatrixLoader;
 import java.util.ArrayList;
+import javax.swing.JPanel;
 import sequencing.TraceExtract.AlignedABI;
 import sequencing.TraceExtract.ResultType;
 
@@ -72,7 +73,14 @@ public class Analyzer {
 
     public void launchReport() {
             //Instantiate the gui on the final target
-            new InteractiveReport(finalTarget, "Chris Anderson", "Best sample ever", finalTarget.getResult().toString());
+            new InteractiveReport(finalTarget, "Chris Anderson", "Best sample ever", finalTarget.getResult().toString()).showReport();
+
+    }
+
+    //returns the JPanel instead of displaying it immediately, which is done in launchReport()
+    public JPanel returnReport() {
+        return new InteractiveReport(finalTarget, "Chris Anderson", "Best sample ever", finalTarget.getResult().toString()).getPanel();
+
     }
 
     /**

@@ -91,7 +91,6 @@ public class InteractiveReport extends JPanel {
         imY=y;
 
         addMouseListener(new ClickListen());
-        disp();
     }
 
     private class ClickListen implements MouseListener {
@@ -171,6 +170,11 @@ public class InteractiveReport extends JPanel {
         frame.pack();
         frame.setVisible(true);
         frame.setResizable(false);
+    }
+
+    //returns the JPanel that would be put into the JFrame, which is what is displayed by the Sequence Analyzer
+    public JPanel getPanel() {
+        return this;
     }
 
     public void showReport(){
