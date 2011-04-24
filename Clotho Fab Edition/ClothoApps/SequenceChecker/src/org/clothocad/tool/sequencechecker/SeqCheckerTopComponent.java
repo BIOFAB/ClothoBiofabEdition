@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package org.clothocad.tool.sequencechecker;
 
 import java.io.File;
@@ -15,6 +14,10 @@ import sequencing.Analyzer;
 import sequencing.TraceExtract.ResultType;
 
 import javax.swing.JFileChooser;
+import org.clothocore.api.core.Collator;
+import org.clothocore.api.core.wrapper.ConnectionWrapper;
+import org.clothocore.api.data.Format;
+import org.clothocore.api.data.Plasmid;
 
 import org.openide.util.NbBundle;
 import org.openide.windows.TopComponent;
@@ -26,25 +29,23 @@ import org.netbeans.api.settings.ConvertAsProperties;
  * Top component which displays something.
  */
 @ConvertAsProperties(dtd = "-//org.clothocad.tool.sequencechecker//SeqChecker//EN", autostore = false)
-public final class SeqCheckerTopComponent extends TopComponent
-{
+public final class SeqCheckerTopComponent extends TopComponent {
 
     /** path to the icon used by the component and its open action */
     protected static final String ICON_PATH = "org/clothocad/tool/sequencechecker/SeqChecker.png";
     protected static final String PREFERRED_ID = "SeqCheckerTopComponent";
     protected static SeqCheckerTopComponent instance;
+    protected SeqCheckInput inputTableContents;
+    protected LocalCheckController _localChecker;
 
-    protected SeqCheckInput         inputTableContents;
-    protected LocalCheckController  _localChecker;
-
-    public SeqCheckerTopComponent()
-    {
+    public SeqCheckerTopComponent() {
         initComponents();
         setName(NbBundle.getMessage(SeqCheckerTopComponent.class, "CTL_SeqCheckerTopComponent"));
         setToolTipText(NbBundle.getMessage(SeqCheckerTopComponent.class, "HINT_SeqCheckerTopComponent"));
         setIcon(ImageUtilities.loadImage(ICON_PATH, true));
 
         _localChecker = new LocalCheckController();
+        
 
     }
 
@@ -277,49 +278,58 @@ public final class SeqCheckerTopComponent extends TopComponent
     }// </editor-fold>//GEN-END:initComponents
 
     private void selectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButtonActionPerformed
+/*
+ *  Run this code to switch to local connection, select button must be used
+    String selectstring = "org.clothocad.connection.localconnection";
+    ConnectionWrapper cw = (ConnectionWrapper) Collator.getPluginByUUID(selectstring);
+    Collator.setDefaultConnection(cw);
+*/
         JFileChooser chooser = new JFileChooser();
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         chooser.showOpenDialog(null);
         File selectedDirectory = chooser.getSelectedFile();
-        //System.out.println(selectedDirectory.getName()+ " is Directory?: "+selectedDirectory.isDirectory());
-        File[] folderContents = selectedDirectory.listFiles();
-        ArrayList<File> filteredFolderContents = new ArrayList<File>();
-
-        for (File file : folderContents)
-        {
-            //System.out.println(file.getName());
-            try
-            {
-                if (file.getName().substring(file.getName().lastIndexOf(".")).equals(".ab1"))
-                {
-                    filteredFolderContents.add(file);
-                }
-            } 
-            catch (StringIndexOutOfBoundsException e)
-            {
-                //folder names that don't have a '.' character well cause an exception to be thrown
-            }
+        if (selectedDirectory == null) { //cancel button selected
+            return;
         }
+            File[] folderContents = selectedDirectory.listFiles();
+            ArrayList<File> filteredFolderContents = new ArrayList<File>();
 
-        inputTableContents = new SeqCheckInput(filteredFolderContents); //holds the contents of the input table
-        inputTable.setModel(new javax.swing.table.DefaultTableModel(inputTableContents.getTable(),new String[]{"Trace", "Construct", "Clone", "Well"}));
+            for (File file : folderContents) {
+                //System.out.println(file.getName());
+                try {
+                    if (file.getName().substring(file.getName().lastIndexOf(".")).equals(".ab1")) {
+                        filteredFolderContents.add(file);
+                    }
+                } catch (StringIndexOutOfBoundsException e) {
+                    //folder names that don't have a '.' character well cause an exception to be thrown
+                }
+            }
+
+            inputTableContents = new SeqCheckInput(filteredFolderContents); //holds the contents of the input table
+            inputTable.setModel(new javax.swing.table.DefaultTableModel(inputTableContents.getTable(), new String[]{"Trace", "Construct", "Clone", "Well"}));
+        
     }//GEN-LAST:event_selectButtonActionPerformed
 
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
-
-        
     }//GEN-LAST:event_checkButtonActionPerformed
 
     private void inputTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputTableMouseClicked
+if (inputTableContents==null) { //inputTableContents is null when a folder has not been selected
+    return;
+}
 
         File trace = inputTableContents.getFiles().get(inputTable.getSelectedRow()); //gets the trace file at the selected row
-
-        //the String object target is represents the target sequence, and will be pulled from the construct sequence
-        String target = "ttagtcttgaagtcatgcgccggttaaggctaaactgaaaggacaagttttggtgactgcgctcctccaagccagttacctcggttcaaagagttggtagctcagagaaccttcgaaaaaccgccctgcaaggcggttttttcgttttcagagcaagagattacgcgcagaccaaaacgatctcaagaagatcatcttattaatcagataaaatatttctagatttcagtgcaatttatctcttcaaatgtagcacctgaagtcagccccatacgatataagttgttactagtgcttggattctcaccaataaaaaacgcccggcggcaaccgagcgttctgaacaaatccagatggagttctgaggtcattactggatctatcaacaggagtccaagcgagctctcgaaccccagagtcccgctcagaagaactcgtcaagaaggcgatagaaggcgatgcgctgcgaatcgggagcggcgataccgtaaagcacgaggaagcggtcagcccattcgccgccaagctcttcagcaatatcacgggtagccaacgctatgtcctgatagcggtccgccacacccagccggccacagtcgatgaatccagaaaagcggccattttccaccatgatattcggcaagcaggcatcgccatgggtcacgacgagatcctcgccgtcgggcatgcgcgccttgagcctggcgaacagttcggctggcgcgagcccctgatgctcttcgtccagatcatcctgatcgacaagaccggcttccatccgagtacgtgctcgctcgatgcgatgtttcgcttggtggtcgaatgggcaggtagccggatcaagcgtatgcagccgccgcattgcatcagccatgatggatactttctcggcaggagcaaggtgagatgacaggagatcctgccccggcacttcgcccaatagcagccagtcccttcccgcttcagtgacaacgtcgagcacagctgcgcaaggaacgcccgtcgtggccagccacgatagccgcgctgcctcgtcctgcagttcattcagggcaccggacaggtcggtcttgacaaaaagaaccgggcgcccctgcgctgacagccggaacacggcggcatcagagcagccgattgtctgttgtgcccagtcatagccgaatagcctctccacccaagcggccggagaacctgcgtgcaatccatcttgttcaatcatgcgaaacgatcctcatcctgtctcttgatcagatcatgatcccctgcgccatcagatccttggcggcaagaaagccatccagtttactttgcagggcttcccaaccttaccagagggcgccccagctggcaattccgacgtcTAGGGATAACAGGGTAATTACGGCCCCAGAATTCAAAAGATCTTAAGTAAGTAAGAGTATACGTATATCGGCTAAAACGTATTAAGGCGCTTCGGCGCCTTTTTTTATGGGGGTATTTTCATCCCAATCCACACGTCCAACGCACAGCAAACACCACGTCGACCCTATCAGCTGCGTGCTTTCTATGAGTCGTTGCTGCATAACTTGACAATTAATCATCCGGCTCGTATAATGTGTGGAATTTGTAAGGAGGTGACAATATGAGCAAAGGAGAAGAACTTTTCACTGGAGTTGTCCCAATTCTTGTTGAATTAGATGGTGATGTTAATGGGCACAAATTTTCTGTCCGTGGAGAGGGTGAAGGTGATGCTACAAACGGAAAACTCACCCTTAAATTTATTTGCACTACTGGAAAACTACCTGTTCCGTGGCCAACACTTGTCACTACTCTGACCTATGGTGTTCAATGCTTTTCCCGTTATCCGGATCACATGAAACGGCATGACTTTTTCAAGAGTGCCATGCCCGAAGGTTATGTACAGGAACGCACTATATCTTTCAAAGATGACGGGACCTACAAGACGCGTGCTGAAGTCAAGTTTGAAGGTGATACCCTTGTTAATCGTATCGAGTTAAAGGGTATTGATTTTAAAGAAGATGGAAACATTCTTGGACACAAACTCGAGTACAACTTTAACTCACACAATGTATACATCACGGCAGACAAACAAAAGAATGGAATCAAAGCTAACTTCAAAATTCGCCACAACGTTGAAGATGGTTCCGTTCAACTAGCAGACCATTATCAACAAAATACTCCAATTGGCGATGGCCCTGTCCTTTTACCAGACAACCATTACCTGTCGACACAATCTGTCCTTTCGAAAGATCCCAACGAAAAGCGTGACCACATGGTCCTTCTTGAGTTTGTAACTGCTGCTGGGATTACACATGGCATGGATGAGCTCTACAAATAAGGATCGGTTGTCGAGTAAGGATCTCCAGGCATCAAATAAAACGAAAGGCTCAGTCGAAAGACTGGGCCTTTCGTTTTATCTGTTGTTTGTCGGTGAACGCTCTCTACTAGAGTCACACTGGCTCACCTTCGGGTGGGCCTTTCTGCGTTTATAGGATCCTAACTCGAGCTGAAGCCAATAGGGATAACAGGGTAATGGATCCTAACTCGAGCTGAAGCCAATAGGGATAACAGGGTAATcctagggatatattccgcttcctcgctcactgactcgctacgctcggtcgttcgactgcggcgagcggaaatggcttacgaacggggcggagatttcctggaagatgccaggaagatacttaacagggaagtgagagggccgcggcaaagccgtttttccataggctccgcccccctgacaagcatcacgaaatctgacgctcaaatcagtggtggcgaaacccgacaggactataaagataccaggcgtttccccctggcggctccctcgtgcgctctcctgttcctgcctttcggtttaccggtgtcattccgctgttatggccgcgtttgtctcattccacgcctgacactcagttccgggtaggcagttcgctccaagctggactgtatgcacgaaccccccgttcagtccgaccgctgcgccttatccggtaactatcgtcttgagtccaacccggaaagacatgcaaaagcaccactggcagcagccactggtaattgatttagaggag";
-
+        String partName = inputTableContents.getConstructNames()[inputTable.getSelectedRow()]; //retrieves the construct name field from the selected row
+        //Get the region of the plasmid to validate as a String (seq)
+        Plasmid aplas = Plasmid.retrieveByName(partName); //querying for a part is done through a Format, not the Collector
+        if (aplas == null) {
+            System.out.println("Plasmid with given name: "+partName+" could not be found");
+            return; //Plasmid with given name, partName, could not be found
+        }
+        Format aform = aplas.getFormat(); //get the Format of aplas
+        String target = aform.generateSequencingRegion(aplas).getSeq(); //based on the Format, a sequencing region is generated
         _localChecker.performCheck(trace, target);
     }//GEN-LAST:event_inputTableMouseClicked
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel inputPanel;
     private javax.swing.JTable inputTable;
@@ -342,13 +352,11 @@ public final class SeqCheckerTopComponent extends TopComponent
     protected javax.swing.JButton selectButton;
     // End of variables declaration//GEN-END:variables
 
-
     /**
      * Gets default instance. Do not use directly: reserved for *.settings files only,
      * i.e. deserialization routines; otherwise you could get a non-deserialized instance.
      * To obtain the singleton instance, use {@link #findInstance}.
      */
-
     public static synchronized SeqCheckerTopComponent getDefault() {
         if (instance == null) {
             instance = new SeqCheckerTopComponent();
