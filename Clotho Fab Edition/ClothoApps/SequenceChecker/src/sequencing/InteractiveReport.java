@@ -159,6 +159,7 @@ public class InteractiveReport extends JPanel {
         System.out.println("best trace is " + currentTrace.name);
         setBackground(Color.WHITE);
         repaint();
+        this.getParent().repaint();
 
     }
 
