@@ -35,7 +35,7 @@ import javax.swing.JScrollPane;
 import org.clothocore.api.data.ObjType;
 import org.clothocore.util.basic.ImageSource;
 import org.clothocore.util.buttons.TransparentButton;
-import org.clothocore.widget.fabdash.TreeBrowseTopComponent;
+import org.clothocore.widget.fabdash.InventoryTopComponent;
 
 /**
  *
@@ -43,7 +43,7 @@ import org.clothocore.widget.fabdash.TreeBrowseTopComponent;
  */
 public class ObjTypeChooser extends JPanel {
 
-    public ObjTypeChooser(TreeBrowseTopComponent tc) {
+    public ObjTypeChooser(InventoryTopComponent tc) {
         _browser = tc;
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(200,62));
@@ -99,5 +99,5 @@ public class ObjTypeChooser extends JPanel {
     ///////////////////////////////////////////////////////////////////
     ////                      private variables                    ////
     private typeButton chosenButton;
-    private TreeBrowseTopComponent _browser;
+    private InventoryTopComponent _browser;
 }

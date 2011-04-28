@@ -42,23 +42,23 @@ import org.netbeans.api.settings.ConvertAsProperties;
 /**
  * Top component which displays something.
  */
-@ConvertAsProperties(dtd = "-//org.clothocore.widget.fabdash//TreeBrowse//EN",
+@ConvertAsProperties(dtd = "-//org.clothocore.widget.fabdash//Inventory//EN",
 autostore = false)
-public final class TreeBrowseTopComponent extends TopComponent {
+public final class InventoryTopComponent extends TopComponent {
 
-    private static TreeBrowseTopComponent instance;
+    private static InventoryTopComponent instance;
     /** path to the icon used by the component and its open action */
 //    static final String ICON_PATH = "SET/PATH/TO/ICON/HERE";
-    private static final String PREFERRED_ID = "TreeBrowseTopComponent";
+    private static final String PREFERRED_ID = "InventoryTopComponent";
 
-    public TreeBrowseTopComponent() {
+    public InventoryTopComponent() {
         initComponents();
         add(new ObjTypeChooser(this), java.awt.BorderLayout.NORTH);
         add(new SearchBar(), java.awt.BorderLayout.SOUTH);
 
         
-        setName(NbBundle.getMessage(TreeBrowseTopComponent.class, "CTL_TreeBrowseTopComponent"));
-        setToolTipText(NbBundle.getMessage(TreeBrowseTopComponent.class, "HINT_TreeBrowseTopComponent"));
+        setName(NbBundle.getMessage(InventoryTopComponent.class, "CTL_InventoryTopComponent"));
+        setToolTipText(NbBundle.getMessage(InventoryTopComponent.class, "HINT_InventoryTopComponent"));
 //        setIcon(ImageUtilities.loadImage(ICON_PATH, true));
         putClientProperty(TopComponent.PROP_CLOSING_DISABLED, Boolean.TRUE);
 
@@ -69,7 +69,7 @@ public final class TreeBrowseTopComponent extends TopComponent {
         System.out.println(_chosenType);
     }
 
-    private void grabTreeDataForCurrentUser() {
+    private void fetchInventoryInformation() {
 
         new SwingWorker() {
             Collection personalCollection  = null;
@@ -91,8 +91,8 @@ public final class TreeBrowseTopComponent extends TopComponent {
 
             @Override
             public void done() {
-                browseTree.setModel( CollectionBrowser.generate(personalCollection));
-                browseTree.validate();
+//                browseTree.setModel( CollectionBrowser.generate(personalCollection));
+//                browseTree.validate();
                 repaint();
             }
         }.execute();
@@ -105,76 +105,76 @@ public final class TreeBrowseTopComponent extends TopComponent {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        browseTree = new javax.swing.JTree();
+        plasmidTable = new javax.swing.JTable();
 
         setLayout(new java.awt.BorderLayout());
 
-        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Connecting...");
-        browseTree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        browseTree.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                browseTreeMouseClicked(evt);
+        plasmidTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null},
+                {null},
+                {null},
+                {null}
+            },
+            new String [] {
+                "Identifier"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(browseTree);
+        jScrollPane1.setViewportView(plasmidTable);
 
-        add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        jTabbedPane1.addTab(org.openide.util.NbBundle.getMessage(InventoryTopComponent.class, "InventoryTopComponent.jScrollPane1.TabConstraints.tabTitle"), jScrollPane1); // NOI18N
+
+        add(jTabbedPane1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void browseTreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_browseTreeMouseClicked
-        if(evt.getClickCount()==2) {
-            try {
-                if(browseTree.getSelectionPath()==null) {
-                    return;
-                }
-                Object[] selectedList = browseTree.getSelectionPath().getPath();
-                ObjBase obj = (ObjBase) selectedList[selectedList.length-1];
-                obj.launchDefaultViewer();
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
-        } else if(evt.getModifiers() == 4) {
-            try {
-                Object[] selectedList = browseTree.getSelectionPath().getPath();
-                ObjBase obj = (ObjBase) selectedList[selectedList.length-1];
-                new ObjBasePopup(browseTree, obj, evt.getPoint());
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }//GEN-LAST:event_browseTreeMouseClicked
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTree browseTree;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    protected javax.swing.JTable plasmidTable;
     // End of variables declaration//GEN-END:variables
     /**
      * Gets default instance. Do not use directly: reserved for *.settings files only,
      * i.e. deserialization routines; otherwise you could get a non-deserialized instance.
      * To obtain the singleton instance, use {@link #findInstance}.
      */
-    public static synchronized TreeBrowseTopComponent getDefault() {
+    public static synchronized InventoryTopComponent getDefault() {
         if (instance == null) {
-            instance = new TreeBrowseTopComponent();
+            instance = new InventoryTopComponent();
         }
         return instance;
     }
 
     /**
-     * Obtain the TreeBrowseTopComponent instance. Never call {@link #getDefault} directly!
+     * Obtain the InventoryTopComponent instance. Never call {@link #getDefault} directly!
      */
-    public static synchronized TreeBrowseTopComponent findInstance() {
+    public static synchronized InventoryTopComponent findInstance() {
         TopComponent win = WindowManager.getDefault().findTopComponent(PREFERRED_ID);
         if (win == null) {
-            Logger.getLogger(TreeBrowseTopComponent.class.getName()).warning(
+            Logger.getLogger(InventoryTopComponent.class.getName()).warning(
                     "Cannot find " + PREFERRED_ID + " component. It will not be located properly in the window system.");
             return getDefault();
         }
-        if (win instanceof TreeBrowseTopComponent) {
-            return (TreeBrowseTopComponent) win;
+        if (win instanceof InventoryTopComponent) {
+            return (InventoryTopComponent) win;
         }
-        Logger.getLogger(TreeBrowseTopComponent.class.getName()).warning(
+        Logger.getLogger(InventoryTopComponent.class.getName()).warning(
                 "There seem to be multiple components with the '" + PREFERRED_ID
                 + "' ID. That is a potential source of errors and unexpected behavior.");
         return getDefault();
@@ -188,8 +188,9 @@ public final class TreeBrowseTopComponent extends TopComponent {
     @Override
 
     //Called to populate the tree
-    public void componentOpened() {
-        grabTreeDataForCurrentUser();
+    public void componentOpened()
+    {
+        fetchInventoryInformation();
     }
 
     @Override

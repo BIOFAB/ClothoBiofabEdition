@@ -22,9 +22,10 @@ PROVIDED HEREUNDER IS ON AN "AS IS" BASIS, AND THE UNIVERSITY OF
 CALIFORNIA HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES,
 ENHANCEMENTS, OR MODIFICATIONS..
 -->
-<!DOCTYPE tc-ref PUBLIC "-//NetBeans//DTD Top Component in Mode Properties 2.0//EN" "http://www.netbeans.org/dtds/tc-ref2_0.dtd">
-<tc-ref version="2.0" >
+<!DOCTYPE settings PUBLIC "-//NetBeans//DTD Session settings 1.0//EN" "http://www.netbeans.org/dtds/sessionsettings-1_0.dtd">
+<settings version="1.0">
     <module name="org.clothocore.widget.fabdash" spec="1.0"/>
-    <tc-id id="TreeBrowseTopComponent"/>
-    <state opened="true"/>
-</tc-ref>
+    <instanceof class="org.openide.windows.TopComponent"/>
+    <instanceof class="org.clothocore.widget.fabdash.InventoryTopComponent"/>
+    <instance class="org.clothocore.widget.fabdash.InventoryTopComponent" method="getDefault"/>
+</settings>

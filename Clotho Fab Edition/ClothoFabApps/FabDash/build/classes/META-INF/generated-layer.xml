@@ -6,8 +6,12 @@
         <folder name="entities">
             <folder name="org_clothocore_widget_fabdash">
                 <file name="TreeBrowse" url="nbres:/org/netbeans/modules/settings/resources/properties-1_0.dtd">
-                    <!--org.clothocore.widget.fabdash.TreeBrowseTopComponent-->
+                    <!--org.clothocore.widget.fabdash.InventoryTopComponent-->
                     <attr name="hint.originalPublicID" stringvalue="-//org.clothocore.widget.fabdash//TreeBrowse//EN"/>
+                </file>
+                <file name="Inventory" url="nbres:/org/netbeans/modules/settings/resources/properties-1_0.dtd">
+                    <!--org.clothocore.widget.fabdash.InventoryTopComponent-->
+                    <attr name="hint.originalPublicID" stringvalue="-//org.clothocore.widget.fabdash//Inventory//EN"/>
                 </file>
             </folder>
         </folder>
@@ -16,9 +20,9 @@
                 <folder name="clothocore">
                     <folder name="widget">
                         <folder name="fabdash">
-                            <file name="TreeBrowseTopComponent">
-                                <!--org.clothocore.widget.fabdash.TreeBrowseTopComponent-->
-                                <attr name="settings.providerPath" stringvalue="xml/lookups//org_clothocore_widget_fabdash/TreeBrowse.instance"/>
+                            <file name="InventoryTopComponent">
+                                <!--org.clothocore.widget.fabdash.InventoryTopComponent-->
+                                <attr name="settings.providerPath" stringvalue="xml/lookups//org_clothocore_widget_fabdash/Inventory.instance"/>
                             </file>
                         </folder>
                     </folder>
@@ -28,13 +32,23 @@
         <folder name="lookups">
             <folder name="org_clothocore_widget_fabdash">
                 <file name="TreeBrowse.instance">
-                    <!--org.clothocore.widget.fabdash.TreeBrowseTopComponent-->
+                    <!--org.clothocore.widget.fabdash.InventoryTopComponent-->
                     <attr
                         methodvalue="org.netbeans.api.settings.Factory.create" name="instanceCreate"/>
                     <attr
                         methodvalue="org.netbeans.api.settings.Factory.properties" name="settings.convertor"/>
-                    <attr name="settings.instanceClass" stringvalue="org.clothocore.widget.fabdash.TreeBrowseTopComponent"/>
-                    <attr name="settings.instanceOf" stringvalue="org.clothocore.widget.fabdash.TreeBrowseTopComponent"/>
+                    <attr name="settings.instanceClass" stringvalue="org.clothocore.widget.fabdash.InventoryTopComponent"/>
+                    <attr name="settings.instanceOf" stringvalue="org.clothocore.widget.fabdash.InventoryTopComponent"/>
+                    <attr boolvalue="true" name="xmlproperties.preventStoring"/>
+                </file>
+                <file name="Inventory.instance">
+                    <!--org.clothocore.widget.fabdash.InventoryTopComponent-->
+                    <attr
+                        methodvalue="org.netbeans.api.settings.Factory.create" name="instanceCreate"/>
+                    <attr
+                        methodvalue="org.netbeans.api.settings.Factory.properties" name="settings.convertor"/>
+                    <attr name="settings.instanceClass" stringvalue="org.clothocore.widget.fabdash.InventoryTopComponent"/>
+                    <attr name="settings.instanceOf" stringvalue="org.clothocore.widget.fabdash.InventoryTopComponent"/>
                     <attr boolvalue="true" name="xmlproperties.preventStoring"/>
                 </file>
             </folder>

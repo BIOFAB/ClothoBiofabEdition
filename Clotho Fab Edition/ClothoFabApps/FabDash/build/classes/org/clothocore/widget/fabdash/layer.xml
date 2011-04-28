@@ -5,9 +5,9 @@
     <attr name="Menu\Help\position" intvalue="500"/>
     <folder name="Actions">
         <folder name="Window">
-            <file name="org-clothocore-widget-fabdash-TreeBrowseAction.instance">
-                <attr name="component" methodvalue="org.clothocore.widget.fabdash.TreeBrowseTopComponent.findInstance"/>
-                <attr name="displayName" bundlevalue="org.clothocore.widget.fabdash.Bundle#CTL_TreeBrowseAction"/>
+            <file name="org-clothocore-widget-fabdash-InventoryAction.instance">
+                <attr name="component" methodvalue="org.clothocore.widget.fabdash.InventoryTopComponent.findInstance"/>
+                <attr name="displayName" bundlevalue="org.clothocore.widget.fabdash.Bundle#CTL_InventoryAction"/>
                 <attr name="instanceCreate" methodvalue="org.openide.windows.TopComponent.openAction"/>
             </file>
             <file name="org-clothocore-widget-fabdash-PopulateTools.instance"/>
@@ -35,11 +35,11 @@
     </folder>
     <folder name="Windows2">
         <folder name="Components">
-            <file name="TreeBrowseTopComponent.settings" url="TreeBrowseTopComponentSettings.xml"/>
+            <file name="InventoryTopComponent.settings" url="InventoryTopComponentSettings.xml"/>
         </folder>
         <folder name="Modes">
             <folder name="explorer">
-                <file name="TreeBrowseTopComponent.wstcref" url="TreeBrowseTopComponentWstcref.xml"/>
+                <file name="InventoryTopComponent.wstcref" url="InventoryTopComponentWstcref.xml"/>
             </folder>
         </folder>
     </folder>
