@@ -3,13 +3,13 @@ package org.clothocad.tool.sequencechecker;
 import java.io.File;
 import java.util.ArrayList;
 
-public class SeqCheckInput {
+public class SeqCheckData {
 
     protected Object[][]        table; //table form of the data
     protected int               numberOfElements; //stores the number of trace files held in table
     protected ArrayList<File>   files; //holds all the file objects
 
-    public SeqCheckInput(ArrayList<File> fileList)
+    public SeqCheckData(ArrayList<File> fileList)
     {
         table = new Object[fileList.size()][4];
         numberOfElements = fileList.size();
@@ -18,34 +18,21 @@ public class SeqCheckInput {
 
         for (File file : fileList)
         {
-            table[i][0] = file.getName();
-<<<<<<< HEAD
-            String[] tokens = file.getName().split("[\\p{Punct}]");
-            table[i][1] = tokens[0]; //construct name should appear before first underscore or period
-            table[i][3] = tokens[tokens.length - 2];
-            try
-            {
-                Integer.parseInt(tokens[1]);
-                table[i][2] = tokens[1]; //second token should contain the clone number
-            } 
-            catch (NumberFormatException e)
-            {
-                table[i][2] = null;
-=======
+            table[i][3] = file.getName(); //Trace file names
             String[] tokens = file.getName().split("[_.]");
+            table[i][2]=tokens[2];
             for (String token : tokens) {
-                if (token.toLowerCase().matches("[a-zA-Z]{1}\\d{1,}")) {
-                    table[i][3] = token;
-                }
+                /*if (token.toLowerCase().matches("[a-zA-Z]{1}\\d{1,}")) {
+                    table[i][2] = token; //Primer name
+                }*/
                 if (token.toLowerCase().matches("[a-zA-Z]*?\\d{2,}?") && table[i][1] == null && token != table[i][3]) {
-                    table[i][1] = token;
+                    table[i][0] = token; //Construct
                 }
                 if (token.toLowerCase().matches("\\d+")) {
-                    table[i][2] = token;
+                    table[i][1] = token; //Clone number
                 }
->>>>>>> 49315df95ece17274180eefc5e10ec94040f6800
             }
-            
+
             i++;
         }
     }
@@ -69,7 +56,7 @@ public class SeqCheckInput {
     public String[] getTraces()
     {
         String[] toReturn = new String[numberOfElements];
-        
+
         for (int i = 0; i < numberOfElements; i++)
         {
             toReturn[i] = (String) table[i][0];

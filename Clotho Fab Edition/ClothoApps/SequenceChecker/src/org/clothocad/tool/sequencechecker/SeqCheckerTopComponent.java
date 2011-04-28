@@ -36,7 +36,7 @@ public final class SeqCheckerTopComponent extends TopComponent {
     protected static final String ICON_PATH = "org/clothocad/tool/sequencechecker/SeqChecker.png";
     protected static final String PREFERRED_ID = "SeqCheckerTopComponent";
     protected static SeqCheckerTopComponent instance;
-    protected SeqCheckInput inputTableContents;
+    protected SeqCheckData inputTableContents;
     protected LocalCheckController _localChecker;
 
     public SeqCheckerTopComponent() {
@@ -210,14 +210,14 @@ public final class SeqCheckerTopComponent extends TopComponent {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Status", "Construct", "Clone", "Primer", "Trace File"
+                "Construct", "Clone", "Primer Name", "Trace File", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -228,16 +228,19 @@ public final class SeqCheckerTopComponent extends TopComponent {
                 return canEdit [columnIndex];
             }
         });
+        inputTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        inputTable.setFillsViewportHeight(true);
         inputTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 inputTableMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(inputTable);
-        inputTable.getColumnModel().getColumn(0).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title0")); // NOI18N
-        inputTable.getColumnModel().getColumn(1).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title1")); // NOI18N
-        inputTable.getColumnModel().getColumn(2).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title2")); // NOI18N
-        inputTable.getColumnModel().getColumn(3).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title3")); // NOI18N
+        inputTable.getColumnModel().getColumn(0).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title1")); // NOI18N
+        inputTable.getColumnModel().getColumn(1).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title2")); // NOI18N
+        inputTable.getColumnModel().getColumn(2).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title3")); // NOI18N
+        inputTable.getColumnModel().getColumn(3).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title4_1")); // NOI18N
+        inputTable.getColumnModel().getColumn(4).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title0")); // NOI18N
 
         mainSplitPane.setLeftComponent(jScrollPane1);
 
@@ -306,9 +309,9 @@ public final class SeqCheckerTopComponent extends TopComponent {
             }
         }
 
-        inputTableContents = new SeqCheckInput(filteredFolderContents); //holds the contents of the input table
-        inputTable.setModel(new javax.swing.table.DefaultTableModel(inputTableContents.getTable(), new String[]{"Trace", "Construct", "Clone", "Well"}));
-
+        inputTableContents = new SeqCheckData(filteredFolderContents); //holds the contents of the input table
+        inputTable.setModel(new javax.swing.table.DefaultTableModel(inputTableContents.getTable(), new String[]{"Construct", "Clone", "Primer Name", "Trace", "Status"}));
+        inputTable.doLayout();
     }//GEN-LAST:event_selectButtonActionPerformed
 
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
