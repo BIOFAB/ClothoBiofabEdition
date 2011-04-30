@@ -55,10 +55,6 @@ Thumbs.db
 *.war
 *.pyc
 
-# SVN Folders #
-###############
-.svn/
-
 # Folders to Ignore #
 #################
 .svn/

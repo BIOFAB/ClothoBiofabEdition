@@ -25,6 +25,8 @@ package org.clothocore.widget.fabdash;
 
 import java.util.logging.Logger;
 import javax.swing.SwingWorker;
+//import org.clothocore.api.core.Collator;
+//import org.clothocore.api.core.wrapper.ConnectionWrapper;
 import org.clothocore.api.core.Collector;
 import org.clothocore.api.data.Collection;
 import org.clothocore.api.data.ObjBase;
@@ -51,7 +53,13 @@ public final class InventoryTopComponent extends TopComponent {
 //    static final String ICON_PATH = "SET/PATH/TO/ICON/HERE";
     private static final String PREFERRED_ID = "InventoryTopComponent";
 
-    public InventoryTopComponent() {
+    public InventoryTopComponent()
+    {
+//        //Switches Clotho to a local database
+//        String selectstring = "org.clothocad.connection.localconnection";
+//        ConnectionWrapper cw = (ConnectionWrapper) Collator.getPluginByUUID(selectstring);
+//        Collator.setDefaultConnection(cw);
+
         initComponents();
         add(new ObjTypeChooser(this), java.awt.BorderLayout.NORTH);
         add(new SearchBar(), java.awt.BorderLayout.SOUTH);
@@ -81,20 +89,26 @@ public final class InventoryTopComponent extends TopComponent {
                     return null;
                 }
 
-                try {
+                try
+                {
                     personalCollection = Collector.getCurrentUser().getHerCollection();
-                }  catch (Exception e) {
+                }  
+                catch (Exception e)
+                {
                     e.printStackTrace();
                 }
+
                 return null;
             }
 
             @Override
-            public void done() {
+            public void done()
+            {
 //                browseTree.setModel( CollectionBrowser.generate(personalCollection));
 //                browseTree.validate();
                 repaint();
             }
+            
         }.execute();
     }
     /** This method is called from within the constructor to
@@ -154,10 +168,13 @@ public final class InventoryTopComponent extends TopComponent {
      * i.e. deserialization routines; otherwise you could get a non-deserialized instance.
      * To obtain the singleton instance, use {@link #findInstance}.
      */
-    public static synchronized InventoryTopComponent getDefault() {
-        if (instance == null) {
+    public static synchronized InventoryTopComponent getDefault()
+    {
+        if (instance == null)
+        {
             instance = new InventoryTopComponent();
         }
+        
         return instance;
     }
 
@@ -205,15 +222,19 @@ public final class InventoryTopComponent extends TopComponent {
         // TODO store your settings
     }
 
-    Object readProperties(java.util.Properties p) {
-        if (instance == null) {
+    Object readProperties(java.util.Properties p)
+    {
+        if (instance == null)
+        {
             instance = this;
         }
+        
         instance.readPropertiesImpl(p);
         return instance;
     }
 
-    private void readPropertiesImpl(java.util.Properties p) {
+    private void readPropertiesImpl(java.util.Properties p)
+    {
         String version = p.getProperty("version");
         // TODO read your settings according to their version
     }

@@ -28,6 +28,8 @@ import java.io.PrintStream;
 import javax.swing.SwingUtilities;
 import org.clothocore.api.core.Collector;
 import org.clothocore.api.plugin.ClothoWidget;
+import org.clothocore.api.core.Collator;
+import org.clothocore.api.core.wrapper.ConnectionWrapper;
 
 /**
  *
@@ -67,14 +69,23 @@ public class Connect implements ClothoWidget  {
     }
 
     @Override
-    public void launch() {
+    public void launch()
+    {
         redirectSystemStreams();
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Collector.connectToDefault();
+        SwingUtilities.invokeLater(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    //Switches Clotho to a local database
+                    String selectstring = "org.clothocad.connection.localconnection";
+                    ConnectionWrapper cw = (ConnectionWrapper) Collator.getPluginByUUID(selectstring);
+                    Collator.setDefaultConnection(cw);
+
+                    Collector.connectToDefault();
+                }
             }
-        });
+        );
     }
     ///////////////////////////////////////////////////////////////////
     ////                         private variables               ////
