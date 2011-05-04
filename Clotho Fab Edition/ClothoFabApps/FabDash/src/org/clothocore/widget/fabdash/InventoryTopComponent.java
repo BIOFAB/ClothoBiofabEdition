@@ -24,6 +24,7 @@ ENHANCEMENTS, OR MODIFICATIONS..
 package org.clothocore.widget.fabdash;
 
 import java.util.logging.Logger;
+import javax.swing.JTable;
 import javax.swing.SwingWorker;
 //import org.clothocore.api.core.Collator;
 //import org.clothocore.api.core.wrapper.ConnectionWrapper;
@@ -40,7 +41,6 @@ import org.openide.windows.WindowManager;
 //import org.openide.util.ImageUtilities;
 import org.netbeans.api.settings.ConvertAsProperties;
 
-
 /**
  * Top component which displays something.
  */
@@ -53,8 +53,7 @@ public final class InventoryTopComponent extends TopComponent {
 //    static final String ICON_PATH = "SET/PATH/TO/ICON/HERE";
     private static final String PREFERRED_ID = "InventoryTopComponent";
 
-    public InventoryTopComponent()
-    {
+    public InventoryTopComponent() {
 //        //Switches Clotho to a local database
 //        String selectstring = "org.clothocad.connection.localconnection";
 //        ConnectionWrapper cw = (ConnectionWrapper) Collator.getPluginByUUID(selectstring);
@@ -64,7 +63,7 @@ public final class InventoryTopComponent extends TopComponent {
         add(new ObjTypeChooser(this), java.awt.BorderLayout.NORTH);
         add(new SearchBar(), java.awt.BorderLayout.SOUTH);
 
-        
+
         setName(NbBundle.getMessage(InventoryTopComponent.class, "CTL_InventoryTopComponent"));
         setToolTipText(NbBundle.getMessage(InventoryTopComponent.class, "HINT_InventoryTopComponent"));
 //        setIcon(ImageUtilities.loadImage(ICON_PATH, true));
@@ -80,21 +79,19 @@ public final class InventoryTopComponent extends TopComponent {
     private void fetchInventoryInformation() {
 
         new SwingWorker() {
-            Collection personalCollection  = null;
+
+            Collection personalCollection = null;
 
             @Override
             protected Object doInBackground() throws Exception {
                 System.out.println("################################ FabDash connecting");
-                if(!Collector.isConnected()) {
+                if (!Collector.isConnected()) {
                     return null;
                 }
 
-                try
-                {
+                try {
                     personalCollection = Collector.getCurrentUser().getHerCollection();
-                }  
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -102,15 +99,14 @@ public final class InventoryTopComponent extends TopComponent {
             }
 
             @Override
-            public void done()
-            {
+            public void done() {
 //                browseTree.setModel( CollectionBrowser.generate(personalCollection));
 //                browseTree.validate();
                 repaint();
             }
-            
         }.execute();
     }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -127,20 +123,20 @@ public final class InventoryTopComponent extends TopComponent {
 
         plasmidTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Identifier"
+                "Plasmid Name", "Sequence"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false
+                false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -152,31 +148,32 @@ public final class InventoryTopComponent extends TopComponent {
             }
         });
         jScrollPane1.setViewportView(plasmidTable);
+        plasmidTable.getColumnModel().getColumn(0).setHeaderValue(org.openide.util.NbBundle.getMessage(InventoryTopComponent.class, "InventoryTopComponent.plasmidTable.columnModel.title0")); // NOI18N
+        plasmidTable.getColumnModel().getColumn(1).setHeaderValue(org.openide.util.NbBundle.getMessage(InventoryTopComponent.class, "InventoryTopComponent.plasmidTable.columnModel.title1")); // NOI18N
 
         jTabbedPane1.addTab(org.openide.util.NbBundle.getMessage(InventoryTopComponent.class, "InventoryTopComponent.jScrollPane1.TabConstraints.tabTitle"), jScrollPane1); // NOI18N
 
         add(jTabbedPane1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     protected javax.swing.JTable plasmidTable;
     // End of variables declaration//GEN-END:variables
+
     /**
      * Gets default instance. Do not use directly: reserved for *.settings files only,
      * i.e. deserialization routines; otherwise you could get a non-deserialized instance.
      * To obtain the singleton instance, use {@link #findInstance}.
      */
-    public static synchronized InventoryTopComponent getDefault()
-    {
-        if (instance == null)
-        {
+    public static synchronized InventoryTopComponent getDefault() {
+        if (instance == null) {
             instance = new InventoryTopComponent();
         }
-        
+
         return instance;
     }
+
 
     /**
      * Obtain the InventoryTopComponent instance. Never call {@link #getDefault} directly!
@@ -203,10 +200,8 @@ public final class InventoryTopComponent extends TopComponent {
     }
 
     @Override
-
     //Called to populate the tree
-    public void componentOpened()
-    {
+    public void componentOpened() {
         fetchInventoryInformation();
     }
 
@@ -222,19 +217,16 @@ public final class InventoryTopComponent extends TopComponent {
         // TODO store your settings
     }
 
-    Object readProperties(java.util.Properties p)
-    {
-        if (instance == null)
-        {
+    Object readProperties(java.util.Properties p) {
+        if (instance == null) {
             instance = this;
         }
-        
+
         instance.readPropertiesImpl(p);
         return instance;
     }
 
-    private void readPropertiesImpl(java.util.Properties p)
-    {
+    private void readPropertiesImpl(java.util.Properties p) {
         String version = p.getProperty("version");
         // TODO read your settings according to their version
     }
@@ -243,8 +235,6 @@ public final class InventoryTopComponent extends TopComponent {
     protected String preferredID() {
         return PREFERRED_ID;
     }
-
-
     ///////////////////////////////////////////////////////////////////
     ////                      private variables                    ////
     private ObjType _chosenType = ObjType.PART;

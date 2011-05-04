@@ -4,6 +4,8 @@
  */
 package org.clothocad.tool.sequencechecker;
 
+import java.awt.Component;
+import org.clothocore.widget.fabdash.InventoryTopComponent;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.logging.Logger;
@@ -11,6 +13,10 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 //import org.clothocore.api.core.Collator;
 //import org.clothocore.api.core.wrapper.ConnectionWrapper;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JViewport;
 import org.clothocore.api.data.Format;
 import org.clothocore.api.data.Plasmid;
 
@@ -24,8 +30,7 @@ import org.netbeans.api.settings.ConvertAsProperties;
  * Top component which displays something.
  */
 @ConvertAsProperties(dtd = "-//org.clothocad.tool.sequencechecker//SeqChecker//EN", autostore = false)
-public final class SeqCheckerTopComponent extends TopComponent
-{
+public final class SeqCheckerTopComponent extends TopComponent {
 
     /** path to the icon used by the component and its open action */
     protected static final String ICON_PATH = "org/clothocad/tool/sequencechecker/SeqChecker.png";
@@ -34,8 +39,7 @@ public final class SeqCheckerTopComponent extends TopComponent
     protected SeqCheckData inputTableContents;
     protected LocalCheckController _localChecker;
 
-    public SeqCheckerTopComponent()
-    {
+    public SeqCheckerTopComponent() {
         initComponents();
         setName(NbBundle.getMessage(SeqCheckerTopComponent.class, "CTL_SeqCheckerTopComponent"));
         setToolTipText(NbBundle.getMessage(SeqCheckerTopComponent.class, "HINT_SeqCheckerTopComponent"));
@@ -306,14 +310,26 @@ public final class SeqCheckerTopComponent extends TopComponent
         inputTableContents = new SeqCheckData(filteredFolderContents); //holds the contents of the input table
         inputTable.setModel(new javax.swing.table.DefaultTableModel(inputTableContents.getTable(), new String[]{"Construct", "Clone", "Primer Name", "Trace", "Status"}));
         inputTable.doLayout();
+        InventoryTopComponent itc = InventoryTopComponent.findInstance(); //finds instance of inventory top component
+        JTable itcTable = (JTable) ((JViewport) ((JScrollPane) ((JTabbedPane) itc.getComponent(0)).getComponent(0)).getComponent(0)).getComponent(0); //retrieves a reference to the plasmidTable JTable in the InventoryTopComponent class
+        String[] constructNames = inputTableContents.getConstructNames();
+        Object[][] itcTableModel = new Object[constructNames.length][2];
+
+        for (int i = 0; i < constructNames.length; i++) {
+            itcTableModel[i][0] = constructNames[i];
+            //Plasmid aplas = Plasmid.retrieveByName(partName); //querying for a part is done through a Format, not the Collector
+            //Format aform = aplas.getFormat(); //get the Format of aplas
+            //itcTableModle[i][1] = aform.generateSequencingRegion(aplas).getSeq(); //based on the Format, the sequence of the region of interest is retreieved and used to populate the table
+        }
+        itcTable.setModel(new javax.swing.table.DefaultTableModel(itcTableModel, new String[]{"Plasmid Name", "Sequence"}));
+
     }//GEN-LAST:event_selectButtonActionPerformed
 
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
     }//GEN-LAST:event_checkButtonActionPerformed
 
     private void inputTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputTableMouseClicked
-        if (inputTableContents == null)
-        { //inputTableContents is null when a folder has not been selected
+        if (inputTableContents == null) { //inputTableContents is null when a folder has not been selected
             return;
         }
 
@@ -321,14 +337,11 @@ public final class SeqCheckerTopComponent extends TopComponent
         String partName = inputTableContents.getConstructNames()[inputTable.getSelectedRow()]; //retrieves the construct name field from the selected row
         //Get the region of the plasmid to validate as a String (seq)
         //Plasmid aplas = Plasmid.retrieveByName(partName); //querying for a part is done through a Format, not the Collector
-        
-        if (false)
-        //if (aplas == null)
+
+        if (false) //if (aplas == null)
         {
-            System.out.println("Plasmid with given name: "+partName+" could not be found");
-        }
-        else
-        {
+            System.out.println("Plasmid with given name: " + partName + " could not be found");
+        } else {
             //Format aform = aplas.getFormat(); //get the Format of aplas
             //String target = aform.generateSequencingRegion(aplas).getSeq(); //based on the Format, a sequencing region is generated
 

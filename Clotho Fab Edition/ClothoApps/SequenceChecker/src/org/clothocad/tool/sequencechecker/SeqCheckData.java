@@ -20,7 +20,7 @@ public class SeqCheckData {
         {
             table[i][3] = file.getName(); //Trace file names
             String[] tokens = file.getName().split("[_.]");
-            table[i][2]=tokens[2];
+            table[i][2]=tokens[2]; //Primer name
             for (String token : tokens) {
                 /*if (token.toLowerCase().matches("[a-zA-Z]{1}\\d{1,}")) {
                     table[i][2] = token; //Primer name
@@ -59,7 +59,7 @@ public class SeqCheckData {
 
         for (int i = 0; i < numberOfElements; i++)
         {
-            toReturn[i] = (String) table[i][0];
+            toReturn[i] = (String) table[i][3];
 
         }
 
@@ -70,7 +70,7 @@ public class SeqCheckData {
     public String[] getConstructNames() {
         String[] toReturn = new String[numberOfElements];
         for (int i = 0; i < numberOfElements; i++) {
-            toReturn[i] = (String) table[i][1];
+            toReturn[i] = (String) table[i][0];
 
         }
         return toReturn;
@@ -80,17 +80,17 @@ public class SeqCheckData {
     public String[] getCloneNumbers() {
         String[] toReturn = new String[numberOfElements];
         for (int i = 0; i < numberOfElements; i++) {
-            toReturn[i] = (String) table[i][2];
+            toReturn[i] = (String) table[i][1];
 
         }
         return toReturn;
     }
     //returns the wellNumber array
 
-    public String[] getWellNumbers() {
+    public String[] getPrimerNames() {
         String[] toReturn = new String[numberOfElements];
         for (int i = 0; i < numberOfElements; i++) {
-            toReturn[i] = (String) table[i][3];
+            toReturn[i] = (String) table[i][2];
 
         }
         return toReturn;
