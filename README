@@ -19,6 +19,6 @@ Netbeans v. 6.9.* has to be installed
 - Right-click on ClothoProject and build it. This will take about a minute. 
 
 - Once it is built, run it. You can do this by right-clicking on the ClothoProject icon in the project navigation panel and select "run".  Clotho should now launch as the Fab edition.  To confirm, you
-should see the following line in your message stream:
+should see the following line in the output panel:
 
 ################################ FabDash Initiating
