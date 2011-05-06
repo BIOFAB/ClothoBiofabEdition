@@ -9,13 +9,13 @@ import sequencing.ABITrace;
 import sequencing.Analyzer;
 import sequencing.TraceExtract.ResultType;
 
-public class LocalCheckController
+public class SeqCheckController
 {
 
     String  _target;
     File    _trace;
 
-    public LocalCheckController()
+    public SeqCheckController()
     {
         
     }

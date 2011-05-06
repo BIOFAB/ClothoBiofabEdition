@@ -11,8 +11,8 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 //import org.clothocore.api.core.Collator;
 //import org.clothocore.api.core.wrapper.ConnectionWrapper;
-import org.clothocore.api.data.Format;
-import org.clothocore.api.data.Plasmid;
+//import org.clothocore.api.data.Format;
+//import org.clothocore.api.data.Plasmid;
 
 import org.openide.util.NbBundle;
 import org.openide.windows.TopComponent;
@@ -31,8 +31,9 @@ public final class SeqCheckerTopComponent extends TopComponent
     protected static final String ICON_PATH = "org/clothocad/tool/sequencechecker/SeqChecker.png";
     protected static final String PREFERRED_ID = "SeqCheckerTopComponent";
     protected static SeqCheckerTopComponent instance;
-    protected SeqCheckData inputTableContents;
-    protected LocalCheckController _localChecker;
+    
+    protected SeqCheckController    _controller;
+    protected ArrayList<Construct>  _constructs;
 
     public SeqCheckerTopComponent()
     {
@@ -41,12 +42,24 @@ public final class SeqCheckerTopComponent extends TopComponent
         setToolTipText(NbBundle.getMessage(SeqCheckerTopComponent.class, "HINT_SeqCheckerTopComponent"));
         setIcon(ImageUtilities.loadImage(ICON_PATH, true));
 
-//        //Switches Clotho to a local database
-//        String selectstring = "org.clothocad.connection.localconnection";
-//        ConnectionWrapper cw = (ConnectionWrapper) Collator.getPluginByUUID(selectstring);
-//        Collator.setDefaultConnection(cw);
+        _constructs = new ArrayList<Construct>();
+        _controller = new SeqCheckController();
+    }
 
-        _localChecker = new LocalCheckController();
+    protected String[][] generateConstructsArray()
+    {
+        Construct construct;
+        int rows = _constructs.size();
+        String[][] constructsArray = new String[rows][2];
+
+        for(int i = 0; i < rows; ++i)
+        {
+            construct = _constructs.get(i);
+            constructsArray[i][0] = construct.getIdentifier();
+            constructsArray[i][1] = construct.getStatus();
+        }
+        
+        return constructsArray;
     }
 
     /** This method is called from within the constructor to
@@ -57,33 +70,59 @@ public final class SeqCheckerTopComponent extends TopComponent
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        mainTabbedPanel = new javax.swing.JTabbedPane();
-        outputPanel = new javax.swing.JPanel();
-        jSplitPane1 = new javax.swing.JSplitPane();
-        jSplitPane2 = new javax.swing.JSplitPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jSplitPane3 = new javax.swing.JSplitPane();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jToolBar2 = new javax.swing.JToolBar();
-        inputPanel = new javax.swing.JPanel();
-        jToolBar1 = new javax.swing.JToolBar();
-        selectButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        mainSplitPane = new javax.swing.JSplitPane();
+        _mainPanel = new javax.swing.JPanel();
+        _mainToolBar = new javax.swing.JToolBar();
+        _selectButton = new javax.swing.JButton();
+        _checkAllButton = new javax.swing.JButton();
+        _mainSplitPane = new javax.swing.JSplitPane();
+        _splitPane2 = new javax.swing.JSplitPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        inputTable = new javax.swing.JTable();
+        _constructsTable = new javax.swing.JTable();
+        _splitPane3 = new javax.swing.JSplitPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        _clonesTable = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        _primersTable = new javax.swing.JTable();
 
-        jSplitPane1.setDividerLocation(250);
-        jSplitPane1.setDividerSize(4);
-        jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        _mainPanel.setRequestFocusEnabled(false);
+        _mainPanel.setSize(new java.awt.Dimension(800, 600));
 
-        jSplitPane2.setDividerLocation(210);
+        _mainToolBar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        _mainToolBar.setFloatable(false);
+        _mainToolBar.setRollover(true);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        org.openide.awt.Mnemonics.setLocalizedText(_selectButton, org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent._selectButton.text")); // NOI18N
+        _selectButton.setToolTipText(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent._selectButton.toolTipText_1")); // NOI18N
+        _selectButton.setFocusable(false);
+        _selectButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        _selectButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        _selectButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _selectButtonActionPerformed(evt);
+            }
+        });
+        _mainToolBar.add(_selectButton);
+
+        org.openide.awt.Mnemonics.setLocalizedText(_checkAllButton, org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.checkButton.text")); // NOI18N
+        _checkAllButton.setToolTipText(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.checkButton.toolTipText")); // NOI18N
+        _checkAllButton.setFocusable(false);
+        _checkAllButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        _checkAllButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        _checkAllButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkButtonActionPerformed(evt);
+            }
+        });
+        _mainToolBar.add(_checkAllButton);
+
+        _mainSplitPane.setDividerLocation(300);
+        _mainSplitPane.setDividerSize(5);
+        _mainSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+
+        _splitPane2.setDividerLocation(175);
+        _splitPane2.setDividerSize(5);
+
+        _constructsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -94,129 +133,11 @@ public final class SeqCheckerTopComponent extends TopComponent
                 "Construct", "Status"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(jTable1);
-
-        jSplitPane2.setLeftComponent(jScrollPane2);
-
-        jSplitPane3.setDividerLocation(180);
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Clone", "Status"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(jTable2);
-
-        jSplitPane3.setLeftComponent(jScrollPane3);
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "Error", "Description"
-            }
-        ));
-        jScrollPane4.setViewportView(jTable3);
-
-        jSplitPane3.setRightComponent(jScrollPane4);
-
-        jSplitPane2.setRightComponent(jSplitPane3);
-
-        jSplitPane1.setTopComponent(jSplitPane2);
-
-        javax.swing.GroupLayout outputPanelLayout = new javax.swing.GroupLayout(outputPanel);
-        outputPanel.setLayout(outputPanelLayout);
-        outputPanelLayout.setHorizontalGroup(
-            outputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
-        );
-        outputPanelLayout.setVerticalGroup(
-            outputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(outputPanelLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE))
-        );
-
-        mainTabbedPanel.addTab(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.outputPanel.TabConstraints.tabTitle"), outputPanel); // NOI18N
-
-        jToolBar2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jToolBar2.setFloatable(false);
-        jToolBar2.setRollover(true);
-        mainTabbedPanel.addTab("tab3", jToolBar2);
-
-        jToolBar1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jToolBar1.setFloatable(false);
-        jToolBar1.setRollover(true);
-
-        org.openide.awt.Mnemonics.setLocalizedText(selectButton, org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.selectButton.text")); // NOI18N
-        selectButton.setToolTipText(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.selectButton.toolTipText_1")); // NOI18N
-        selectButton.setFocusable(false);
-        selectButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        selectButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        selectButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectButtonActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(selectButton);
-
-        org.openide.awt.Mnemonics.setLocalizedText(jButton2, org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.checkButton.text")); // NOI18N
-        jButton2.setToolTipText(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.checkButton.toolTipText")); // NOI18N
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkButtonActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton2);
-
-        mainSplitPane.setDividerLocation(250);
-        mainSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
-
-        inputTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Construct", "Clone", "Primer Name", "Trace File", "Status"
-            }
-        ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -227,39 +148,111 @@ public final class SeqCheckerTopComponent extends TopComponent
                 return canEdit [columnIndex];
             }
         });
-        inputTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        inputTable.setFillsViewportHeight(true);
-        inputTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        _constructsTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        _constructsTable.setFillsViewportHeight(true);
+        _constructsTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                inputTableMouseClicked(evt);
+                constructsTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(inputTable);
-        inputTable.getColumnModel().getColumn(0).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title1")); // NOI18N
-        inputTable.getColumnModel().getColumn(1).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title2")); // NOI18N
-        inputTable.getColumnModel().getColumn(2).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title3")); // NOI18N
-        inputTable.getColumnModel().getColumn(3).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title4_1")); // NOI18N
-        inputTable.getColumnModel().getColumn(4).setHeaderValue(org.openide.util.NbBundle.getMessage(SeqCheckerTopComponent.class, "SeqCheckerTopComponent.inputTable.columnModel.title0")); // NOI18N
+        jScrollPane1.setViewportView(_constructsTable);
 
-        mainSplitPane.setLeftComponent(jScrollPane1);
+        _splitPane2.setLeftComponent(jScrollPane1);
 
-        javax.swing.GroupLayout inputPanelLayout = new javax.swing.GroupLayout(inputPanel);
-        inputPanel.setLayout(inputPanelLayout);
-        inputPanelLayout.setHorizontalGroup(
-            inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(inputPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(mainSplitPane, javax.swing.GroupLayout.PREFERRED_SIZE, 587, Short.MAX_VALUE)
-                .addGap(20, 20, 20))
-            .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 627, Short.MAX_VALUE)
+        _splitPane3.setDividerLocation(180);
+        _splitPane3.setDividerSize(5);
+
+        _clonesTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Clone", "Status"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        _clonesTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clonesTableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(_clonesTable);
+
+        _splitPane3.setLeftComponent(jScrollPane2);
+
+        _primersTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Primer", "Status", "Trace File"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        _primersTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                primersTableMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(_primersTable);
+
+        _splitPane3.setRightComponent(jScrollPane3);
+
+        _splitPane2.setRightComponent(_splitPane3);
+
+        _mainSplitPane.setTopComponent(_splitPane2);
+
+        javax.swing.GroupLayout _mainPanelLayout = new javax.swing.GroupLayout(_mainPanel);
+        _mainPanel.setLayout(_mainPanelLayout);
+        _mainPanelLayout.setHorizontalGroup(
+            _mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(_mainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(_mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(_mainToolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE)
+                    .addComponent(_mainSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE))
+                .addContainerGap())
         );
-        inputPanelLayout.setVerticalGroup(
-            inputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(inputPanelLayout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+        _mainPanelLayout.setVerticalGroup(
+            _mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(_mainPanelLayout.createSequentialGroup()
+                .addComponent(_mainToolBar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mainSplitPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(24, 24, 24))
+                .addComponent(_mainSplitPane, javax.swing.GroupLayout.PREFERRED_SIZE, 490, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -268,96 +261,227 @@ public final class SeqCheckerTopComponent extends TopComponent
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(inputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addComponent(_mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(inputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(_mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void selectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectButtonActionPerformed
+    private void _selectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__selectButtonActionPerformed
 
-        JFileChooser chooser = new JFileChooser();
+        JFileChooser    chooser = new JFileChooser();
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         chooser.showOpenDialog(null);
         File selectedDirectory = chooser.getSelectedFile();
-        if (selectedDirectory == null) { //cancel button selected
-            return;
-        }
-        File[] folderContents = selectedDirectory.listFiles();
-        ArrayList<File> filteredFolderContents = new ArrayList<File>();
 
-        for (File file : folderContents) {
-            //System.out.println(file.getName());
-            try {
-                if (file.getName().substring(file.getName().lastIndexOf(".")).equals(".ab1")) {
-                    filteredFolderContents.add(file);
+        String[]            tokens;
+        boolean             constructPresent;
+        boolean             clonePresent;
+        Construct           selectedConstruct = null;
+        Clone               selectedClone = null;
+
+        
+        if (selectedDirectory != null)
+        {
+            File[] folderContents = selectedDirectory.listFiles();
+
+            for (File file:folderContents)
+            {
+                try
+                {
+                    if (file.getName().substring(file.getName().lastIndexOf(".")).equals(".ab1"))
+                    {
+                        selectedConstruct = null;
+                        selectedClone = null;
+                        tokens = file.getName().split("[_.]");
+
+                        for(String token:tokens)
+                        {
+                            if (token.toLowerCase().matches("[a-zA-Z]*?\\d{2,}?"))
+                            {
+                                constructPresent = false;
+
+                                for(Construct construct:_constructs)
+                                {
+                                    if(token.equalsIgnoreCase(construct.getIdentifier()))
+                                    {
+                                        selectedConstruct = construct;
+                                        constructPresent = true;
+                                        break;
+                                    }
+                                }
+
+                                if(!constructPresent)
+                                {
+                                    selectedConstruct = new Construct(token);
+                                    _constructs.add(selectedConstruct);
+                                }
+
+                                break;
+                            }
+                        }
+
+                        for(String token:tokens)
+                        {
+                            if (token.toLowerCase().matches("\\d+"))
+                            {
+                                clonePresent = false;
+
+                                for(Clone clone:selectedConstruct.getClones())
+                                {
+                                    if(token.equalsIgnoreCase(clone.getIdentifier()))
+                                    {
+                                        selectedClone = clone;
+                                        clonePresent = true;
+                                        break;
+                                    }
+                                }
+
+                                if(!clonePresent)
+                                {
+                                    selectedClone = new Clone(token);
+                                    selectedConstruct.addClone(selectedClone);
+                                }
+
+                                break;
+                            }
+                        }
+
+                        // TODO Needs refactoring. Simply selecting third token
+                        selectedClone.addPrimer(new Primer(tokens[2], file));
+                    }
                 }
-            } catch (StringIndexOutOfBoundsException e) {
-                //folder names that don't have a '.' character well cause an exception to be thrown
+                catch (StringIndexOutOfBoundsException e)
+                {
+                    //folder names that don't have a '.' character well cause an exception to be thrown
+                }
             }
+            
+            _constructsTable.setModel(new javax.swing.table.DefaultTableModel(generateConstructsArray(), new String[]{"Construct", "Status"}));
+            _constructsTable.doLayout();
         }
-
-        inputTableContents = new SeqCheckData(filteredFolderContents); //holds the contents of the input table
-        inputTable.setModel(new javax.swing.table.DefaultTableModel(inputTableContents.getTable(), new String[]{"Construct", "Clone", "Primer Name", "Trace", "Status"}));
-        inputTable.doLayout();
-    }//GEN-LAST:event_selectButtonActionPerformed
+    }//GEN-LAST:event__selectButtonActionPerformed
 
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
     }//GEN-LAST:event_checkButtonActionPerformed
 
-    private void inputTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputTableMouseClicked
-        if (inputTableContents == null)
-        { //inputTableContents is null when a folder has not been selected
-            return;
-        }
+    private void constructsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_constructsTableMouseClicked
 
-        File trace = inputTableContents.getFiles().get(inputTable.getSelectedRow()); //gets the trace file at the selected row
-        String partName = inputTableContents.getConstructNames()[inputTable.getSelectedRow()]; //retrieves the construct name field from the selected row
-        //Get the region of the plasmid to validate as a String (seq)
-        //Plasmid aplas = Plasmid.retrieveByName(partName); //querying for a part is done through a Format, not the Collector
+        displayClones(_constructsTable.getSelectedRow());
+    }//GEN-LAST:event_constructsTableMouseClicked
+
+    private void clonesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clonesTableMouseClicked
         
-        if (false)
-        //if (aplas == null)
-        {
-            System.out.println("Plasmid with given name: "+partName+" could not be found");
-        }
-        else
-        {
-            //Format aform = aplas.getFormat(); //get the Format of aplas
-            //String target = aform.generateSequencingRegion(aplas).getSeq(); //based on the Format, a sequencing region is generated
+        displayPrimers(_clonesTable.getSelectedRow());
+    }//GEN-LAST:event_clonesTableMouseClicked
 
-            //_localChecker.performCheck(trace, target);  //original code that displays a new window each time Sequence Analyzer is called
-            String target = "CTAGAACATGCATCGACGTCTAGGGATACAGGGTAATTACGGCCCCAGAATTCAAAAGATCTTAAGTAAGTAAGAGTATACGTATATCGGCTAAAACGTATTAAGGCGCTTCGGCGCCTTTTTTTATGGGGGTATTTTCATCCCAATCCACACGTCCAACGCACAGCAAACACCACGTCGACCCTATCAGCTGCGTGCTTTCTATGAGTCGTTGCTGCATAACTTGACAATTAATCATCCGGCTCGTATAATGTGTGGAATTTGTAAGGAGGTGACAATATGAGCAAAGGAGAAGAACTTTTCACTGGAGTTGTCCCAATTCTTGTTGAATTAGATGGTGATGTTAATGGGCACAAATTTTCTGTCCGTGGAGAGGGTGAAGGTGATGCTACAAACGGAAAACTCACCCTTAAATTTATTTGCACTACTGGAAAACTACCTGTTCCGTGGCCAACACTTGTCACTACTCTGACCTATGGTGTTCAATGCTTTTCCCGTTATCCGGATCACATGAAACGGCATGACTTTTTCAAGAGTGCCATGCCCGAAGGTTATGTACAGGAACGCACTATATCTTTCAAAGATGACGGGACCTACAAGACGCGTGCTGAAGTCAAGTTTGAAGGTGATACCCTTGTTAATCGTATCGAGTTAAAGGGTATTGATTTTAAAGAAGATGGAAACATTCTTGGACACAAACTCGAGTACAACTTTAACTCACACAATGTATACATCACGGCAGACAAACAAAAGAATGGAATCAAAGCTAACTTCAAAATTCGCCACAACGTTGAAGATGGTTCCGTTCAACTAGCAGACCATTATCAACAAAATACTCCAATTGGCGATGGCCCTGTCCTTTTACCAGACAACCATTACCTGTCGACACAATCTGTCCTTTCGAAAGATCCCAACGAAAAGCGTGACCACATGGTCCTTCTTGAGTTTGTAACTGCTGCTGGGATTACACATGGCATGGATGAGCTCTACAATAAGATCG";
-            mainSplitPane.setRightComponent(_localChecker.getCheckPanel(trace, target));  //hopefully, this sets the bottom panel to the graphical display that the Analyzer generates
-            mainSplitPane.setDividerLocation(250); //not sure how to best set this right now
+    private void primersTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_primersTableMouseClicked
+
+        this.displaySequenceCheck(_primersTable.getSelectedRow());
+    }//GEN-LAST:event_primersTableMouseClicked
+
+    protected void displayClones(int constructsTableSelectedRow)
+    {
+        String constructID = (String)_constructsTable.getValueAt(constructsTableSelectedRow, 0);
+
+        for(Construct construct:_constructs)
+        {
+            if(constructID.equalsIgnoreCase(construct.getIdentifier()))
+            {
+                _clonesTable.setModel(new javax.swing.table.DefaultTableModel(construct.generateClonesArray(), new String[]{"Clone", "Status"}));
+                _clonesTable.doLayout();
+                break;
+            }
         }
-    }//GEN-LAST:event_inputTableMouseClicked
+    }
+
+    protected void displayPrimers(int clonesTableSelectedRow)
+    {
+        ArrayList<Clone> clones;
+        String constructID = (String)_constructsTable.getValueAt(_constructsTable.getSelectedRow(), 0);
+        String cloneID = (String)_clonesTable.getValueAt(clonesTableSelectedRow, 0);
+        
+        for(Construct construct:_constructs)
+        {
+            if(constructID.equalsIgnoreCase(construct.getIdentifier()))
+            {
+                clones = construct.getClones();
+
+                for(Clone clone:clones)
+                {
+                    if(cloneID.equalsIgnoreCase(clone.getIdentifier()))
+                    {
+                        _primersTable.setModel(new javax.swing.table.DefaultTableModel(clone.generatePrimersArray(), new String[]{"Primer", "Status", "Trace File"}));
+                        _primersTable.doLayout();
+                        break;
+                    }
+                }
+                
+                break;
+            }
+        }
+    }
+
+    protected void displaySequenceCheck(int primerTableSelectedRow)
+    {
+        ArrayList<Clone> clones;
+        ArrayList<Primer> primers;
+        String constructID = (String)_constructsTable.getValueAt(_constructsTable.getSelectedRow(), 0);
+        String cloneID = (String)_clonesTable.getValueAt(_clonesTable.getSelectedRow(), 0);
+        String traceFileName = (String)_primersTable.getValueAt(primerTableSelectedRow, 2);
+
+        for(Construct construct:_constructs)
+        {
+            if(constructID.equalsIgnoreCase(construct.getIdentifier()))
+            {
+                clones = construct.getClones();
+
+                for(Clone clone:clones)
+                {
+                    if(cloneID.equalsIgnoreCase(clone.getIdentifier()))
+                    {
+                        primers = clone.getPrimers();
+
+                        for(Primer primer:primers)
+                        {
+                            if(traceFileName.equalsIgnoreCase(primer.getTraceFile().getName()))
+                            {
+                                String target = "CTAGAACATGCATCGACGTCTAGGGATACAGGGTAATTACGGCCCCAGAATTCAAAAGATCTTAAGTAAGTAAGAGTATACGTATATCGGCTAAAACGTATTAAGGCGCTTCGGCGCCTTTTTTTATGGGGGTATTTTCATCCCAATCCACACGTCCAACGCACAGCAAACACCACGTCGACCCTATCAGCTGCGTGCTTTCTATGAGTCGTTGCTGCATAACTTGACAATTAATCATCCGGCTCGTATAATGTGTGGAATTTGTAAGGAGGTGACAATATGAGCAAAGGAGAAGAACTTTTCACTGGAGTTGTCCCAATTCTTGTTGAATTAGATGGTGATGTTAATGGGCACAAATTTTCTGTCCGTGGAGAGGGTGAAGGTGATGCTACAAACGGAAAACTCACCCTTAAATTTATTTGCACTACTGGAAAACTACCTGTTCCGTGGCCAACACTTGTCACTACTCTGACCTATGGTGTTCAATGCTTTTCCCGTTATCCGGATCACATGAAACGGCATGACTTTTTCAAGAGTGCCATGCCCGAAGGTTATGTACAGGAACGCACTATATCTTTCAAAGATGACGGGACCTACAAGACGCGTGCTGAAGTCAAGTTTGAAGGTGATACCCTTGTTAATCGTATCGAGTTAAAGGGTATTGATTTTAAAGAAGATGGAAACATTCTTGGACACAAACTCGAGTACAACTTTAACTCACACAATGTATACATCACGGCAGACAAACAAAAGAATGGAATCAAAGCTAACTTCAAAATTCGCCACAACGTTGAAGATGGTTCCGTTCAACTAGCAGACCATTATCAACAAAATACTCCAATTGGCGATGGCCCTGTCCTTTTACCAGACAACCATTACCTGTCGACACAATCTGTCCTTTCGAAAGATCCCAACGAAAAGCGTGACCACATGGTCCTTCTTGAGTTTGTAACTGCTGCTGGGATTACACATGGCATGGATGAGCTCTACAATAAGATCG";
+                                _mainSplitPane.setRightComponent(_controller.getCheckPanel(primer.getTraceFile(), target));
+                                _mainSplitPane.setDividerLocation(250);
+                                break;
+                            }
+                        }
+
+                        break;
+                    }
+                }
+
+                break;
+            }
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel inputPanel;
-    private javax.swing.JTable inputTable;
-    protected javax.swing.JButton jButton2;
+    protected javax.swing.JButton _checkAllButton;
+    protected javax.swing.JTable _clonesTable;
+    protected javax.swing.JTable _constructsTable;
+    protected javax.swing.JPanel _mainPanel;
+    protected javax.swing.JSplitPane _mainSplitPane;
+    protected javax.swing.JToolBar _mainToolBar;
+    protected javax.swing.JTable _primersTable;
+    protected javax.swing.JButton _selectButton;
+    protected javax.swing.JSplitPane _splitPane2;
+    protected javax.swing.JSplitPane _splitPane3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JSplitPane jSplitPane2;
-    private javax.swing.JSplitPane jSplitPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JToolBar jToolBar2;
-    private javax.swing.JSplitPane mainSplitPane;
-    private javax.swing.JTabbedPane mainTabbedPanel;
-    private javax.swing.JPanel outputPanel;
-    protected javax.swing.JButton selectButton;
     // End of variables declaration//GEN-END:variables
 
     /**
