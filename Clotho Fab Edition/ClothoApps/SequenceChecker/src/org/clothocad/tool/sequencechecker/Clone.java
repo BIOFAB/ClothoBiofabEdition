@@ -14,9 +14,9 @@ import java.util.ArrayList;
 
 public class Clone
 {
-    protected String                _identifier;
-    protected String                _status;
-    protected ArrayList<Primer>     _primers;
+    protected String                        _identifier;
+    protected String                        _status;
+    protected ArrayList<SequencingResult>   _seqResults;
 
 
     public Clone(String identifier)
@@ -30,7 +30,7 @@ public class Clone
             //TODO Manage null case
         }
 
-        _primers = new ArrayList<Primer>();
+        _seqResults = new ArrayList<SequencingResult>();
         _status = "Pending";
     }
 
@@ -58,34 +58,34 @@ public class Clone
         this._status = status;
     }
 
-    public void addPrimer(Primer primer)
+    public void addSequenceResult(SequencingResult seqResult)
     {
-        if(primer != null)
+        if(seqResult != null)
         {
-            _primers.add(primer);
+            _seqResults.add(seqResult);
         }
     }
 
-    public ArrayList<Primer> getPrimers()
+    public ArrayList<SequencingResult> getSequencingResults()
     {
-        return _primers;
+        return _seqResults;
     }
 
-    public String[][] generatePrimersArray()
+    public String[][] generateSequencingResultsArray()
     {
-        Primer primer;
-        int rows = _primers.size();
-        String[][] primersArray = new String[rows][3];
+        SequencingResult seqResult;
+        int rows = _seqResults.size();
+        String[][] seqResultsArray = new String[rows][3];
 
         for(int i = 0; i < rows; ++i)
         {
-            primer = _primers.get(i);
-            primersArray[i][0] = primer.getIdentifier();
-            primersArray[i][1] = primer.getStatus();
-            primersArray[i][2] = primer.getTraceFile().getName();
+            seqResult = _seqResults.get(i);
+            seqResultsArray[i][0] = seqResult.getPrimer();
+            seqResultsArray[i][1] = seqResult.getStatus();
+            seqResultsArray[i][2] = seqResult.getTraceFile().getName();
         }
 
-        return primersArray;
+        return seqResultsArray;
     }
 }
 

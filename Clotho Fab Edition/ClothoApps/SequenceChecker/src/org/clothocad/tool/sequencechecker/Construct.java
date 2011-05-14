@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Construct {
 
     protected String            _identifier;
+    protected String            _dnaSequence;
     protected String            _status; //Statuses: "Pending", "Good", "Bad"
     protected ArrayList<Clone>  _clones;
 
@@ -27,6 +28,16 @@ public class Construct {
     public String getIdentifier()
     {
         return _identifier;
+    }
+
+    public String getDnaSequence()
+    {
+        return _dnaSequence;
+    }
+
+    public void setDnaSequence(String dnaSequence)
+    {
+        _dnaSequence = dnaSequence;
     }
 
     public String getStatus()

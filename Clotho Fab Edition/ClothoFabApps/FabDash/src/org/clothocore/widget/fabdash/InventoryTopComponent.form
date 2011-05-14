@@ -49,6 +49,7 @@
                     <Column editable="false" title="Description" type="java.lang.String"/>
                   </Table>
                 </Property>
+                <Property name="fillsViewportHeight" type="boolean" value="true"/>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="4"/>

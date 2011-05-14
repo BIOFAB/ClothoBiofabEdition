@@ -151,6 +151,7 @@ public final class InventoryTopComponent extends TopComponent {
                 return canEdit [columnIndex];
             }
         });
+        plasmidTable.setFillsViewportHeight(true);
         jScrollPane1.setViewportView(plasmidTable);
 
         jTabbedPane1.addTab(org.openide.util.NbBundle.getMessage(InventoryTopComponent.class, "InventoryTopComponent.jScrollPane1.TabConstraints.tabTitle"), jScrollPane1); // NOI18N
