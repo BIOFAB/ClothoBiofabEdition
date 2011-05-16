@@ -53,7 +53,8 @@ public final class InventoryTopComponent extends TopComponent {
 //    static final String ICON_PATH = "SET/PATH/TO/ICON/HERE";
     private static final String PREFERRED_ID = "InventoryTopComponent";
 
-    public InventoryTopComponent() {
+    public InventoryTopComponent()
+    {
 //        //Switches Clotho to a local database
 //        String selectstring = "org.clothocad.connection.localconnection";
 //        ConnectionWrapper cw = (ConnectionWrapper) Collator.getPluginByUUID(selectstring);
@@ -63,7 +64,7 @@ public final class InventoryTopComponent extends TopComponent {
         add(new ObjTypeChooser(this), java.awt.BorderLayout.NORTH);
         add(new SearchBar(), java.awt.BorderLayout.SOUTH);
 
-
+        
         setName(NbBundle.getMessage(InventoryTopComponent.class, "CTL_InventoryTopComponent"));
         setToolTipText(NbBundle.getMessage(InventoryTopComponent.class, "HINT_InventoryTopComponent"));
 //        setIcon(ImageUtilities.loadImage(ICON_PATH, true));
@@ -129,14 +130,14 @@ public final class InventoryTopComponent extends TopComponent {
                 {null, null}
             },
             new String [] {
-                "Plasmid Name", "Sequence"
+                "Identifier", "Description"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -147,6 +148,7 @@ public final class InventoryTopComponent extends TopComponent {
                 return canEdit [columnIndex];
             }
         });
+        plasmidTable.setFillsViewportHeight(true);
         jScrollPane1.setViewportView(plasmidTable);
         plasmidTable.getColumnModel().getColumn(0).setHeaderValue(org.openide.util.NbBundle.getMessage(InventoryTopComponent.class, "InventoryTopComponent.plasmidTable.columnModel.title0")); // NOI18N
         plasmidTable.getColumnModel().getColumn(1).setHeaderValue(org.openide.util.NbBundle.getMessage(InventoryTopComponent.class, "InventoryTopComponent.plasmidTable.columnModel.title1")); // NOI18N
