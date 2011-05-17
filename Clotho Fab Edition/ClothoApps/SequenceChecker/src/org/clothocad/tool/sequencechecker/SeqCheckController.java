@@ -29,8 +29,8 @@ public class SeqCheckController
 
     public SeqCheckController()
     {
-        _webServiceBaseUrl = "http://localhost:8080/ElectronicDatasheets/constructs";
-        //_webServiceBaseUrl = "http://biofab.jbei.org/services/data/constructs";
+        //_webServiceBaseUrl = "http://localhost:8080/ElectronicDatasheets/constructs";
+        _webServiceBaseUrl = "http://biofab.jbei.org/services/data/constructs";
 
     }
 
