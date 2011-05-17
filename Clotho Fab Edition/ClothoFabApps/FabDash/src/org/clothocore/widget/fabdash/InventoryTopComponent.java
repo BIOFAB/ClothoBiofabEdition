@@ -23,16 +23,19 @@ ENHANCEMENTS, OR MODIFICATIONS..
  */
 package org.clothocore.widget.fabdash;
 
+import java.util.ArrayList;
 import java.util.logging.Logger;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JTable;
+import javax.swing.JViewport;
 import javax.swing.SwingWorker;
-//import org.clothocore.api.core.Collator;
-//import org.clothocore.api.core.wrapper.ConnectionWrapper;
 import org.clothocore.api.core.Collector;
 import org.clothocore.api.data.Collection;
-import org.clothocore.api.data.ObjBase;
+import org.clothocore.api.data.Format;
+import org.clothocore.api.data.ObjLink;
 import org.clothocore.api.data.ObjType;
-import org.clothocore.util.basic.ObjBasePopup;
+import org.clothocore.api.data.Plasmid;
 import org.clothocore.widget.fabdash.browser.ObjTypeChooser;
 import org.clothocore.widget.fabdash.browser.SearchBar;
 import org.openide.util.NbBundle;
@@ -53,18 +56,14 @@ public final class InventoryTopComponent extends TopComponent {
 //    static final String ICON_PATH = "SET/PATH/TO/ICON/HERE";
     private static final String PREFERRED_ID = "InventoryTopComponent";
 
-    public InventoryTopComponent()
-    {
-//        //Switches Clotho to a local database
-//        String selectstring = "org.clothocad.connection.localconnection";
-//        ConnectionWrapper cw = (ConnectionWrapper) Collator.getPluginByUUID(selectstring);
-//        Collator.setDefaultConnection(cw);
+    public InventoryTopComponent() {
+
 
         initComponents();
         add(new ObjTypeChooser(this), java.awt.BorderLayout.NORTH);
         add(new SearchBar(), java.awt.BorderLayout.SOUTH);
 
-        
+
         setName(NbBundle.getMessage(InventoryTopComponent.class, "CTL_InventoryTopComponent"));
         setToolTipText(NbBundle.getMessage(InventoryTopComponent.class, "HINT_InventoryTopComponent"));
 //        setIcon(ImageUtilities.loadImage(ICON_PATH, true));
@@ -78,7 +77,10 @@ public final class InventoryTopComponent extends TopComponent {
     }
 
     private void fetchInventoryInformation() {
-
+//        //Switches Clotho to a local database
+        //String selectstring = "org.clothocad.connection.localconnection";
+        //ConnectionWrapper cw = (ConnectionWrapper) Collator.getPluginByUUID(selectstring);
+        //Collator.setDefaultConnection(cw);
         new SwingWorker() {
 
             Collection personalCollection = null;
@@ -92,6 +94,25 @@ public final class InventoryTopComponent extends TopComponent {
 
                 try {
                     personalCollection = Collector.getCurrentUser().getHerCollection();
+                    ArrayList<ObjLink> allPlasmids = Collector.getAllLinksOf(ObjType.PLASMID);
+                    InventoryTopComponent itc = InventoryTopComponent.getDefault(); //finds instance of inventory top component
+                    System.out.println(((JTabbedPane)itc.getComponent(0)).getComponent(0));
+
+                    JTable itcTable = (JTable) ((JViewport) ((JScrollPane) ((JTabbedPane) itc.getComponent(0)).getComponent(0)).getComponent(0)).getComponent(0); //retrieves a reference to the plasmidTable JTable in the InventoryTopComponent class
+
+                    Object[][] itcTableModel = new Object[allPlasmids.size()][2];
+
+                    for (int i = 0; i < allPlasmids.size(); i++) {
+                        itcTableModel[i][0] = allPlasmids.get(i).name;
+                        Plasmid aplas = Collector.getPlasmid(allPlasmids.get(i).uuid);
+                        Format aform = aplas.getFormat(); //get the Format of aplas
+                        itcTableModel[i][1] = aform.generateSequencingRegion(aplas).getSeq(); //based on the Format, the sequence of the region of interest is retreieved and used to populate the table
+
+                    }
+
+                    itcTable.setModel(new javax.swing.table.DefaultTableModel(itcTableModel, new String[]{"Plasmid Name", "Sequence"}));
+
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -106,6 +127,8 @@ public final class InventoryTopComponent extends TopComponent {
                 repaint();
             }
         }.execute();
+
+
     }
 
     /** This method is called from within the constructor to
@@ -175,7 +198,6 @@ public final class InventoryTopComponent extends TopComponent {
 
         return instance;
     }
-
 
     /**
      * Obtain the InventoryTopComponent instance. Never call {@link #getDefault} directly!

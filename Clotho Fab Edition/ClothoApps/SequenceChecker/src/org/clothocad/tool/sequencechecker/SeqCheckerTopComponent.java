@@ -388,20 +388,6 @@ public final class SeqCheckerTopComponent extends TopComponent {
             displayClones(0);
 
             //displayCheckSummary(_constructs);
-
-
-
-
-            InventoryTopComponent itc = InventoryTopComponent.findInstance(); //finds instance of inventory top component
-            JTable itcTable = (JTable) ((JViewport) ((JScrollPane) ((JTabbedPane) itc.getComponent(0)).getComponent(0)).getComponent(0)).getComponent(0); //retrieves a reference to the plasmidTable JTable in the InventoryTopComponent class
-            Object[][] itcTableModel = new Object[_constructs.size()][2];
-            for (int i = 0; i <_constructs.size(); i++) {
-                itcTableModel[i][0] = _constructs.get(i).getIdentifier();
-                Plasmid aplas = Plasmid.retrieveByName((String) itcTableModel[i][0]); //querying for a part is done through a Format, not the Collector
-                Format aform = aplas.getFormat(); //get the Format of aplas
-                itcTableModel[i][1] = aform.generateSequencingRegion(aplas).getSeq(); //based on the Format, the sequence of the region of interest is retreieved and used to populate the table
-            }
-            itcTable.setModel(new javax.swing.table.DefaultTableModel(itcTableModel, new String[]{"Plasmid Name", "Sequence"}));
         }
     }//GEN-LAST:event__selectButtonActionPerformed
 
