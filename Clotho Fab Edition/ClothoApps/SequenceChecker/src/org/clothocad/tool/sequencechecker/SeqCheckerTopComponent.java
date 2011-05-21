@@ -28,52 +28,48 @@ import java.net.MalformedURLException;
 import java.util.Scanner;
 import java.net.URL;
 import java.net.HttpURLConnection;
+import org.clothocore.api.data.Format;
+import org.clothocore.api.data.Plasmid;
 
 import org.openide.util.Exceptions;
-
-
 
 /**
  * Top component which displays something.
  */
 @ConvertAsProperties(dtd = "-//org.clothocad.tool.sequencechecker//SeqChecker//EN", autostore = false)
-public final class SeqCheckerTopComponent extends TopComponent
-{
+public final class SeqCheckerTopComponent extends TopComponent {
+
     /** path to the icon used by the component and its open action */
     protected static final String ICON_PATH = "org/clothocad/tool/sequencechecker/SeqChecker.png";
     protected static final String PREFERRED_ID = "SeqCheckerTopComponent";
     protected static SeqCheckerTopComponent instance;
-    
-    protected SeqCheckController    _controller;
-    protected ArrayList<Construct>  _constructs;
-    protected JEditorPane           _htmlPane;
-    protected JScrollPane           _scrollPane4;
+    protected SeqCheckController _controller;
+    protected ArrayList<Construct> _constructs;
+    protected JEditorPane _htmlPane;
+    protected JScrollPane _scrollPane4;
 
-    public SeqCheckerTopComponent()
-    {
+    public SeqCheckerTopComponent() {
         initComponents();
         addHTMLPane();
         setName(NbBundle.getMessage(SeqCheckerTopComponent.class, "CTL_SeqCheckerTopComponent"));
         setToolTipText(NbBundle.getMessage(SeqCheckerTopComponent.class, "HINT_SeqCheckerTopComponent"));
         setIcon(ImageUtilities.loadImage(ICON_PATH, true));
-        
+
         _constructs = new ArrayList<Construct>();
         _controller = new SeqCheckController();
     }
 
-    protected String[][] generateConstructsArray()
-    {
+    protected String[][] generateConstructsArray() {
         Construct construct;
         int rows = _constructs.size();
         String[][] constructsArray = new String[rows][2];
 
-        for(int i = 0; i < rows; ++i)
-        {
+        for (int i = 0; i < rows; ++i) {
             construct = _constructs.get(i);
             constructsArray[i][0] = construct.getIdentifier();
             constructsArray[i][1] = construct.getStatus();
         }
-        
+
         return constructsArray;
     }
 
@@ -310,50 +306,41 @@ public final class SeqCheckerTopComponent extends TopComponent
 
     private void _selectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__selectButtonActionPerformed
 
-        JFileChooser    chooser = new JFileChooser();
+        JFileChooser chooser = new JFileChooser();
         chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         chooser.showOpenDialog(null);
         File selectedDirectory = chooser.getSelectedFile();
 
-        String[]            tokens;
-        boolean             constructPresent;
-        boolean             clonePresent;
-        Construct           selectedConstruct = null;
-        Clone               selectedClone = null;
+        String[] tokens;
+        boolean constructPresent;
+        boolean clonePresent;
+        Construct selectedConstruct = null;
+        Clone selectedClone = null;
 
-        
-        if (selectedDirectory != null)
-        {
+
+        if (selectedDirectory != null) {
             File[] folderContents = selectedDirectory.listFiles();
 
-            for (File file:folderContents)
-            {
-                try
-                {
-                    if (file.getName().substring(file.getName().lastIndexOf(".")).equals(".ab1"))
-                    {
+            for (File file : folderContents) {
+                try {
+                    if (file.getName().substring(file.getName().lastIndexOf(".")).equals(".ab1")) {
                         selectedConstruct = null;
                         selectedClone = null;
                         tokens = file.getName().split("[_.]");
 
-                        for(String token:tokens)
-                        {
-                            if (token.toLowerCase().matches("[a-zA-Z]*?\\d{2,}?"))
-                            {
+                        for (String token : tokens) {
+                            if (token.toLowerCase().matches("[a-zA-Z]*?\\d{2,}?")) {
                                 constructPresent = false;
 
-                                for(Construct construct:_constructs)
-                                {
-                                    if(token.equalsIgnoreCase(construct.getIdentifier()))
-                                    {
+                                for (Construct construct : _constructs) {
+                                    if (token.equalsIgnoreCase(construct.getIdentifier())) {
                                         selectedConstruct = construct;
                                         constructPresent = true;
                                         break;
                                     }
                                 }
 
-                                if(!constructPresent)
-                                {
+                                if (!constructPresent) {
                                     selectedConstruct = new Construct(token);
                                     _constructs.add(selectedConstruct);
                                 }
@@ -362,24 +349,19 @@ public final class SeqCheckerTopComponent extends TopComponent
                             }
                         }
 
-                        for(String token:tokens)
-                        {
-                            if (token.toLowerCase().matches("\\d+"))
-                            {
+                        for (String token : tokens) {
+                            if (token.toLowerCase().matches("\\d+")) {
                                 clonePresent = false;
 
-                                for(Clone clone:selectedConstruct.getClones())
-                                {
-                                    if(token.equalsIgnoreCase(clone.getIdentifier()))
-                                    {
+                                for (Clone clone : selectedConstruct.getClones()) {
+                                    if (token.equalsIgnoreCase(clone.getIdentifier())) {
                                         selectedClone = clone;
                                         clonePresent = true;
                                         break;
                                     }
                                 }
 
-                                if(!clonePresent)
-                                {
+                                if (!clonePresent) {
                                     selectedClone = new Clone(token);
                                     selectedConstruct.addClone(selectedClone);
                                 }
@@ -391,19 +373,25 @@ public final class SeqCheckerTopComponent extends TopComponent
                         // TODO Needs refactoring. Simply selecting third token
                         selectedClone.addSequenceResult(new SequencingResult(tokens[2], file));
                     }
-                }
-                catch (StringIndexOutOfBoundsException e)
-                {
+
+                } catch (StringIndexOutOfBoundsException e) {
                     //folder names that don't have a '.' character well cause an exception to be thrown
                 }
             }
-            
+
             _constructsTable.setModel(new javax.swing.table.DefaultTableModel(generateConstructsArray(), new String[]{"Construct", "Status"}));
             _constructsTable.doLayout();
             _constructsTable.getSelectionModel().setSelectionInterval(0, 0);
             displayClones(0);
 
             //displayCheckSummary(_constructs);
+            for (Construct c : _constructs) {
+                Plasmid aplas = Plasmid.retrieveByName(c.getIdentifier()); //querying for a part is done through a Format, not the Collector
+                if (aplas == null) {
+                    System.out.println("Could not find this construct in local collection: " + c.getIdentifier());
+                    //TODO request part data from Data Access Web Service
+                }
+            }
         }
     }//GEN-LAST:event__selectButtonActionPerformed
 
@@ -413,7 +401,7 @@ public final class SeqCheckerTopComponent extends TopComponent
     }//GEN-LAST:event_constructsTableMouseClicked
 
     private void clonesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clonesTableMouseClicked
-        
+
         displaySequencingResults(_clonesTable.getSelectedRow());
     }//GEN-LAST:event_clonesTableMouseClicked
 
@@ -426,14 +414,11 @@ public final class SeqCheckerTopComponent extends TopComponent
         displayCheckSummary(_constructs);
     }//GEN-LAST:event_summaryButtonActionPerformed
 
-    protected void displayClones(int constructsTableSelectedRow)
-    {
-        String constructID = (String)_constructsTable.getValueAt(constructsTableSelectedRow, 0);
+    protected void displayClones(int constructsTableSelectedRow) {
+        String constructID = (String) _constructsTable.getValueAt(constructsTableSelectedRow, 0);
 
-        for(Construct construct:_constructs)
-        {
-            if(constructID.equalsIgnoreCase(construct.getIdentifier()))
-            {
+        for (Construct construct : _constructs) {
+            if (constructID.equalsIgnoreCase(construct.getIdentifier())) {
                 _clonesTable.setModel(new javax.swing.table.DefaultTableModel(construct.generateClonesArray(), new String[]{"Clone", "Status"}));
                 _clonesTable.doLayout();
                 _clonesTable.getSelectionModel().setSelectionInterval(0, 0);
@@ -443,22 +428,17 @@ public final class SeqCheckerTopComponent extends TopComponent
         }
     }
 
-    protected void displaySequencingResults(int clonesTableSelectedRow)
-    {
+    protected void displaySequencingResults(int clonesTableSelectedRow) {
         ArrayList<Clone> clones;
-        String constructID = (String)_constructsTable.getValueAt(_constructsTable.getSelectedRow(), 0);
-        String cloneID = (String)_clonesTable.getValueAt(clonesTableSelectedRow, 0);
-        
-        for(Construct construct:_constructs)
-        {
-            if(constructID.equalsIgnoreCase(construct.getIdentifier()))
-            {
+        String constructID = (String) _constructsTable.getValueAt(_constructsTable.getSelectedRow(), 0);
+        String cloneID = (String) _clonesTable.getValueAt(clonesTableSelectedRow, 0);
+
+        for (Construct construct : _constructs) {
+            if (constructID.equalsIgnoreCase(construct.getIdentifier())) {
                 clones = construct.getClones();
 
-                for(Clone clone:clones)
-                {
-                    if(cloneID.equalsIgnoreCase(clone.getIdentifier()))
-                    {
+                for (Clone clone : clones) {
+                    if (cloneID.equalsIgnoreCase(clone.getIdentifier())) {
                         _primersTable.setModel(new javax.swing.table.DefaultTableModel(clone.generateSequencingResultsArray(), new String[]{"Primer", "Status", "Trace File"}));
                         _primersTable.doLayout();
                         _primersTable.getSelectionModel().setSelectionInterval(0, 0);
@@ -466,36 +446,29 @@ public final class SeqCheckerTopComponent extends TopComponent
                         break;
                     }
                 }
-                
+
                 break;
             }
         }
     }
 
-    protected void displaySequenceCheck(int primerTableSelectedRow)
-    {
+    protected void displaySequenceCheck(int primerTableSelectedRow) {
         ArrayList<Clone> clones;
         ArrayList<SequencingResult> seqResults;
-        String constructID = (String)_constructsTable.getValueAt(_constructsTable.getSelectedRow(), 0);
-        String cloneID = (String)_clonesTable.getValueAt(_clonesTable.getSelectedRow(), 0);
-        String traceFileName = (String)_primersTable.getValueAt(primerTableSelectedRow, 2);
+        String constructID = (String) _constructsTable.getValueAt(_constructsTable.getSelectedRow(), 0);
+        String cloneID = (String) _clonesTable.getValueAt(_clonesTable.getSelectedRow(), 0);
+        String traceFileName = (String) _primersTable.getValueAt(primerTableSelectedRow, 2);
 
-        for(Construct construct:_constructs)
-        {
-            if(constructID.equalsIgnoreCase(construct.getIdentifier()))
-            {
+        for (Construct construct : _constructs) {
+            if (constructID.equalsIgnoreCase(construct.getIdentifier())) {
                 clones = construct.getClones();
 
-                for(Clone clone:clones)
-                {
-                    if(cloneID.equalsIgnoreCase(clone.getIdentifier()))
-                    {
+                for (Clone clone : clones) {
+                    if (cloneID.equalsIgnoreCase(clone.getIdentifier())) {
                         seqResults = clone.getSequencingResults();
 
-                        for(SequencingResult seqResult:seqResults)
-                        {
-                            if(traceFileName.equalsIgnoreCase(seqResult.getTraceFile().getName()))
-                            {
+                        for (SequencingResult seqResult : seqResults) {
+                            if (traceFileName.equalsIgnoreCase(seqResult.getTraceFile().getName())) {
                                 //String referenceSeq = _controller.fetchConstruct(constructID);
                                 _mainSplitPane.setRightComponent(_controller.check(construct));
                                 _mainSplitPane.setDividerLocation(200);
@@ -512,8 +485,7 @@ public final class SeqCheckerTopComponent extends TopComponent
         }
     }
 
-    protected void displayCheckSummary(ArrayList<Construct>constructs)
-    {
+    protected void displayCheckSummary(ArrayList<Construct> constructs) {
         StringBuilder html = new StringBuilder();
 //      valid_nbr = 0
 //      good = header
@@ -532,26 +504,25 @@ public final class SeqCheckerTopComponent extends TopComponent
 //                h.close()
 //                header = """<head>
         html.append("<head>"
-            + "<style type=\"text/css\">"
-            + "body {background-color:#F0F0F0}"
-            + "A:link {text-decoration: none; color: black}"
-            + "A:visited {text-decoration: none; color: purple}"
-            + "A:active {text-decoration: none}"
-            + "A:hover {text-decoration: underline; color: red;}"
-            + "</style>"
-            + "<script language=\"javascript\">"
-            + "function loadTwo(aln2URL, errorURL)"
-            + "{"
-            + "parent.alnFRAME.location.href=aln2URL"
-            + "parent.errorFRAME.location.href=errorURL"
-            + "}"
-            + "</script>"
-            + "</head>);");
-          html.append("<body>\n<h2>Details Test</h2>\n");
-          html.append("<pre>");
-    
-            for(Construct construct:_constructs)
-            {
+                + "<style type=\"text/css\">"
+                + "body {background-color:#F0F0F0}"
+                + "A:link {text-decoration: none; color: black}"
+                + "A:visited {text-decoration: none; color: purple}"
+                + "A:active {text-decoration: none}"
+                + "A:hover {text-decoration: underline; color: red;}"
+                + "</style>"
+                + "<script language=\"javascript\">"
+                + "function loadTwo(aln2URL, errorURL)"
+                + "{"
+                + "parent.alnFRAME.location.href=aln2URL"
+                + "parent.errorFRAME.location.href=errorURL"
+                + "}"
+                + "</script>"
+                + "</head>);");
+        html.append("<body>\n<h2>Details Test</h2>\n");
+        html.append("<pre>");
+
+        for (Construct construct : _constructs) {
 //                    if self[construct].isvalid:
 //                        valid_nbr += 1
 //                        good += '%s - ' % self[construct].id
@@ -631,36 +602,25 @@ public final class SeqCheckerTopComponent extends TopComponent
 
         html.append("</html>\n</body>\n");
 
-        InputStream         inputStream = null;
-        URL                 url = null;
-        HttpURLConnection   connection = null;
-        String              seq = "";
+        InputStream inputStream = null;
+        URL url = null;
+        HttpURLConnection connection = null;
+        String seq = "";
 
-        try
-        {
+        try {
             url = new URL("http://biofab.jbei.org/python/checkseq_output/summary.html");
             inputStream = url.openStream();
             seq = new Scanner(inputStream).useDelimiter("\\A").next();
-        }
-        catch (MalformedURLException ex)
-        {
+        } catch (MalformedURLException ex) {
             Exceptions.printStackTrace(ex);
-        }
-        catch (IOException ex)
-        {
+        } catch (IOException ex) {
             Exceptions.printStackTrace(ex);
-        }
-        finally
-        {
-            try
-            {
-                if(inputStream != null)
-                {
+        } finally {
+            try {
+                if (inputStream != null) {
                     inputStream.close();
                 }
-            }
-            catch (IOException ex)
-            {
+            } catch (IOException ex) {
                 Exceptions.printStackTrace(ex);
             }
         }
@@ -670,8 +630,7 @@ public final class SeqCheckerTopComponent extends TopComponent
         _mainSplitPane.setDividerLocation(200);
     }
 
-    protected void addHTMLPane()
-    {
+    protected void addHTMLPane() {
         _htmlPane = new JEditorPane();
         _htmlPane.setEditable(false);
         _scrollPane4 = new JScrollPane(_htmlPane);
@@ -683,13 +642,13 @@ public final class SeqCheckerTopComponent extends TopComponent
 //        styleSheet.addRule("h1 {color: blue;}");
 //        styleSheet.addRule("h2 {color: #ff0000;}");
 //        styleSheet.addRule("pre {font : 10px monaco; color : black; background-color : #fafafa; }");
-        
+
         String htmlString = "<html>\n"
-                          + "<body>\n"
-                          + "<h2>Sequence Check Details</h2>\n"
-                          + "<p>The DNA sequence level details of a check are displayed in this space.</p>\n"
-                          + "</body>\n";
-        
+                + "<body>\n"
+                + "<h2>Sequence Check Details</h2>\n"
+                + "<p>The DNA sequence level details of a check are displayed in this space.</p>\n"
+                + "</body>\n";
+
         Document doc = kit.createDefaultDocument();
         _htmlPane.setDocument(doc);
         _htmlPane.setText(htmlString);
@@ -697,7 +656,6 @@ public final class SeqCheckerTopComponent extends TopComponent
         _mainSplitPane.setRightComponent(_scrollPane4);
         _mainSplitPane.setDividerLocation(200);
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     protected javax.swing.JTable _clonesTable;
     protected javax.swing.JTable _constructsTable;

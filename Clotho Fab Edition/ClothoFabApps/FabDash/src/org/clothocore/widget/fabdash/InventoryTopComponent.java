@@ -141,18 +141,17 @@ public final class InventoryTopComponent extends TopComponent {
                         Feature afeat = Collector.getFeature(allFeatures.get(i).uuid);
                         featureTableModel[i][1] = afeat.getSeq(); //based on the Format, the sequence of the region of interest is retreieved and used to populate the table
                     }
-                    itcFeatureTable.setModel(new javax.swing.table.DefaultTableModel(featureTableModel, new String[]{"Vector Name", "Sequence"}));
+                    itcFeatureTable.setModel(new javax.swing.table.DefaultTableModel(featureTableModel, new String[]{"Feature Name", "Sequence"}));
 
                     //Code for populating the Parts tab is below
                     ArrayList<ObjLink> allParts = Collector.getAllLinksOf(ObjType.PART);
                     JTable itcPartTable = (JTable) ((JViewport) ((JScrollPane) ((JTabbedPane) itc.getComponent(0)).getComponent(4)).getComponent(0)).getComponent(0);
-                    Object[][] partTableModel = new Object[allParts.size()][2];
+                    Object[][] partTableModel = new Object[allParts.size()][1];
                     for (int i = 0; i < allParts.size(); i++) {
                         partTableModel[i][0] = allParts.get(i).name;
-                        Part apart = Collector.getPart(allParts.get(i).uuid);
-                        partTableModel[i][1] = apart.getSeq(); //based on the Format, the sequence of the region of interest is retreieved and used to populate the table
                     }
-                    itcPartTable.setModel(new javax.swing.table.DefaultTableModel(partTableModel, new String[]{"Vector Name", "Sequence"}));
+                    itcPartTable.setModel(new javax.swing.table.DefaultTableModel(partTableModel, new String[]{"Part Name"}));
+
 
 
                 } catch (Exception e) {
@@ -327,20 +326,20 @@ public final class InventoryTopComponent extends TopComponent {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null},
+                {null},
+                {null},
+                {null}
             },
             new String [] {
-                "Identifier", "Sequence"
+                "Identifier"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -353,7 +352,6 @@ public final class InventoryTopComponent extends TopComponent {
         });
         jScrollPane6.setViewportView(jTable3);
         jTable3.getColumnModel().getColumn(0).setHeaderValue(org.openide.util.NbBundle.getMessage(InventoryTopComponent.class, "InventoryTopComponent.jTable3.columnModel.title0")); // NOI18N
-        jTable3.getColumnModel().getColumn(1).setHeaderValue(org.openide.util.NbBundle.getMessage(InventoryTopComponent.class, "InventoryTopComponent.jTable3.columnModel.title1")); // NOI18N
 
         jTabbedPane1.addTab(org.openide.util.NbBundle.getMessage(InventoryTopComponent.class, "InventoryTopComponent.jScrollPane6.TabConstraints.tabTitle"), jScrollPane6); // NOI18N
 
@@ -362,7 +360,6 @@ public final class InventoryTopComponent extends TopComponent {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
@@ -370,7 +367,7 @@ public final class InventoryTopComponent extends TopComponent {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
-    private javax.swing.JTable plasmidTable;
+    protected javax.swing.JTable plasmidTable;
     protected javax.swing.JTable plasmidTable1;
     // End of variables declaration//GEN-END:variables
 
