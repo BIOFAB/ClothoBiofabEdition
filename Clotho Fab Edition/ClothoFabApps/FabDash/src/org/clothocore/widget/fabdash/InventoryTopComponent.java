@@ -171,6 +171,22 @@ public final class InventoryTopComponent extends TopComponent {
 
 
     }
+    //populates the Parts Tab
+    public static void refreshPartsTab() {
+        InventoryTopComponent itc = InventoryTopComponent.getDefault(); //finds instance of InventoryTopComponent
+        ArrayList<ObjLink> allParts = Collector.getAllLinksOf(ObjType.PART);
+        JTable itcPartTable = (JTable) ((JViewport) ((JScrollPane) ((JTabbedPane) itc.getComponent(0)).getComponent(4)).getComponent(0)).getComponent(0);
+        Object[][] partTableModel = new Object[allParts.size()][1];
+        for (int i = 0; i < allParts.size(); i++) {
+            partTableModel[i][0] = allParts.get(i).name;
+        }
+        itcPartTable.setModel(new javax.swing.table.DefaultTableModel(partTableModel, new String[]{"Part Name"}));
+        itcPartTable.repaint();
+    }
+    //refreshes and populates Plasmid Tab
+    public static void refreshPlasmidTab() {
+
+    }
 
     /** This method is called from within the constructor to
      * initialize the form.

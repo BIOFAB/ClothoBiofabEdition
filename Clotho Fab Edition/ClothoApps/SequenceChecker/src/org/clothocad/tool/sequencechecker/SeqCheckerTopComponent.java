@@ -36,6 +36,7 @@ import org.clothocore.api.data.ObjLink;
 import org.clothocore.api.data.ObjType;
 import org.clothocore.api.data.Part;
 import org.clothocore.api.data.Plasmid;
+import org.clothocore.widget.fabdash.InventoryTopComponent;
 
 import org.openide.util.Exceptions;
 
@@ -385,38 +386,28 @@ public final class SeqCheckerTopComponent extends TopComponent {
                 }
             }
 
-            Collection plasmidCollection = null;
-            for (ObjLink ol : Collector.getAllLinksOf(ObjType.COLLECTION)) {
-                //System.out.println("Name: "+ol.name+" uuid: "+ol.uuid);
-                if (ol.name.toLowerCase().matches(".*?plasmid.*")) { //parse the name of the collection for the word "part"
-                    plasmidCollection = Collector.getCollection(ol.uuid);
-                    break;
-                }
-            }
-            Format form = ((Part) plasmidCollection.getAll().get(0)).getFormat(); //Format that will be used to add objects retrieved from web service to local connection
             for (Construct c : _constructs) {
                 Plasmid aplas = Plasmid.retrieveByName(c.getIdentifier()); //querying for a part is done through a Format, not the Collector
 
                 if (aplas == null) {
                     System.out.println("Could not find this construct in local collection: " + c.getIdentifier());
                     System.out.println("Retrieving " + c.getIdentifier() + " from Data Access Web Service");
-                    c.setDnaSequence(_controller.fetchConstructSequence(c.getIdentifier()));
+                    c.setDnaSequence(_controller.fetchConstructSequence(c.getIdentifier()).trim());
+                    for (ObjLink ol : Collector.getAllLinksOf(ObjType.FORMAT)) {
+                        Part p = Part.generateBasic(c.getIdentifier(), "retrieved from Data Access Web Service", c._dnaSequence, Collector.getFormat(ol.uuid), Collector.getCurrentUser());//generated Part is null for some reason
+                        if (p!=null) {
+                            p.saveDefault();
+                            break;
+                        }
+                    }
 
-                    System.out.println("name: "+c.getIdentifier());
-                    System.out.println("sequence: "+c._dnaSequence);
-                    System.out.println("format: " +form);
-                    System.out.println("user: "+Collector.getCurrentUser());
-                    Part p = Part.generateBasic(c.getIdentifier(), "retrieved from Data Access Web Service", c._dnaSequence, form, Collector.getCurrentUser());//generated Part is null for some reason
-                   System.out.println("part: "+p);
                 }
 
             }
-            //Temp code to see contents of Plasmid collection
-            System.out.println("/////////////////////////////");
-            for (ObjBase p : plasmidCollection.getAll()) {
-                System.out.println(p.getName());
+            for (ObjBase o : (ArrayList<ObjBase>) Collector.getAll(ObjType.PART)) {
+                System.out.println(o.getName());
             }
-            System.out.println("/////////////////////////////");
+            InventoryTopComponent.refreshPartsTab();
 
             _constructsTable.setModel(new javax.swing.table.DefaultTableModel(generateConstructsArray(), new String[]{"Construct", "Status"}));
             _constructsTable.doLayout();
@@ -424,6 +415,7 @@ public final class SeqCheckerTopComponent extends TopComponent {
             displayClones(0);
 
             //displayCheckSummary(_constructs);
+
 
         }
     }//GEN-LAST:event__selectButtonActionPerformed
