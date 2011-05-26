@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocore.widget.fabdash
+OpenIDE-Module-Layer: org/clothocore/widget/fabdash/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocore/widget/fabdash/Bundle.properties
+OpenIDE-Module-Requires: org.openide.windows.WindowManager
+OpenIDE-Module-Specification-Version: 1.0
+

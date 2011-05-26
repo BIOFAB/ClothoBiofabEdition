@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocad.format.bambglunrestricted/1
+OpenIDE-Module-Implementation-Version: 1
+OpenIDE-Module-Layer: org/clothocad/format/bambglunrestricted/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocad/format/bambglunrestricted/Bundle.properties
+

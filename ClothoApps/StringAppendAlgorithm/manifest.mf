@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocad.algorithm.stringappend
+OpenIDE-Module-Layer: org/clothocad/algorithm/stringappend/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocad/algorithm/stringappend/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocad.tool.labeditor
+OpenIDE-Module-Layer: org/clothocad/tool/labeditor/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocad/tool/labeditor/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

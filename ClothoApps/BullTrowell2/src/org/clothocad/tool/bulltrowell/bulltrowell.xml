@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-bulltrowell-connect</classname>
+<description>For inputing parts, oligos, vectors, plasmids, etc. by copy and paste from excel</description>
+<help>http://andersonlab.qb3.berkeley.edu/Clotho/help1.0.1/help_v1.0.1.html</help>
+<displayname>Bull Trowell</displayname>
+<uuid>org.clothocad.tool.bulltrowell</uuid>
+<screenshot>org/clothocad/tool/bulltrowell/screenshot.png</screenshot>
+<author>J. Christopher Anderson</author>
+<iconpath>org/clothocad/tool/bulltrowell/logo.png</iconpath>
+</plugin>-->
+<plugin>
+    <type>ClothoTool</type>
+    <version>1.0</version>
+    <classname>org-clothocad-tool-bulltrowell-connect</classname>
+    <description>For inputing parts, oligos, vectors, plasmids, etc. by copy and paste from excel</description>
+    <displayname>BullTrowell</displayname>
+    <uuid>org.clothocad.tool.bulltrowell</uuid>
+    <screenshotpath>org/clothocad/tool/bulltrowell/screenshot.png</screenshotpath>
+    <author>J.Christopher Anderson</author>
+    <iconpath>org/clothocad/tool/bulltrowell/logo.png</iconpath>
+    <dependency>org.clothocad.library.swingx</dependency>
+    <!--<dependency>none2</dependency>-->
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Bull_Trowell</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

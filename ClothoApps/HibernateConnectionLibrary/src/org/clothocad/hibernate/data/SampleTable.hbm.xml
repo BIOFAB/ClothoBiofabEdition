@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 1, 2010 8:47:56 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class name="org.clothocad.hibernate.data.SampleTable" table="SampleTable">
+    <id name="idSample" type="string">
+      <column length="63" name="idSample"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="org.clothocad.hibernate.data.PersonTable" fetch="select" name="personTable">
+      <column length="63" name="authorId"/>
+    </many-to-one>
+    <many-to-one class="org.clothocad.hibernate.data.PlasmidTable" fetch="select" name="plasmidTable">
+      <column length="63" name="plasmidId"/>
+    </many-to-one>
+    <many-to-one class="org.clothocad.hibernate.data.OligoTable" fetch="select" name="oligoTable">
+      <column length="63" name="oligoId"/>
+    </many-to-one>
+    <many-to-one class="org.clothocad.hibernate.data.StrainTable" fetch="select" name="strainTable">
+      <column length="63" name="strainId"/>
+    </many-to-one>
+    <many-to-one class="org.clothocad.hibernate.data.ContainerTable" fetch="select" name="containerTable">
+      <column length="63" name="containerId"/>
+    </many-to-one>
+    <property name="name" type="string">
+      <column name="name"/>
+    </property>
+    <property name="sampleType" type="string">
+      <column name="sampleType"/>
+    </property>
+    <property name="quality" type="java.lang.Short">
+      <column name="quality"/>
+    </property>
+    <property name="concentration" type="java.lang.Double">
+      <column name="concentration" precision="22" scale="0"/>
+    </property>
+    <property name="volume" type="java.lang.Double">
+      <column name="volume" precision="22" scale="0"/>
+    </property>
+    <property name="dateLastUsed" type="timestamp">
+      <column length="19" name="dateLastUsed"/>
+    </property>
+    <property name="dateCreated" type="timestamp">
+      <column length="19" name="dateCreated"/>
+    </property>
+    <property name="lastModified" type="timestamp">
+      <column length="19" name="lastModified"/>
+    </property>
+    <set inverse="true" name="sampleDataXrefs">
+      <key>
+        <column length="63" name="sampleId" not-null="true"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.SampleDataXref"/>
+    </set>
+  </class>
+</hibernate-mapping>

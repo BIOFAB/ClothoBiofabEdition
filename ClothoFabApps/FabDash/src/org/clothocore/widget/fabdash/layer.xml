@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <attr name="Menu\GoTo\position" intvalue="300"/>
+    <attr name="Menu\Help\position" intvalue="500"/>
+    <folder name="Actions">
+        <folder name="Window">
+            <file name="org-clothocore-widget-fabdash-InventoryAction.instance">
+                <attr name="component" methodvalue="org.clothocore.widget.fabdash.InventoryTopComponent.findInstance"/>
+                <attr name="displayName" bundlevalue="org.clothocore.widget.fabdash.Bundle#CTL_InventoryAction"/>
+                <attr name="instanceCreate" methodvalue="org.openide.windows.TopComponent.openAction"/>
+            </file>
+            <file name="org-clothocore-widget-fabdash-PopulateTools.instance"/>
+        </folder>
+    </folder>
+    <folder name="Menu">
+        <file name="Edit_hidden"/>
+        <file name="GoTo_hidden"/>
+        <folder name="File">
+            <attr name="position" intvalue="100"/>
+        </folder>
+        <folder name="Apps">
+            <attr name="position" intvalue="200"/>
+            <file name="org-clothocore-widget-fabdash-PopulateTools.shadow">
+                <attr name="originalFile" stringvalue="Actions/Window/org-clothocore-widget-fabdash-PopulateTools.instance"/>
+                <attr name="position" intvalue="0"/>
+            </file>
+        </folder>
+        <file name="Tools_hidden"/>
+        <file name="View_hidden"/>
+        <folder name="Window">
+            <attr name="position" intvalue="400"/>
+            <file name="NameAction.shadow_hidden"/>
+        </folder>
+    </folder>
+    <folder name="Windows2">
+        <folder name="Components">
+            <file name="InventoryTopComponent.settings" url="InventoryTopComponentSettings.xml"/>
+        </folder>
+        <folder name="Modes">
+            <folder name="explorer">
+                <file name="InventoryTopComponent.wstcref" url="InventoryTopComponentWstcref.xml"/>
+            </folder>
+        </folder>
+    </folder>
+    <folder name="plugins">
+        <folder name="widgets">
+            <file name="org-clothocore-widget-fabdash-Connect.instance">
+                <attr name="instanceOf" stringvalue="org.clothocore.api.plugin.ClothoWidget"/>
+            </file>
+        </folder>
+        <folder name="xml">
+            <file name="fabdash.xml" url="fabdash.xml"></file>
+        </folder>
+    </folder>
+</filesystem>

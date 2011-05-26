@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+    <type>ClothoConnection</type>
+    <classname>org-clothocad-connection-localconnection-LocalConnection</classname>
+    <description>A database that sits on your desktop instead of a server</description>
+    <help>http://andersonlab.qb3.berkeley.edu/Clotho/help1.0.1/help_v1.0.1.html</help>
+    <displayname>Local Connection</displayname>
+    <uuid>org.clothocad.connection.localconnection</uuid>
+    <author>Chris Anderson</author>
+    <screenshot>org/clothocad/connection/localconnection</screenshot>
+    <iconpath>org/clothocad/connection/localconnection</iconpath>
+</plugin>-->
+<plugin>
+<type>ClothoConnection</type>
+<version>1.0</version>
+<classname>org-clothocad-connection-localconnection-LocalConnection</classname>
+<description>A database that sits on your desktop instead of a server</description>
+<displayname>Local Connection</displayname>
+<uuid>org.clothocad.connection.localconnection</uuid>
+<screenshotpath>org/clothocad/connection/localconnection</screenshotpath>
+<author>J. Christopher Anderson</author>
+<dependency>org.clothocad.hibernate</dependency>
+<iconpath>org/clothocad/connection/localconnection</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/App_Information</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

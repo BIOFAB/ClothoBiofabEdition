@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+    <type>ClothoWidget</type>
+    <version>1.0</version>
+    <classname>org-clothocad-widget-errorreporter-connect</classname>
+    <description>Show errors and other messages and send bug reports</description>
+    <help>http://andersonlab.qb3.berkeley.edu/Clotho/help1.0.1/help_v1.0.1.html</help>
+    <displayname>Error Reporter</displayname>
+    <uuid>org.clothocad.widget.errorreporter</uuid>
+    <screenshotpath>org/clothocad/widget/errorreporter/screen.png</screenshotpath>
+    <author>Chris Anderson</author>
+    <iconpath>org/clothocad/widget/errorreporter/logo.png</iconpath>
+</plugin>-->
+<plugin>
+    <type>ClothoWidget</type>
+    <version>1.0</version>
+    <classname>org-clothocad-widget-errorreporter-connect</classname>
+    <description>Show errors and other messages and send bug reports</description>
+    <displayname>Error Reporter</displayname>
+    <uuid>org.clothocad.widget.errorreporter</uuid>
+    <screenshotpath>org/clothocad/widget/errorreporter/screen.png</screenshotpath>
+    <author>J.Christopher Anderson</author>
+    <iconpath>org/clothocad/widget/errorreporter/logo.png</iconpath>
+    <!--<dependency>none</dependency>-->
+    <!--<dependency>none2</dependency>-->
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Error_Reporter</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

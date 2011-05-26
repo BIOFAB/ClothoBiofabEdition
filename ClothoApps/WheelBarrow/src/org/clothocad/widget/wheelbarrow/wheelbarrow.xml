@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+<type>ClothoWidget</type>
+<version>1.0</version>
+<classname>org-clothocad-widget-wheelbarrow-connect</classname>
+<description>A graphical spot to park objects temporarily</description>
+<help>http://andersonlab.qb3.berkeley.edu/Clotho/help1.0.1/help_v1.0.1.html</help>
+<displayname>Wheelbarrow</displayname>
+<uuid>org.clothocad.widget.wheelbarrow</uuid>
+<screenshotpath>org/clothocad/widget/wheelbarrow/screenshot.png</screenshotpath>
+<author>J. Christopher Anderson</author>
+<iconpath>org/clothocad/widget/wheelbarrow/logo.png</iconpath>
+</plugin>-->
+<plugin>
+<type>ClothoWidget</type>
+<version>1.0</version>
+<classname>org-clothocad-widget-wheelbarrow-connect</classname>
+<description>A graphical spot to park objects temporarily</description>
+<displayname>Wheelbarrow</displayname>
+<uuid>org.clothocad.widget.wheelbarrow</uuid>
+<screenshotpath>org/clothocad/widget/wheelbarrow/screenshot.png</screenshotpath>
+<author>J. Christopher Anderson</author>
+<!--<dependency>org.clothocad.tool.helloworld</dependency>-->
+<iconpath>org/clothocad/widget/wheelbarrow/logo.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Wheelbarrow</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

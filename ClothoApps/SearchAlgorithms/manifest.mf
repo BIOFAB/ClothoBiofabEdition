@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocad.algorithm.searchalgorithm
+OpenIDE-Module-Layer: org/clothocad/algorithm/searchalgorithm/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocad/algorithm/searchalgorithm/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

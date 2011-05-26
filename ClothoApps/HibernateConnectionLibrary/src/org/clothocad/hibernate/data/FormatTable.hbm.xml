@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 1, 2010 8:47:56 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class name="org.clothocad.hibernate.data.FormatTable" table="FormatTable">
+    <id name="idformat" type="string">
+      <column length="63" name="idformat"/>
+      <generator class="assigned"/>
+    </id>
+    <property name="name" type="string">
+      <column name="name"/>
+    </property>
+    <property name="pluginHelpLink" type="string">
+      <column name="pluginHelpLink"/>
+    </property>
+    <property name="pluginDownloadLink" type="string">
+      <column name="pluginDownloadLink"/>
+    </property>
+    <property name="description" type="string">
+      <column name="description"/>
+    </property>
+    <property name="pluginId" type="string">
+      <column length="63" name="pluginId"/>
+    </property>
+    <property name="dateCreated" type="timestamp">
+      <column length="19" name="dateCreated"/>
+    </property>
+    <property name="lastModified" type="timestamp">
+      <column length="19" name="lastModified"/>
+    </property>
+    <set inverse="true" name="vectorTables">
+      <key>
+        <column length="63" name="formatId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.VectorTable"/>
+    </set>
+    <set inverse="true" name="partTables">
+      <key>
+        <column length="63" name="formatId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.PartTable"/>
+    </set>
+    <set inverse="true" name="plasmidTables">
+      <key>
+        <column length="63" name="formatId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.PlasmidTable"/>
+    </set>
+  </class>
+</hibernate-mapping>

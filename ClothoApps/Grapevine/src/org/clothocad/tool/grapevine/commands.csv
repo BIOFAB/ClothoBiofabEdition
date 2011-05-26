@@ -1,0 +1,19 @@
+***KeyBindings,,,
+Key Press,control s,Save everything,Will save all WikiTexts; Factoids; and the note associated with a Note.  Ctrl S will save only individual wikitext if you have a WikiTextEditor in focus.
+Key Press,control n,New note,Creates a new Note in a new window
+Key press,control w,Close window,Closes the window
+Key Press,control h,Command help,Opens this command help window
+***JComponents,,,
+Title area,Click and type,Change title,When clicked; the title area will turn white.  You can then edit the text.  When you leave the title area; it turns blue and stores your information.
+Wiki areas,double click,Switch to edit,Double clicking on wikitext areas will switch to edit mode.  There you can access the wikitext editor help
+Wiki area,Get help,control h,From edit mode of a wikitext area; will launch help for wikitext editors
+***MouseEvents,,,
+New Factoid button,left click,Create new factoid,Create a new factoid at the top of the list
+New Factoid button,right click,Popup Menu,Get a Clotho right click popup menu for the Note
+database icons,left click,Save factoid,Save the factoid to the database
+trashcan icons,left click,Remove factoid,Remove the factoid from the note.  This doesn't delete the factoid; just removes it.  This operation is undoable from the right click menu of the Note.
+popout icons,left click,Launch editor,Launch a more detailed editor for the factoid.
+factoid headers,double click,Launch editor,Launch a more detailed editor for the factoid.
+factoid headers,right click,Popup Menu,Get a Clotho right click popup menu for the Factoid
+***DragEvents,,,
+***OtherEvents,,,

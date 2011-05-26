@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 1, 2010 8:47:56 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class name="org.clothocad.hibernate.data.AttachmentTable" table="AttachmentTable">
+    <id name="idAttachment" type="string">
+      <column length="63" name="idAttachment"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="org.clothocad.hibernate.data.WikitextTable" fetch="select" name="wikitextTable">
+      <column length="63" name="wikiTextId"/>
+    </many-to-one>
+    <property name="fileName" type="string">
+      <column name="fileName"/>
+    </property>
+    <property name="attachmentType" type="string">
+      <column length="63" name="attachmentType"/>
+    </property>
+    <property name="fileBlob" type="binary">
+      <column name="fileBlob"/>
+    </property>
+    <property name="dateCreated" type="timestamp">
+      <column length="19" name="dateCreated"/>
+    </property>
+    <property name="lastModified" type="timestamp">
+      <column length="19" name="lastModified"/>
+    </property>
+    <set inverse="true" name="plateTypeTables">
+      <key>
+        <column length="63" name="AttachmentTable_idAttachment"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.PlateTypeTable"/>
+    </set>
+    <set inverse="true" name="strainTables">
+      <key>
+        <column length="63" name="genbankFileId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.StrainTable"/>
+    </set>
+    <set inverse="true" name="sampleDataTables">
+      <key>
+        <column length="63" name="attachmentId"/>
+      </key>
+      <one-to-many class="org.clothocad.hibernate.data.SampleDataTable"/>
+    </set>
+  </class>
+</hibernate-mapping>

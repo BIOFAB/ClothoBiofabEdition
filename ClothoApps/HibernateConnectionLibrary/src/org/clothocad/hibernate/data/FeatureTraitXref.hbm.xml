@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 12, 2010 7:14:53 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="org.clothocad.hibernate.data.FeatureTraitXref" table="FeatureTraitXref">
+        <composite-id name="id" class="org.clothocad.hibernate.data.FeatureTraitXrefId">
+            <key-property name="featureId" type="string">
+                <column name="featureId" length="63" />
+            </key-property>
+            <key-property name="traitId" type="string">
+                <column name="traitId" length="63" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="traitTable" class="org.clothocad.hibernate.data.TraitTable" update="false" insert="false" fetch="select">
+            <column name="traitId" length="63" not-null="true" />
+        </many-to-one>
+        <many-to-one name="featureTable" class="org.clothocad.hibernate.data.FeatureTable" update="false" insert="false" fetch="select">
+            <column name="featureId" length="63" not-null="true" />
+        </many-to-one>
+        <property name="value" type="string">
+            <column name="value" length="65535" />
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="dateCreated" length="19" />
+        </property>
+        <property name="lastModified" type="timestamp">
+            <column name="lastModified" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

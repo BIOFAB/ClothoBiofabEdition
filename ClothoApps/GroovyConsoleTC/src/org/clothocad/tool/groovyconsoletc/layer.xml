@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="Actions">
+        <folder name="Window">
+            <file name="org-clothocad-tool-groovyconsoletc-LaunchMe.instance">
+                <attr name="delegate" newvalue="org.clothocad.tool.groovyconsoletc.LaunchMe"/>
+                <attr name="displayName" bundlevalue="org.clothocad.tool.groovyconsoletc.Bundle#CTL_LaunchMe"/>
+                <attr name="instanceCreate" methodvalue="org.openide.awt.Actions.alwaysEnabled"/>
+                <attr name="noIconInMenu" boolvalue="false"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Menu">
+        <folder name="Window">
+            <file name="org-clothocad-tool-groovyconsoletc-LaunchMe.shadow">
+                <attr name="originalFile" stringvalue="Actions/Window/org-clothocad-tool-groovyconsoletc-LaunchMe.instance"/>
+                <attr name="position" intvalue="250"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="plugins">
+        <folder name="tools">
+            <file name="org-clothocad-tool-groovyconsoletc-Connect.instance">
+                <attr name="instanceOf" stringvalue="org.clothocad.api.plugin.ClothoTool"/>
+            </file>
+        </folder>
+        <folder name="xml">
+            <file name="groovyconsoletc.xml" url="groovyconsoletc.xml"></file>
+        </folder>
+    </folder>
+    <folder name="org">
+        <folder name="clothocad">
+            <folder name="tool">
+                <folder name="groovyconsoletc">
+                    <file name="commands.csv" url="commands.csv"></file>
+                </folder>
+            </folder>
+        </folder>
+    </folder>
+</filesystem>

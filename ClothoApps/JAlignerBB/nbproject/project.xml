@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.apisupport.project</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/nb-module-project/3">
+            <code-name-base>org.clothocad.library.jalignerbb</code-name-base>
+            <suite-component/>
+            <module-dependencies/>
+            <public-packages>
+                <package>jaligner</package>
+                <package>jaligner.example</package>
+                <package>jaligner.formats</package>
+                <package>jaligner.matrix</package>
+                <package>jaligner.test</package>
+                <package>jaligner.ui</package>
+                <package>jaligner.ui.clipboard</package>
+                <package>jaligner.ui.filechooser</package>
+                <package>jaligner.ui.images</package>
+                <package>jaligner.ui.logging</package>
+                <package>jaligner.ui.util</package>
+                <package>jaligner.util</package>
+            </public-packages>
+            <class-path-extension>
+                <runtime-relative-path>ext/JAlignerBB.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/JAlignerBB.jar</binary-origin>
+            </class-path-extension>
+        </data>
+    </configuration>
+</project>

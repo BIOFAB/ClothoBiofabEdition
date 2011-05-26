@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 1, 2010 8:47:56 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class name="org.clothocad.hibernate.data.SearchtagTable" table="SearchtagTable">
+    <id name="idSearchtag" type="string">
+      <column length="63" name="idSearchtag"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="org.clothocad.hibernate.data.PersonTable" fetch="select" name="personTable">
+      <column length="63" name="authorId"/>
+    </many-to-one>
+    <property name="name" type="string">
+      <column name="name"/>
+    </property>
+    <property name="objectId" type="string">
+      <column length="63" name="objectId"/>
+    </property>
+    <property name="objectType" type="string">
+      <column length="63" name="objectType"/>
+    </property>
+    <property name="dateCreated" type="timestamp">
+      <column length="19" name="dateCreated"/>
+    </property>
+    <property name="lastModified" type="timestamp">
+      <column length="19" name="lastModified"/>
+    </property>
+  </class>
+</hibernate-mapping>

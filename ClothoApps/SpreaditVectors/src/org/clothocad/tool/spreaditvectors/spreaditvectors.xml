@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-spreaditvectors-connect</classname>
+<description>A google doc-like interface for editing vectors in a collection</description>
+<help>http://andersonlab.qb3.berkeley.edu/Clotho/help1.0.1/help_v1.0.1.html</help>
+<displayname>Spreadit Vectors</displayname>
+<uuid>org.clothocad.tool.spreaditvectors</uuid>
+<screenshot>org/clothocad/tool/spreaditvectors/screenshot.png</screenshot>
+<author>J. Christopher Anderson</author>
+<viewer>COLLECTION</viewer>
+<iconpath>org/clothocad/tool/spreaditvectors/logo.png</iconpath>
+</plugin>-->
+<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-spreaditvectors-connect</classname>
+<description>A google doc-like interface for editing vectors in a collection</description>
+<displayname>Spreadit Vectors</displayname>
+<uuid>org.clothocad.tool.spreaditvectors</uuid>
+<screenshotpath>org/clothocad/tool/spreaditvectors/screenshot.png</screenshotpath>
+<author>J. Christopher Anderson</author>
+<dependency>org.clothocad.library.swingx</dependency>
+<viewer>COLLECTION</viewer>
+<iconpath>org/clothocad/tool/spreaditvectors/logo.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/SpreadIt_Vectors</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

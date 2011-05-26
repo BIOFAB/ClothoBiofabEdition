@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-pcrpredict-connect</classname>
+<description>Predicts the sequence of a PCR reaction</description>
+<help>http://andersonlab.qb3.berkeley.edu/Clotho/help1.0.1/help_v1.0.1.html</help>
+<displayname>PCR Predictor</displayname>
+<uuid>org.clothocad.tool.pcrpredict</uuid>
+<screenshot>org/clothocad/tool/pcrpredict/screenshot.png</screenshot>
+<author>J. Christopher Anderson</author>
+<viewer>PART</viewer>
+<viewer>VECTOR</viewer>
+<viewer>PLASMID</viewer>
+<viewer>FEATURE</viewer>
+<viewer>NUCSEQ</viewer>
+<viewer>OLIGO</viewer>
+<iconpath>org/clothocad/tool/pcrpredict/logo.png</iconpath>
+</plugin>-->
+<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-pcrpredict-connect</classname>
+<description>Predicts the sequence of a PCR reaction</description>
+<displayname>PCR Predictor</displayname>
+<uuid>org.clothocad.tool.pcrpredict</uuid>
+<screenshotpath>org/clothocad/tool/pcrpredict/screenshot.png</screenshotpath>
+<author>J. Christopher Anderson</author>
+<dependency>org.clothocad.library.sequencelight</dependency>
+<viewer>PART</viewer>
+<viewer>VECTOR</viewer>
+<viewer>PLASMID</viewer>
+<viewer>FEATURE</viewer>
+<viewer>NUCSEQ</viewer>
+<viewer>OLIGO</viewer>
+<iconpath>org/clothocad/tool/pcrpredict/logo.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/App_Information</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

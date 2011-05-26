@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 12, 2010 7:10:35 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="org.clothocad.hibernate.data.FeatureTable" table="FeatureTable">
+        <id name="idFeature" type="string">
+            <column name="idFeature" length="63" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="personTable" class="org.clothocad.hibernate.data.PersonTable" fetch="select">
+            <column name="authorId" length="63" />
+        </many-to-one>
+        <many-to-one name="nucseqTable" class="org.clothocad.hibernate.data.NucseqTable" fetch="select">
+            <column name="nucseqId" length="63" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" />
+        </property>
+        <property name="riskGroup" type="java.lang.Short">
+            <column name="riskGroup" />
+        </property>
+        <property name="genbankId" type="string">
+            <column name="genbankId" length="63" />
+        </property>
+        <property name="swissprotId" type="string">
+            <column name="swissprotId" length="63" />
+        </property>
+        <property name="pdbId" type="string">
+            <column name="pdbId" length="63" />
+        </property>
+        <property name="forColor" type="java.lang.Integer">
+            <column name="forColor" />
+        </property>
+        <property name="revColor" type="java.lang.Integer">
+            <column name="revColor" />
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="dateCreated" length="19" />
+        </property>
+        <property name="lastModified" type="timestamp">
+            <column name="lastModified" length="19" />
+        </property>
+        <property name="featureData" type="string">
+            <column name="featureData" length="65535" />
+        </property>
+        <property name="isCds" type="java.lang.Boolean">
+            <column name="isCDS" />
+        </property>
+        <set name="featureTraitXrefs" inverse="true">
+            <key>
+                <column name="featureId" length="63" not-null="true" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.FeatureTraitXref" />
+        </set>
+        <set name="featureFamilyXrefs" inverse="true">
+            <key>
+                <column name="featureId" length="63" not-null="true" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.FeatureFamilyXref" />
+        </set>
+        <set name="nucseqAnnotations" inverse="true">
+            <key>
+                <column name="featureId" length="63" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.NucseqAnnotation" />
+        </set>
+        <set name="featureNoteXrefs" inverse="true">
+            <key>
+                <column name="featureId" length="63" not-null="true" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.FeatureNoteXref" />
+        </set>
+    </class>
+</hibernate-mapping>

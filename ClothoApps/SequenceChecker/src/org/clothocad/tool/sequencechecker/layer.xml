@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="Actions">
+        <folder name="Window">
+            <file name="org-clothocad-tool-sequencechecker-SeqCheckerAction.instance">
+                <attr name="component" methodvalue="org.clothocad.tool.sequencechecker.SeqCheckerTopComponent.findInstance"/>
+                <attr name="displayName" bundlevalue="org.clothocad.tool.sequencechecker.Bundle#CTL_SeqCheckerAction"/>
+                <attr name="iconBase" stringvalue="org/clothocad/tool/sequencechecker/SeqChecker.png"/>
+                <attr name="instanceCreate" methodvalue="org.openide.windows.TopComponent.openAction"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Menu">
+        <folder name="Window">
+            <file name="SeqCheckerAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Window/org-clothocad-tool-sequencechecker-SeqCheckerAction.instance"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Windows2">
+        <folder name="Components">
+            <file name="SeqCheckerTopComponent.settings" url="SeqCheckerTopComponentSettings.xml"/>
+        </folder>
+        <folder name="Modes">
+            <folder name="editor">
+                <file name="SeqCheckerTopComponent.wstcref" url="SeqCheckerTopComponentWstcref.xml"/>
+            </folder>
+        </folder>
+    </folder>
+    <folder name="plugins">
+        <folder name="tools">
+            <file name="org-clothocad-tool-sequencechecker-connect.instance">
+                <attr name="instanceOf" stringvalue="org.clothocore.api.plugin.ClothoTool"/>
+            </file>
+        </folder>
+        <folder name="xml">
+            <file name="sequencechecker.xml" url="sequencechecker.xml"></file>
+        </folder>
+    </folder>
+</filesystem>

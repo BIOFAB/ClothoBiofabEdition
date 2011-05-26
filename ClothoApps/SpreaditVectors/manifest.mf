@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocad.tool.spreaditvectors
+OpenIDE-Module-Layer: org/clothocad/tool/spreaditvectors/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocad/tool/spreaditvectors/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

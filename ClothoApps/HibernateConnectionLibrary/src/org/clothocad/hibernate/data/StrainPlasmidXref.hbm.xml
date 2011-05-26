@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 28, 2010 6:07:51 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="org.clothocad.hibernate.data.StrainPlasmidXref" table="StrainPlasmidXref">
+        <composite-id name="id" class="org.clothocad.hibernate.data.StrainPlasmidXrefId">
+            <key-property name="strainId" type="string">
+                <column name="strainId" length="63" />
+            </key-property>
+            <key-property name="plasmidId" type="string">
+                <column name="plasmidId" length="63" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="personTable" class="org.clothocad.hibernate.data.PersonTable" fetch="select">
+            <column name="authorId" length="63" />
+        </many-to-one>
+        <many-to-one name="plasmidTable" class="org.clothocad.hibernate.data.PlasmidTable" update="false" insert="false" fetch="select">
+            <column name="plasmidId" length="63" not-null="true" />
+        </many-to-one>
+        <many-to-one name="strainTable" class="org.clothocad.hibernate.data.StrainTable" update="false" insert="false" fetch="select">
+            <column name="strainId" length="63" not-null="true" />
+        </many-to-one>
+        <property name="genomeStart" type="java.lang.Integer">
+            <column name="genomeStart" />
+        </property>
+        <property name="genomeEnd" type="java.lang.Integer">
+            <column name="genomeEnd" />
+        </property>
+        <property name="revComp" type="java.lang.Boolean">
+            <column name="revComp" />
+        </property>
+        <property name="isGenomic" type="java.lang.Boolean">
+            <column name="isGenomic" />
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="dateCreated" length="19" />
+        </property>
+        <property name="lastModified" type="timestamp">
+            <column name="lastModified" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

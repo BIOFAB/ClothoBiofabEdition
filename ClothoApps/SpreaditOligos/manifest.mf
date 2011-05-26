@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocad.tool.spreaditoligos
+OpenIDE-Module-Layer: org/clothocad/tool/spreaditoligos/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocad/tool/spreaditoligos/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

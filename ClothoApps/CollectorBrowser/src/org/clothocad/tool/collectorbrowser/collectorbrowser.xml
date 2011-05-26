@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-collectorbrowser-connect</classname>
+<description>Get a snapshot of the contents in the Collector</description>
+<help>http://andersonformat.qb3.berkeley.edu/Clotho/help1.0.1/help_v1.0.1.html</help>
+<displayname>Collector Browser</displayname>
+<uuid>org.clothocad.tool.collectorbrowser</uuid>
+<screenshot>org/clothocad/tool/collectorbrowser/screenshot.png</screenshot>
+<author>J. Christopher Anderson</author>
+<iconpath>org/clothocad/tool/collectorbrowser/logo.png</iconpath>
+</plugin>-->
+<plugin>
+    <type>ClothoTool</type>
+    <version>1.0</version>
+    <classname>org-clothocad-tool-collectorbrowser-connect</classname>
+    <description>Get a snapshot of the contents in the Collector</description>
+    <displayname>Collector Browser</displayname>
+    <uuid>org.clothocad.tool.collectorbrowser</uuid>
+    <screenshotpath>org/clothocad/tool/collectorbrowser/screenshot.png</screenshotpath>
+    <author>J.Christopher Anderson</author>
+    <iconpath>org/clothocad/tool/collectorbrowser/logo.png</iconpath>
+    <!--<dependency>none</dependency>-->
+    <!--<dependency>none2</dependency>-->
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Collector_Browser</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocad.library.jalignerbb
+OpenIDE-Module-Localizing-Bundle: org/clothocad/library/jalignerbb/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

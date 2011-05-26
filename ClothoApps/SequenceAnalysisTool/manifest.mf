@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocad.tool.sequenceanalysistool
+OpenIDE-Module-Layer: org/clothocad/tool/sequenceanalysistool/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocad/tool/sequenceanalysistool/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 26, 2010 11:53:29 AM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="org.clothocad.hibernate.data.NoteTable" table="NoteTable" >
+        <id name="idNote" type="string">
+            <column name="idNote" length="63" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="personTable" class="org.clothocad.hibernate.data.PersonTable" fetch="select">
+            <column name="authorId" length="63" />
+        </many-to-one>
+        <many-to-one name="wikitextTable" class="org.clothocad.hibernate.data.WikitextTable" fetch="select">
+            <column name="blurbId" length="63" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" />
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="dateCreated" length="19" />
+        </property>
+        <property name="lastModified" type="timestamp">
+            <column name="lastModified" length="19" />
+        </property>
+        <set name="strainNoteXrefs" inverse="true">
+            <key>
+                <column name="noteId" length="63" not-null="true" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.StrainNoteXref" />
+        </set>
+        <set name="featureNoteXrefs" inverse="true">
+            <key>
+                <column name="noteId" length="63" not-null="true" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.FeatureNoteXref" />
+        </set>
+        <set name="noteNoteXrefsForChildNoteId" inverse="true">
+            <key>
+                <column name="childNoteId" length="63" not-null="true" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.NoteNoteXref" />
+        </set>
+        <set name="noteFactoidXrefs" inverse="true">
+            <key>
+                <column name="noteId" length="63" not-null="true" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.NoteFactoidXref" />
+        </set>
+        <set name="noteNoteXrefsForParentNoteId" inverse="true">
+            <key>
+                <column name="parentNoteId" length="63" not-null="true" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.NoteNoteXref" />
+        </set>
+        <set name="familyNoteXrefs" inverse="true">
+            <key>
+                <column name="noteId" length="63" not-null="true" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.FamilyNoteXref" />
+        </set>
+    </class>
+</hibernate-mapping>

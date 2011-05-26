@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="Actions">
+        <folder name="Window">
+            <file name="org-clothocad-tool-toolappbrowser-tc-BrowseTCAction.instance">
+                <attr name="component" methodvalue="org.clothocad.tool.toolappbrowser.tc.BrowseTCTopComponent.findInstance"/>
+                <attr name="displayName" bundlevalue="org.clothocad.tool.toolappbrowser.tc.Bundle#CTL_BrowseTCAction"/>
+                <attr name="instanceCreate" methodvalue="org.openide.windows.TopComponent.openAction"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Menu">
+        <folder name="Apps">
+            <file name="BrowseTCAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Window/org-clothocad-tool-toolappbrowser-tc-BrowseTCAction.instance"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Windows2">
+        <folder name="Components">
+            <file name="BrowseTCTopComponent.settings" url="BrowseTCTopComponentSettings.xml"/>
+        </folder>
+        <folder name="Modes">
+            <folder name="editor">
+                <file name="BrowseTCTopComponent.wstcref" url="BrowseTCTopComponentWstcref.xml"/>
+            </folder>
+        </folder>
+    </folder>
+    <folder name="plugins">
+        <folder name="tools">
+            <file name="org-clothocad-tool-toolappbrowser-Connect.instance">
+                <attr name="instanceOf" stringvalue="org.clothocore.api.plugin.ClothoTool"/>
+            </file>
+        </folder>
+        <folder name="xml">
+            <file name="toolappbrowser.xml" url="toolappbrowser.xml"></file>
+        </folder>
+    </folder>
+</filesystem>

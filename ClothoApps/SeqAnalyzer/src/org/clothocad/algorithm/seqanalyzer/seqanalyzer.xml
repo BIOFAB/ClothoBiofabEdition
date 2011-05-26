@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+    <type>ClothoAlgorithm</type>
+    <version>1.0</version>
+    <classname>org-clothocad-algorithm-seqanalyzer-SequenceChecker</classname>
+    <description>Compare ab1 trace files to an expected sequence</description>
+    <help>http://andersonlab.qb3.berkeley.edu/Clotho/help1.0.1/help_v1.0.1.html</help>
+    <displayname>SequenceChecker</displayname>
+    <uuid>org.clothocad.algorithm.seqanalyzer</uuid>
+    <screenshot>org/clothocad/widget/dashboard/images/screen.png</screenshot>
+    <author>Ben Bubenheim</author>
+    <iconpath>org/clothocad/widget/dashboard/images/ClothoIcon.png</iconpath>
+</plugin>-->
+<plugin>
+<type>ClothoAlgorithm</type>
+<version>1.0</version>
+<classname>org-clothocad-algorithm-seqanalyzer-SequenceChecker</classname>
+<description>Compare ab1 trace files to an expected sequence</description>
+<displayname>SequenceChecker</displayname>
+<uuid>org.clothocad.algorithm.seqanalyzer</uuid>
+<screenshotpath>org/clothocad/widget/dashboard/images/screen.png</screenshotpath>
+<author>Ben Bubenheim</author>
+<dependency>org.clothocad.library.jalignerbb</dependency>
+<iconpath>org/clothocad/widget/dashboard/images/ClothoIcon.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Sequence_Checker</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

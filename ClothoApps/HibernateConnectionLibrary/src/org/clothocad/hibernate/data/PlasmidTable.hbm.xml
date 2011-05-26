@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 28, 2010 6:07:51 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="org.clothocad.hibernate.data.PlasmidTable" table="PlasmidTable">
+        <id name="idPlasmid" type="string">
+            <column name="idPlasmid" length="63" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="personTable" class="org.clothocad.hibernate.data.PersonTable" fetch="select">
+            <column name="authorId" length="63" />
+        </many-to-one>
+        <many-to-one name="formatTable" class="org.clothocad.hibernate.data.FormatTable" fetch="select">
+            <column name="formatId" length="63" />
+        </many-to-one>
+        <many-to-one name="vectorTable" class="org.clothocad.hibernate.data.VectorTable" fetch="select">
+            <column name="vectorId" length="63" />
+        </many-to-one>
+        <many-to-one name="partTable" class="org.clothocad.hibernate.data.PartTable" fetch="select">
+            <column name="partId" length="63" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" />
+        </property>
+        <property name="constructionFile" type="string">
+            <column name="constructionFile" length="65535" />
+        </property>
+        <property name="riskGroup" type="java.lang.Short">
+            <column name="riskGroup" />
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="dateCreated" length="19" />
+        </property>
+        <property name="lastModified" type="timestamp">
+            <column name="lastModified" length="19" />
+        </property>
+        <set name="strainPlasmidXrefs" inverse="true">
+            <key>
+                <column name="plasmidId" length="63" not-null="true" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.StrainPlasmidXref" />
+        </set>
+        <set name="sampleTables" inverse="true">
+            <key>
+                <column name="plasmidId" length="63" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.SampleTable" />
+        </set>
+    </class>
+</hibernate-mapping>

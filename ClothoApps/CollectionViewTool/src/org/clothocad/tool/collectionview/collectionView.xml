@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-collectionview-connectCollectionView</classname>
+<description>A folder-explorer-like browser of all elements in a collection.</description>
+<help>http://andersonlab.qb3.berkeley.edu/Clotho/help1.0.1/help_v1.0.1.html</help>
+<displayname>Collection View</displayname>
+<uuid>org.clothocad.tool.collectionview</uuid>
+<screenshot>org/clothocad/tool/collectionview/images/screenshot.png</screenshot>
+<author>J. Christopher Anderson</author>
+<viewer>COLLECTION</viewer>
+<iconpath>org/clothocad/tool/collectionview/images/logo.png</iconpath>
+</plugin>-->
+<plugin>
+    <type>ClothoTool</type>
+    <version>1.0</version>
+    <classname>org-clothocad-tool-collectionview-connectCollectionView</classname>
+    <description>A folder-explorer-like browser of all elements in a collection.</description>
+    <displayname>Collection View</displayname>
+    <uuid>org.clothocad.tool.collectionview</uuid>
+    <screenshotpath>org/clothocad/tool/collectionview/images/screenshot.png</screenshotpath>
+    <author>J.Christopher Anderson</author>
+    <viewer>COLLECTION</viewer>
+    <iconpath>org/clothocad/tool/collectionview/images/logo.png</iconpath>
+    <!--<dependency>none</dependency>-->
+    <!--<dependency>none2</dependency>-->
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Collection_View</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

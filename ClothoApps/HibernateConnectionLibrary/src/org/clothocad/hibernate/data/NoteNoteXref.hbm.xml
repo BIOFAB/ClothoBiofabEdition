@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 1, 2010 8:47:56 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+  <class name="org.clothocad.hibernate.data.NoteNoteXref" table="NoteNoteXref">
+    <composite-id class="org.clothocad.hibernate.data.NoteNoteXrefId" name="id">
+      <key-property name="parentNoteId" type="string">
+        <column length="63" name="parentNoteId"/>
+      </key-property>
+      <key-property name="childNoteId" type="string">
+        <column length="63" name="childNoteId"/>
+      </key-property>
+    </composite-id>
+    <many-to-one class="org.clothocad.hibernate.data.NoteTable" fetch="select" insert="false" name="noteTableByParentNoteId" update="false">
+      <column length="63" name="parentNoteId" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="org.clothocad.hibernate.data.PersonTable" fetch="select" name="personTable">
+      <column length="63" name="authorId"/>
+    </many-to-one>
+    <many-to-one class="org.clothocad.hibernate.data.NoteTable" fetch="select" insert="false" name="noteTableByChildNoteId" update="false">
+      <column length="63" name="childNoteId" not-null="true"/>
+    </many-to-one>
+    <property name="dateCreated" type="timestamp">
+      <column length="19" name="dateCreated"/>
+    </property>
+    <property name="lastModified" type="timestamp">
+      <column length="19" name="lastModified"/>
+    </property>
+  </class>
+</hibernate-mapping>

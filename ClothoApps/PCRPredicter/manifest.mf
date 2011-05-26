@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocad.tool.pcrpredict
+OpenIDE-Module-Layer: org/clothocad/tool/pcrpredict/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocad/tool/pcrpredict/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

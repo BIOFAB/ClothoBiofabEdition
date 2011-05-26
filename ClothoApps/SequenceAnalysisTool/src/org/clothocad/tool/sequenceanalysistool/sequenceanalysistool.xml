@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-sequenceanalysistool-connect</classname>
+<description>Berkeley iGEM 2010 sequencing analysis tool</description>
+<help>http://wiki.bu.edu/ece-clotho/index.php/Sequence_Checker</help>
+<displayname>Sequence Checker</displayname>
+<uuid>org.clothocad.tool.sequenceanalysistool</uuid>
+<screenshotpath>org/clothocad/tool/sequenceanalysistool/screenshot.png</screenshotpath>
+<author>J. Christopher Anderson</author>
+<viewer>PART</viewer>
+<viewer>PLASMID</viewer>
+<viewer>VECTOR</viewer>
+<viewer>FEATURE</viewer>
+<viewer>OLIGO</viewer>
+<iconpath>org/clothocad/tool/sequenceanalysistool/logo.png</iconpath>
+</plugin>-->
+<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-sequenceanalysistool-connect</classname>
+<description>Berkeley iGEM 2010 sequencing analysis tool</description>
+<displayname>Sequence Checker</displayname>
+<uuid>org.clothocad.tool.sequenceanalysistool</uuid>
+<screenshotpath>org/clothocad/tool/sequenceanalysistool/screenshot.png</screenshotpath>
+<author>J. Christopher Anderson</author>
+<dependency>org.clothocad.library.sequencelight</dependency>-->
+<viewer>PART</viewer>
+<viewer>PLASMID</viewer>
+<viewer>VECTOR</viewer>
+<viewer>FEATURE</viewer>
+<viewer>OLIGO</viewer>
+<iconpath>org/clothocad/tool/sequenceanalysistool/logo.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Sequence_Checker</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Jul 28, 2010 6:07:51 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="org.clothocad.hibernate.data.StrainTable" table="StrainTable">
+        <id name="idStrain" type="string">
+            <column name="idStrain" length="63" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="strainTable" class="org.clothocad.hibernate.data.StrainTable" fetch="select">
+            <column name="parentStrainId" length="63" />
+        </many-to-one>
+        <many-to-one name="attachmentTable" class="org.clothocad.hibernate.data.AttachmentTable" fetch="select">
+            <column name="genbankFileId" length="63" />
+        </many-to-one>
+        <many-to-one name="personTable" class="org.clothocad.hibernate.data.PersonTable" fetch="select">
+            <column name="personId" length="63" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" />
+        </property>
+        <property name="isBasic" type="java.lang.Boolean">
+            <column name="isBasic" />
+        </property>
+        <property name="genomeId" type="string">
+            <column name="genomeId" length="63" />
+        </property>
+        <property name="strainType" type="string">
+            <column name="strainType" length="63" />
+        </property>
+        <property name="riskGroup" type="java.lang.Short">
+            <column name="riskGroup" />
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="dateCreated" length="19" />
+        </property>
+        <property name="lastModified" type="timestamp">
+            <column name="lastModified" length="19" />
+        </property>
+        <set name="strainPlasmidXrefs" inverse="true">
+            <key>
+                <column name="strainId" length="63" not-null="true" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.StrainPlasmidXref" />
+        </set>
+        <set name="sampleTables" inverse="true">
+            <key>
+                <column name="strainId" length="63" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.SampleTable" />
+        </set>
+        <set name="strainTables" inverse="true">
+            <key>
+                <column name="parentStrainId" length="63" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.StrainTable" />
+        </set>
+        <set name="strainNoteXrefs" inverse="true">
+            <key>
+                <column name="strainId" length="63" not-null="true" />
+            </key>
+            <one-to-many class="org.clothocad.hibernate.data.StrainNoteXref" />
+        </set>
+    </class>
+</hibernate-mapping>
