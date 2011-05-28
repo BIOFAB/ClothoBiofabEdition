@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="Actions">
+        <folder name="Window">
+            <file name="org-clothocad-tool-inventorymanager-InventoryManagerAction.instance">
+                <attr name="component" methodvalue="org.clothocad.tool.inventorymanager.InventoryManagerTopComponent.findInstance"/>
+                <attr name="displayName" bundlevalue="org.clothocad.tool.inventorymanager.Bundle#CTL_InventoryManagerAction"/>
+                <attr name="instanceCreate" methodvalue="org.openide.windows.TopComponent.openAction"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Menu">
+        <folder name="Window">
+            <file name="InventoryManagerAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Window/org-clothocad-tool-inventorymanager-InventoryManagerAction.instance"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Windows2">
+        <folder name="Components">
+            <file name="InventoryManagerTopComponent.settings" url="InventoryManagerTopComponentSettings.xml"/>
+        </folder>
+        <folder name="Modes">
+            <folder name="editor">
+                <file name="InventoryManagerTopComponent.wstcref" url="InventoryManagerTopComponentWstcref.xml"/>
+            </folder>
+        </folder>
+    </folder>
+    <folder name="plugins">
+        <folder name="tools">
+            <file name="org-clothocad-tool-inventorymanager-InventoryManagerTool.instance">
+                <attr name="instanceOf" stringvalue="org.clothocad.api.plugin.ClothoTool"/>
+            </file>
+        </folder>
+    <folder name="xml">
+        <file name="InventoryManager.xml" url="InventoryManager.xml"/>
+    </folder>
+  </folder>
+</filesystem>

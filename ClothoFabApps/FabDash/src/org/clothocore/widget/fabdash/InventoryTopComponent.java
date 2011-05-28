@@ -62,7 +62,7 @@ public final class InventoryTopComponent extends TopComponent {
 
 
         initComponents();
-        add(new ObjTypeChooser(this), java.awt.BorderLayout.NORTH);
+        //add(new ObjTypeChooser(this), java.awt.BorderLayout.NORTH);
         add(new SearchBar(), java.awt.BorderLayout.SOUTH);
 
 
@@ -119,12 +119,14 @@ public final class InventoryTopComponent extends TopComponent {
                     
                     for (int i = 0; i < allOligos.size(); i++)
                     {
-                        oligoTableModel[i][1] = allOligos.get(i).name;
-                        Oligo aolig = Collector.getOligo(allOligos.get(i).uuid);
-                        //oligoTableModel[i][1] = aolig.getSeq();
+                        Oligo oligo = Collector.getOligo(allOligos.get(i).uuid);
+                        oligoTableModel[i][0] = allOligos.get(i).name;
+                        oligoTableModel[i][1] = oligo.getDescription();
+//                        oligoTableModel[i][2] = oligo.getLastModified().toString();
+//                        oligoTableModel[i][3] = oligo.getDateCreated().toString();
                     }
                     
-                    oligosTable.setModel(new javax.swing.table.DefaultTableModel(oligoTableModel, new String[]{"Identifier", "Description"}));
+                    oligosTable.setModel(new javax.swing.table.DefaultTableModel(oligoTableModel, new String[]{"BIOFAB ID", "Description"}));
 
                     //Code for populating the Vectors tab is below
 //                    ArrayList<ObjLink> allVectors = Collector.getAllLinksOf(ObjType.VECTOR);
@@ -240,6 +242,7 @@ public final class InventoryTopComponent extends TopComponent {
                 return canEdit [columnIndex];
             }
         });
+        oligosTable.setFillsViewportHeight(true);
         oligosScrollPane.setViewportView(oligosTable);
 
         inventoryTabbedPane.addTab(org.openide.util.NbBundle.getMessage(InventoryTopComponent.class, "InventoryTopComponent.oligosScrollPane.TabConstraints.tabTitle_1"), oligosScrollPane); // NOI18N

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<plugin>
+  <type>ClothoTool</type>
+  <version>1.0</version>
+  <classname>org-clothocad-tool-inventorymanager-InventoryManagerTool</classname>
+  <description>Clotho Fab Edition App for managing parts, oligos, vectors, and plasmids.</description>
+  <displayname>Inventory Manager</displayname>
+  <uuid>org.clothocad.tool.inventorymanager</uuid>
+  <screenshotpath>none</screenshotpath>
+  <author>Cesar Rodriguez</author>
+  <iconpath>org/clothocad/tool/inventorymanager/logo.png</iconpath>
+  <dependency>none1</dependency>
+  <dependency>none2</dependency>
+  <help>
+  <helpurl>none</helpurl>
+  <helpdescription>For more information please see the help url</helpdescription>
+  <helpcommand>Command1</helpcommand>
+  <helpcommand>Command2</helpcommand>
+  </help>
+</plugin>

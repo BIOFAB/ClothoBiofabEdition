@@ -1,6 +1,0 @@
-Manifest-Version: 1.0
-OpenIDE-Module: org.clothocad.tool.oligomanager
-OpenIDE-Module-Layer: org/clothocad/tool/oligomanager/layer.xml
-OpenIDE-Module-Localizing-Bundle: org/clothocad/tool/oligomanager/Bundle.properties
-OpenIDE-Module-Specification-Version: 1.0
-
