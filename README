@@ -7,7 +7,7 @@ Instructions for building and running Clotho BIOFAB Edition:
 Java 6 SE has to be installed
     http://www.oracle.com/technetwork/java/index.html
 
-Netbeans v. 6.9.* has to be installed
+Netbeans v. 7.0.* has to be installed
     http://netbeans.org/index.html
 
 - Clone this repository
