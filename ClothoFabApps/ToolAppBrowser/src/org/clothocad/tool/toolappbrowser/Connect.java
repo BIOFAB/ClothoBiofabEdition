@@ -25,6 +25,8 @@ package org.clothocad.tool.toolappbrowser;
 
 import javax.swing.SwingUtilities;
 import org.clothocad.tool.toolappbrowser.tc.BrowseTCTopComponent;
+import org.clothocore.api.core.Collator;
+import org.clothocore.api.core.wrapper.ToolWrapper;
 import org.clothocore.api.data.ObjBase;
 import org.clothocore.api.plugin.ClothoTool;
 

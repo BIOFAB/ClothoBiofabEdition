@@ -1,26 +1,25 @@
 /*
- Copyright (c) 2009 The Regents of the University of California.
- All rights reserved.
- Permission is hereby granted, without written agreement and without
- license or royalty fees, to use, copy, modify, and distribute this
- software and its documentation for any purpose, provided that the above
- copyright notice and the following two paragraphs appear in all copies
- of this software.
+Copyright (c) 2009 The Regents of the University of California.
+All rights reserved.
+Permission is hereby granted, without written agreement and without
+license or royalty fees, to use, copy, modify, and distribute this
+software and its documentation for any purpose, provided that the above
+copyright notice and the following two paragraphs appear in all copies
+of this software.
 
- IN NO EVENT SHALL THE UNIVERSITY OF CALIFORNIA BE LIABLE TO ANY PARTY
- FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
- ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF
- THE UNIVERSITY OF CALIFORNIA HAS BEEN ADVISED OF THE POSSIBILITY OF
- SUCH DAMAGE.
+IN NO EVENT SHALL THE UNIVERSITY OF CALIFORNIA BE LIABLE TO ANY PARTY
+FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES
+ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF
+THE UNIVERSITY OF CALIFORNIA HAS BEEN ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGE.
 
- THE UNIVERSITY OF CALIFORNIA SPECIFICALLY DISCLAIMS ANY WARRANTIES,
- INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
- MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE SOFTWARE
- PROVIDED HEREUNDER IS ON AN "AS IS" BASIS, AND THE UNIVERSITY OF
- CALIFORNIA HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES,
- ENHANCEMENTS, OR MODIFICATIONS..
+THE UNIVERSITY OF CALIFORNIA SPECIFICALLY DISCLAIMS ANY WARRANTIES,
+INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE SOFTWARE
+PROVIDED HEREUNDER IS ON AN "AS IS" BASIS, AND THE UNIVERSITY OF
+CALIFORNIA HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES,
+ENHANCEMENTS, OR MODIFICATIONS..
  */
-
 package org.clothocore.widget.fabdash.browser;
 
 import java.awt.BorderLayout;
@@ -52,6 +51,7 @@ import org.openide.util.ImageUtilities;
 /**
  *
  * @author J. Christopher Anderson
+ * editted by Craig LaBoda, Jenhan Tao
  */
 public class SuperSearch extends JPanel {
 
@@ -61,11 +61,12 @@ public class SuperSearch extends JPanel {
         setBackground(Color.WHITE);
         this.setBorder(blackline);
         jtf = new JTextField();
-        ImageIcon searchImg = ImageUtilities.loadImageIcon( "org/clothocore/widget/fabdash/images/search.png", false );
+        ImageIcon searchImg = ImageUtilities.loadImageIcon("org/clothocore/widget/fabdash/images/search.png", false);
         searchTB = new TransparentButton(searchImg);
         searchTB.setExitAlpha(1.0f);
         searchTB.setEnterAlpha(0.8f);
         searchTB.addMouseListener(new MouseAdapter() {
+
             @Override
             public void mouseClicked(MouseEvent e) {
                 startSearch();
@@ -77,31 +78,33 @@ public class SuperSearch extends JPanel {
         //Listen for ctrl-O
         jtf.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "search");
         jtf.getActionMap().put("search",
-            new AbstractAction("search") {
-            @Override
-                public void actionPerformed(ActionEvent evt) {
-                    startSearch();
-                }});
+                new AbstractAction("search") {
+
+                    @Override
+                    public void actionPerformed(ActionEvent evt) {
+                        startSearch();
+                    }
+                });
 
     }
 
     /* SETTERS
      * */
-
     private void startSearch() {
-        if(!Collector.isConnected()) {
-            JOptionPane.showMessageDialog( null, "Database connection required to run search, connect to the database first!",
-                                           "Not connected", JOptionPane.ERROR_MESSAGE );
+        if (!Collector.isConnected()) {
+            JOptionPane.showMessageDialog(null, "Database connection required to run search, connect to the database first!",
+                    "Not connected", JOptionPane.ERROR_MESSAGE);
             jtf.requestFocusInWindow();
             return;
         }
 //        _app.blurrer.setBlurring(true, "Searching...");
         new SwingWorker() {
+
             @Override
             protected Object doInBackground() throws Exception {
                 try {
                     runSearch();
-                } catch(Exception err) {
+                } catch (Exception err) {
                     err.printStackTrace();
                 }
 //                _app.blurrer.setBlurring(false, "Searching...");
@@ -114,7 +117,7 @@ public class SuperSearch extends JPanel {
     public void runSearch() {
         //Get the Actors from the plugin
         AlgorithmWrapper saa = (AlgorithmWrapper) Collator.getPluginByUUID("org.clothocad.algorithm.searchalgorithm");
-        if(saa==null) {
+        if (saa == null) {
             return;
         }
         System.out.println("Searcher: " + saa.getDescription());
@@ -122,29 +125,31 @@ public class SuperSearch extends JPanel {
 
         //Create a Stringtoken input to the actor and put it into Inport
         String query = jtf.getText();
-        if(query==null || query.equals("")) {
+        if (query == null || query.equals("")) {
             return;
         }
-        
+
         System.out.println("Searching query: " + query);
         System.out.println("SearchActor: " + searchActor);
 
         StringToken s1 = new StringToken(query);
         System.out.println("Token: " + s1.getData());
-        searchActor.getInputs().get(0).put( s1 );
+        searchActor.getInputs().get(0).put(s1);
 
         //Run it
-        System.out.println( searchActor.run() );
+        System.out.println(searchActor.run());
         ObjBaseToken out = (ObjBaseToken) searchActor.getOutputs().get(0).get();
-        final Collection outcoll = (Collection) out.getData();
-        _bar.setResults(outcoll);
-    }
+        outcoll = (Collection) out.getData();
+        _bar.setResults(outcoll);       // updates the all tab
+        _bar.createTabs(outcoll);       // creates the dynamic tabs
 
-/*-----------------
-     variables
- -----------------*/
+    }
+    /*-----------------
+    variables
+    -----------------*/
     JTextField jtf;
     SearchBar _bar;
     TransparentButton searchTB;
+    Collection outcoll;
     private static final Border blackline = BorderFactory.createLineBorder(Color.BLACK);
 }

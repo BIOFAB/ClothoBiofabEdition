@@ -21,12 +21,13 @@ PROVIDED HEREUNDER IS ON AN "AS IS" BASIS, AND THE UNIVERSITY OF
 CALIFORNIA HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES,
 ENHANCEMENTS, OR MODIFICATIONS..
  */
-
 package org.clothocore.widget.fabdash;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import javax.swing.AbstractAction;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -43,27 +44,32 @@ public class PopulateTools extends AbstractAction implements Presenter.Menu {
     @Override
     public JMenuItem getMenuPresenter() {
         JMenu m = new JMenu("Launch Tool");
-
         ArrayList<ToolWrapper> listy = Collator.getAllTools();
+        //Additional ArrayList and HashMap is for sorting apps alphabetically
+        HashMap<String, ToolWrapper> hm = new HashMap(listy.size());
+        ArrayList<String> listyNames = new ArrayList(listy.size());
+        for (ToolWrapper tw : listy) {
+            hm.put(tw.getDisplayName(), tw);
+            listyNames.add(tw.getDisplayName());
+        }
+        Collections.sort(listyNames);
 
-        for(final ToolWrapper tw : listy)
-        {
-           JMenuItem toolitem = new JMenuItem(tw.getDisplayName());
-           toolitem.addActionListener(new ActionListener() {
+        for (final String name : listyNames) {
+            final ToolWrapper wrappedTool = hm.get(name);
+            JMenuItem toolitem = new JMenuItem(wrappedTool.getDisplayName());
+            toolitem.addActionListener(new ActionListener() {
+
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    tw.launchTool();
+                    wrappedTool.launchTool();
                 }
-                } );
+            });
             m.add(toolitem);
         }
-
-        return m; 
+        return m;
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) 
-    {
-
+    public void actionPerformed(ActionEvent e) {
     }
 }

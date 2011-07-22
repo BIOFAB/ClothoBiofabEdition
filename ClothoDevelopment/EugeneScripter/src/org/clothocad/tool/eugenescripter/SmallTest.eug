@@ -1,0 +1,14 @@
+Property name(txt);
+Property sequence(txt);
+Property shortDescription(txt);
+
+Part Promoter(name, sequence, shortDescription);
+Part RBS(sequence);
+Part ORF(name, sequence);
+
+Promoter p("PromoterPart", "GATCTGGGGGGGGGG", "This is a test");
+RBS r("GATCTCCCCCCCCCCCCCCCCCCCG");
+ORF o("ORFPart", "GATCTAAAAAAAAG");
+
+Device testDevice(p, r, o);
+Device otherDevice(p, o);

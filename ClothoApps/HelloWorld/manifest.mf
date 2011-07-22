@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocad.tool.helloworld
+OpenIDE-Module-Layer: org/clothocad/tool/helloworld/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocad/tool/helloworld/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

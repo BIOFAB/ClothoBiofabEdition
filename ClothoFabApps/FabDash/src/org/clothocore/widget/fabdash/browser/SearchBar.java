@@ -28,13 +28,17 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.ListModel;
 import javax.swing.event.ListDataListener;
 import org.clothocore.api.data.Collection;
 import org.clothocore.api.data.ObjBase;
+import org.clothocore.api.data.ObjType;
 import org.clothocore.api.dnd.ObjBaseObserver;
 import org.clothocore.util.basic.ObjBasePopup;
 
@@ -48,16 +52,17 @@ public class SearchBar extends JPanel {
         setPreferredSize(new Dimension(200,200));
         add(new SuperSearch(this), BorderLayout.NORTH);
 
-        JScrollPane scroller = new JScrollPane();
-        _lister = new JList();
-        scroller.setViewportView(_lister);
-        add(scroller, BorderLayout.CENTER);
+        mainPane = new JTabbedPane();               // create the tabbed pane
+        add(mainPane, BorderLayout.CENTER);         // add it to the center of our JPanel
+        _lister = new JList();                      // create the JList to view the results
 
-        _lister.addMouseListener(new MouseAdapter() {
+       _lister.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+
                 if(e.getClickCount()==2) {
                     try {
+                        System.out.println(mainPane.getComponent(0));
                         ObjBase obj = (ObjBase) _lister.getSelectedValue();
                         obj.launchDefaultViewer();
                     } catch(Exception ex) {
@@ -67,17 +72,69 @@ public class SearchBar extends JPanel {
         });
     }
 
-    void setResults(final Collection outcoll) {
-        _lister.setModel(new ListModel() {
+    // updates the results of the search, doesn't do any filtering
+    public void setResults(final Collection outcoll) {
+
+        mainPane.removeAll();                       // first remove all panes
+        JScrollPane scroller = new JScrollPane();   // create a scrollpane
+        scroller.setViewportView(_lister);          // set the lister to the scroller
+
+        if (!outcoll.getAll().isEmpty()){
+            // if the collection has some objects
+
+            _lister.setModel(new ListModel() {
+                // create a list model and populate
+
+                @Override
+                public int getSize() {
+                    return outcoll.getAll().size();
+                }
+
+                @Override
+                public Object getElementAt(int index) {
+                    return outcoll.getAll().get(index);
+                }
+
+                @Override
+                public void addListDataListener(ListDataListener l) {
+                }
+
+                @Override
+                public void removeListDataListener(ListDataListener l) {
+                }
+
+        });
+
+        mainPane.addTab("All",scroller);             // create the All tab
+    }
+
+        else{
+            // if the collection is empty
+
+            DefaultListModel listModel = new DefaultListModel();    // create a default list model
+            listModel.addElement("Returned No Results");            // add no results string
+            _lister.setModel(listModel);                            // use the model
+            mainPane.addTab("No Results",scroller);                  // create a tab for the list
+
+         }
+
+        repaint();
+        _obp = new ObjBasePopup(_lister, outcoll);
+    }
+
+
+    // takes ObjType and filters the search using that type
+    public void setResults(final Collection outcoll, final ObjType type, final JList list) {
+        list.setModel(new ListModel() {
 
             @Override
             public int getSize() {
-                return outcoll.getAll().size();
+                return outcoll.getAll(type).size();//.size();
             }
 
             @Override
             public Object getElementAt(int index) {
-                return outcoll.getAll().get(index);
+                return outcoll.getAll(type).get(index);
             }
 
             @Override
@@ -89,11 +146,36 @@ public class SearchBar extends JPanel {
             }
         });
         repaint();
-        _obp = new ObjBasePopup(_lister, outcoll);
+        _obp = new ObjBasePopup(list, outcoll);
+    }
+
+    public void createTabs(final Collection outcoll){
+        // takes in a collection of objects
+        // determines what types of objects are in the collection
+        // generates tabs with lists of each objects in the JPanel
+
+       for(ObjType myObj : ObjType.values()) { // iterate through all ObjTypes
+
+            ArrayList result = outcoll.getAll(myObj);
+            if (!result.isEmpty()){
+
+                // if some objects exist of that type
+                JScrollPane dynScroller = new JScrollPane();    // create new scroller
+                JList dynLister = new JList();                  // create new jList
+                dynScroller.setViewportView(dynLister);         // put the list in the scroller
+                setResults(outcoll,myObj,dynLister);          // set the results for lister
+                mainPane.addTab(myObj.toString(), dynScroller);    // add a pane for the user
+//                _obp = new ObjBasePopup(dynLister,(ObjBase) result.get(0));
+
+            }
+
+        }
+
     }
 
     ///////////////////////////////////////////////////////////////////
     ////                      private variables                    ////
-    JList _lister;
+    JTabbedPane mainPane;   // main pane for the searchBar
+    JList _lister;          // JList for entire returned collection
     ObjBasePopup _obp;
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-sequenceview-SequenceViewManager</classname>
+<description>Sequence View is a fully featured editor for DNA sequences</description>
+<displayname>Sequence View</displayname>
+<uuid>org.clothocad.tool.sequenceview</uuid>
+<author>Jenhan Tao</author>
+<!--<dependency>none1</dependency>-->
+<!--<dependency>none2</dependency>-->
+<viewer>PART</viewer>
+<viewer>VECTOR</viewer>
+<viewer>OLIGO</viewer>
+<viewer>FEATURE</viewer>
+<viewer>PLASMID</viewer>
+<iconpath>org/clothocad/tool/sequenceview/images/icons/sequenceView.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Sequence_View</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

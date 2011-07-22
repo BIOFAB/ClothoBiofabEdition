@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 OpenIDE-Module: org.clothocad.tool.groovyscripter/1
+OpenIDE-Module-Implementation-Version: 1
 OpenIDE-Module-Layer: org/clothocad/tool/groovyscripter/layer.xml
 OpenIDE-Module-Localizing-Bundle: org/clothocad/tool/groovyscripter/Bundle.properties
-OpenIDE-Module-Specification-Version: 1.0
 

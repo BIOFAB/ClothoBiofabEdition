@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <type>ClothoTool</type>
+    <version>1.0</version>
+    <classname>org-clothocad-tool-cello-CelloTool</classname>
+    <description>Does stuff</description>
+    <displayname>Cello</displayname>
+    <uuid>org.clothocad.tool.cello</uuid>
+    <screenshotpath>org/clothocad/tool/bglbrickdigester/screenshot.png</screenshotpath>
+    <author>Roza Ghamari</author>
+    <iconpath>org/clothocad/tool/cello/cello.png</iconpath>
+    <help>
+        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/BglBrick_Digester</helpurl>
+        <helpdescription>For more information please see the help url</helpdescription>
+    </help>
+</plugin>

@@ -72,20 +72,20 @@ public class Connect implements ClothoWidget  {
     public void launch()
     {
         redirectSystemStreams();
-        SwingUtilities.invokeLater(new Runnable()
-            {
-                @Override
-                public void run()
-                {
-                    //Switches Clotho to a local database
-                    String selectstring = "org.clothocad.connection.localconnection";
-                    ConnectionWrapper cw = (ConnectionWrapper) Collator.getPluginByUUID(selectstring);
-                    Collator.setDefaultConnection(cw);
-
-                    Collector.connectToDefault();
-                }
-            }
-        );
+//        SwingUtilities.invokeLater(new Runnable()
+//            {
+//                @Override
+//                public void run()
+//                {
+//                    //Switches Clotho to a local database
+//                    String selectstring = "org.clothocad.connection.localconnection";
+//                    ConnectionWrapper cw = (ConnectionWrapper) Collator.getPluginByUUID(selectstring);
+//                    Collator.setDefaultConnection(cw);
+//
+//                    Collector.connectToDefault();
+//                }
+//            }
+//        );
     }
     ///////////////////////////////////////////////////////////////////
     ////                         private variables               ////

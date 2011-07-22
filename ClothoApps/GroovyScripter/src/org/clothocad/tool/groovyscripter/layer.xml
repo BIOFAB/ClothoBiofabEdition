@@ -4,7 +4,7 @@
     <folder name="plugins">
         <folder name="tools">
             <file name="org-clothocad-tool-groovyscripter-groovyFrame.instance">
-                <attr name="instanceOf" stringvalue="org.clothocad.api.plugin.ClothoTool"/>
+                <attr name="instanceOf" stringvalue="org.clothocore.api.plugin.ClothoTool"/>
             </file>
         </folder>
         <folder name="xml">

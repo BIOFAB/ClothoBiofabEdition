@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="Actions">
+        <folder name="Window">
+            <file name="org-clothocad-tool-sequenceview-SequenceViewAction.instance">
+                <attr name="component" methodvalue="org.clothocad.tool.sequenceview.SequenceViewTopComponent.findInstance"/>
+                <attr name="displayName" bundlevalue="org.clothocad.tool.sequenceview.Bundle#CTL_SequenceViewAction"/>
+                <attr name="instanceCreate" methodvalue="org.openide.windows.TopComponent.openAction"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Menu">
+        <folder name="Window">
+            <file name="SequenceViewAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Window/org-clothocad-tool-sequenceview-SequenceViewAction.instance"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Windows2">
+        <folder name="Components">
+            <file name="SequenceViewTopComponent.settings" url="SequenceViewTopComponentSettings.xml"/>
+        </folder>
+        <folder name="Modes">
+            <folder name="editor">
+                <file name="SequenceViewTopComponent.wstcref" url="SequenceViewTopComponentWstcref.xml"/>
+            </folder>
+        </folder>
+    </folder>
+    <folder name="plugins">
+        <folder name="tools">
+            <file name="org-clothocad-tool-sequenceview-SequenceViewManager.instance">
+                <attr name="instanceOf" stringvalue="org.clothocore.api.plugin.ClothoTool"/>
+            </file>
+        </folder>
+        <folder name="xml">
+            <file name="SequenceView.xml" url="SequenceView.xml"></file>
+        </folder>
+    </folder>
+</filesystem>

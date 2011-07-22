@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-registryimporter-connect</classname>
+<description>Import parts from the Registry</description>
+<help>http://andersonlab.qb3.berkeley.edu/Clotho/help1.0.1/help_v1.0.1.html</help>
+<displayname>Registry Importer</displayname>
+<uuid>org.clothocad.tool.registryimporter</uuid>
+<screenshot>org/clothocad/tool/registryimporter/screenshot.png</screenshot>
+<author>J. Christopher Anderson</author>
+<iconpath>org/clothocad/tool/registryimporter/logo.png</iconpath>
+</plugin>-->
+<plugin>
+<type>ClothoTool</type>
+<version>1.0</version>
+<classname>org-clothocad-tool-primerdesigner-connect</classname>
+<description>Basic primer designer</description>
+<displayname>Primer Designer</displayname>
+<uuid>org.clothocad.tool.primerdesigner</uuid>
+<!--<screenshotpath>org/clothocad/tool/registryimporter/screenshot.png</screenshotpath>-->
+<author>Jenhan Tao</author>
+<!--<dependency>org.clothocad.tool.helloworld</dependency>-->
+<iconpath>org/clothocad/tool/primerdesigner/logo.png</iconpath>
+    <help>
+<!--        <helpurl>http://wiki.bu.edu/ece-clotho/index.php/Registry_Importer</helpurl>-->
+        <helpdescription>For more information please see the help url</helpdescription>
+        <!--<helpcommand>Command1</helpcommand>-->
+        <!--<helpcommand>Command2</helpcommand>-->
+    </help>
+</plugin>

@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: org.clothocad.tool.primerdesigner
+OpenIDE-Module-Layer: org/clothocad/tool/primerdesigner/layer.xml
+OpenIDE-Module-Localizing-Bundle: org/clothocad/tool/primerdesigner/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

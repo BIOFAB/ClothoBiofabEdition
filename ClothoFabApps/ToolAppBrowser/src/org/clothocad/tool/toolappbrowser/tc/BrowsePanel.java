@@ -21,7 +21,6 @@ PROVIDED HEREUNDER IS ON AN "AS IS" BASIS, AND THE UNIVERSITY OF
 CALIFORNIA HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES,
 ENHANCEMENTS, OR MODIFICATIONS..
  */
-
 package org.clothocad.tool.toolappbrowser.tc;
 
 import java.awt.BorderLayout;
@@ -36,6 +35,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -60,37 +61,48 @@ public class BrowsePanel extends JScrollPane {
         scrollingpanel.setScrollableHeight(ScrollablePanel.ScrollableSizeHint.STRETCH);
         scrollingpanel.setAutoscrolls(true);
 
-        GridLayout lay = new GridLayout(5,6,10,10);
+        GridLayout lay = new GridLayout(5, 6, 10, 10);
 
         scrollingpanel.setLayout(lay);
 
         scrollingpanel.setBackground(Color.WHITE);
 
         ArrayList<ToolWrapper> listy = Collator.getAllTools();
-        for(ToolWrapper tw: listy) {
-            ToolComponent button = new ToolComponent(tw);
-            scrollingpanel.add(button);
+        HashMap<String, ToolWrapper> hm = new HashMap(listy.size());
+        ArrayList<String> listyNames = new ArrayList(listy.size());
+        for (ToolWrapper tw : listy) {
+            hm.put(tw.getDisplayName(), tw);
+            listyNames.add(tw.getDisplayName());
+        }
+        Collections.sort(listyNames);
+        for (String name : listyNames) {
+            ToolWrapper tw = hm.get(name);
+            if (!tw.getUUID().equals("org.clothocad.tool.toolappbrowser")) {
+                ToolComponent button = new ToolComponent(tw);
+                scrollingpanel.add(button);
+            }
         }
     }
 
     private class ToolComponent extends JComponent {
 
         public ToolComponent(final ToolWrapper tw) {
-            setPreferredSize(new Dimension(200,150));
+            setPreferredSize(new Dimension(200, 150));
             ImageIcon img = tw.getIcon(120);
             TransparentButton button = new TransparentButton(img);
             button.setExitAlpha(1.0f);
             button.setEnterAlpha(0.7f);
-            int xpos = (190-img.getIconWidth())/2;
-            button.setBounds(xpos+10,7,img.getIconWidth(),img.getIconHeight());
+            int xpos = (190 - img.getIconWidth()) / 2;
+            button.setBounds(xpos + 10, 7, img.getIconWidth(), img.getIconHeight());
             add(button);
-
+            button.setToolTipText(tw.getDescription());
             TransparentButton deleteMe = new TransparentButton(deletebtn);
             deleteMe.setExitAlpha(0.5f);
             deleteMe.setEnterAlpha(1.0f);
-            deleteMe.setLocation(177,5);
+            deleteMe.setLocation(177, 5);
             deleteMe.setToolTipText("Click to uninstall");
             deleteMe.addActionListener(new ActionListener() {
+
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     System.out.println("Uninstall requested for " + tw.getDisplayName());
@@ -99,21 +111,14 @@ public class BrowsePanel extends JScrollPane {
                 }
             });
             add(deleteMe);
-
             JLabel label = new JLabel(tw.getDisplayName());
-            label.setBounds(15,120,190,25);
+            label.setBounds(15, 120, 190, 25);
             add(label);
-
-
-
-            this.setToolTipText(tw.getDescription());
-
-
             button.addMouseListener(new MouseListener() {
 
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    if(e.getClickCount()==2) {
+                    if (e.getClickCount() == 2) {
                         tw.launchTool();
                     }
                 }
@@ -147,9 +152,8 @@ public class BrowsePanel extends JScrollPane {
             super.paintComponent(g);
         }
     }
-
     ///////////////////////////////////////////////////////////////////
     ////                      private variables                    ////
-    private static Color offwhite = new Color(240,240,218);
+    private static Color offwhite = new Color(240, 240, 218);
     private static ImageIcon deletebtn = ImageUtilities.loadImageIcon("org/clothocad/tool/toolappbrowser/tc/deletebtn.png", false);
 }
